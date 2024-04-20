@@ -1,0 +1,131 @@
+*{
+    margin: 0 ;
+}
+
+.app{
+    height: 1200px;
+    position: relative;
+}
+body{
+    font-family: miui, system-ui, -apple-system, BlinkMacSystemFont, \.SFNSText-Regular, Helvetica, Arial, sans-serif;
+    height: 200px;
+    background-color: orange;
+}
+/* Header */
+.header{
+    position: fixed ;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+.header .grid.wide{
+    height: var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    
+}
+
+
+.header:hover,
+.header:hover .tab{
+    background-color: var(--white-color);
+}
+
+.logo-img{
+    width: 141px;
+    height: auto;
+}
+
+.header__navbar{
+    display: flex;
+    gap: 30px;
+    font-size: 2.2rem;
+}
+
+.header__navbar i{
+    margin-right: 10px;
+}
+
+.header__search{
+    flex-basis: 450px;
+    height: 40px;
+    display: flex;
+}
+
+.header__search-input{
+    width: 100%;
+    height: 100%;
+    background-color:rgba(255, 255, 255, 0.7) ;
+}
+
+.header__search-button{
+    background-color: var(--black-color);
+    color: var( --white-color);
+    width: 50px;
+    border: none;
+}
+
+.header__search-button i{
+    font-size: var(--font-size);
+    font-weight: 900;
+}
+
+.header__search-button:hover{
+    background-color: #3f3e3e;
+}
+
+.header__navbar{
+    list-style: none;
+}
+
+.header__navbar li{
+    padding: 10px;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    transition: transform 0.3s ease
+}
+.header__navbar li:hover{
+    transform: scale(1.1);
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.icon-center a{
+    margin-right: -9px;
+}
+
+/* Header end */
+
+/* Container start */
+.tab{
+    position: fixed;
+    top: var(--header-height);
+    width: 100%;
+}
+
+.tab__list{
+    list-style: none;
+    display: flex;
+    font-size: var(--font-size);
+    align-items: center;
+    justify-content: center;
+    gap: 50px; ;
+    height: 40px;
+    border-bottom: 1px solid #767676;
+    padding: 0;
+    background-color:rgba(255, 255, 255, 0.7) ;
+}
+
+.tab__list li{
+    display: block;
+    padding: 11px;
+}
+
+.tab__list li:hover{
+    color: var(--primary-color);
+    border-bottom: 3px solid var(--primary-color);
+}
+
+/* Container end */
