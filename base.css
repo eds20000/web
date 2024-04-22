@@ -7,7 +7,7 @@
     --primary-color-rgba:rgb(255, 174, 201);
     --border-color: #bdbdbd;
     --star-gold-color:#ffce3e;
-    --font-size:2rem;
+    --font-size:1.8rem;
     --navbar-height:42px;
     --header-height:100px;
     --header-with-search-height:calc(var(--header-height) - var(--navbar-height))

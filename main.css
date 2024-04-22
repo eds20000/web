@@ -40,7 +40,7 @@ body{
 .header__navbar{
     display: flex;
     gap: 30px;
-    font-size: 2.2rem;
+    font-size: 2rem;
 }
 
 .header__navbar i{
