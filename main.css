@@ -9,7 +9,6 @@
 body{
     font-family: miui, system-ui, -apple-system, BlinkMacSystemFont, \.SFNSText-Regular, Helvetica, Arial, sans-serif;
     height: 200px;
-    background-color: orange;
 }
 /* Header */
 .header{
@@ -113,10 +112,21 @@ body{
     justify-content: center;
     gap: 50px; ;
     height: 40px;
-    border-bottom: 1px solid #767676;
+    /* border-bottom: 1px solid #767676; */
     padding: 0;
     background-color:rgba(255, 255, 255, 0.7) ;
+    box-shadow: 0px 5px 6px -6px #999999;
 }
+/* .tab__list::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    
+    height: 2px;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+
+} */
 
 .tab__list li{
     display: block;
@@ -126,6 +136,34 @@ body{
 .tab__list li:hover{
     color: var(--primary-color);
     border-bottom: 3px solid var(--primary-color);
+}
+
+.container{
+    padding-top: calc(var(--header-height) + 40px) ;
+    font-size: var(--font-size);
+}
+
+.category__list p{
+    font-weight: 700;
+    padding: 30px 0;
+    font-size: 2rem;
+}
+
+.category__list li{
+    padding: 10px;
+}
+
+.category__list li:hover{
+    background-color: #f7f6f6;
+}
+
+.category_list-item a{
+    display: flex;
+    justify-content: space-between;
+}
+
+.category__list-item i{
+    float: right;
 }
 
 /* Container end */
