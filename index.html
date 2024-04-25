@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/d72dd2144a.js" crossorigin="anonymous"></script>
+    <script src="./script/script.js"></script>
     <title>TS-shop</title>
 </head>
 <body>
@@ -67,14 +68,24 @@
     
                     </ul>
                     <div class="content_body col l-10">
-                        <div class="content_title">
-                            <div class="content_title-text">すべてのアイテム</div> 
-                            <div class="content_title-sort"><button>並び替え：価格が高い順</button></div>
-                            <div class="sort_tab">
-                                <div class="sort_tab-ascen">並び替え：価格が高い順</div>
-                                <div class="sort_tab-descen">並び替え：価格が安い順</div>
+                        <div class="content__title">
+                            <div class="content__title-text">すべてのアイテム</div> 
+                            <div class="content__title-sort">
+                                <div class="content__title-sort-text">並び替え：</div> 
+                                <div class="content__title-sort-list">価格が高い順</div>
+                                <i class="fa-solid fa-chevron-down"></i> 
+                                <div class="sort__tab">
+                                <div class="sort__tab-list sort__tab-ascen" onclick="sort__tab(this)">価格が高い順</div>
+                                <div class="sort__tab-list sort__tab-descen" onclick="sort__tab(this)" >価格が安い順</div>
+                             
                             </div>
-                            
+                            </div>
+                           
+                        <div class="row">
+                            <div class="col l-2-4">
+                                <div class="sort__item"></div>
+                            </div>
+                        </div>  
                         </div>
                     </div>
                 </div>

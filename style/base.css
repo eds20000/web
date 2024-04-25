@@ -6,8 +6,9 @@
     --primary-color:#FFAEC9;
     --primary-color-rgba:rgb(255, 174, 201);
     --border-color: #bdbdbd;
+    --hover-color:#f7f6f6;
     --star-gold-color:#ffce3e;
-    --font-size:1.8rem;
+    --font-size:1.5rem;
     --navbar-height:42px;
     --header-height:100px;
     --header-with-search-height:calc(var(--header-height) - var(--navbar-height))
@@ -36,3 +37,4 @@ a{
 ul{
     list-style: none;
 }
+
