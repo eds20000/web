@@ -191,7 +191,7 @@ body{
 }
 
 
-.content__title-sort-list{
+.content__title-sort-selected{
     font-weight: 600;
 }
 
@@ -242,5 +242,9 @@ body{
 
 .sort__tab div:hover{
     background-color: var(--hover-color);
+}
+
+.tab_selected{
+    font-weight: bold;
 }
 /* Container end */
