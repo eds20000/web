@@ -1,25 +1,17 @@
-// sort-tab
-
-
-
-
+//sort-tab start
 function sort__tab(a){
-    document.querySelector(".content__title-sort-selected").innerHTML = a.innerHTML;
-       
-}
+    document.querySelector(".content__title-sort-selected").value = a.innerHTML;
+    var sorttab = document.querySelectorAll(".sort__tab-list");
+    for (let i of sorttab){
+                 if(i.innerHTML === document.querySelector(".content__title-sort-selected").value){
+                    i.classList.add("selected");
+                    }
+                else{
+                    i.classList.remove("selected");
 
-var sort__tab_content = document.getElementsByClassName("content__title-sort-selected");
+                    }
+                }
+            }
+// sort-tab end//
 
-var sort__tab_list = document.getElementsByClassName('sort__tab-list');
-
-console.log(sort__tab_content.innerHTML);
-console.log(sort__tab_list);
-
-
-for (let i of sort__tab_list){
-    console.log(i);
-    if(i.innerHTML === sort__tab_content.innerHTML){
-        i.classList.add('tab_selected') ='600';
-    }
-}
-//sort-tab
+//item 
