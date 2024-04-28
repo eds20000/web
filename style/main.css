@@ -168,11 +168,10 @@ body{
 }
 
 .content__title{
-    
+    width: 100%;
     
 }
 /* Select-tab start*/
-
 
 .content__title-sort{
     float: right;
@@ -244,7 +243,7 @@ body{
 .content__title-sort:hover .sort__tab{
     opacity: 1;
     transform: translateY(0);
-    
+    background-color: var(--white-color);
 }
 
 .content__title-sort:hover i{
@@ -272,36 +271,108 @@ body{
 
 /* Select-tab end*/
 /* item */
+.sort__item{
+    width: 100%;
+    padding: 10px;
+}
+
+.sort__item:hover{
+    box-shadow: 0 0 5px 3px rgba(0,0,0,0.1) ;
+}
 
 .sort__item-img{
     height: 200px;
-    width: 150px;
+    width: 100%;
 }
+
 .sort__item-img img{
     width: 100%;
+    height: 100%;
+}
+
+.sort__item-brand{
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.sort__item-text{
+    margin: 8px 0;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+.sort__item-content{
+    width: 100%;
+    margin:8px 0;
 }
 
 .sort__item-title{
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
 }
 
-.sort__item-title-text{
-    width: auto;
+.sort__item-takeit{
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
-.sort__item-title-takecart{
+.sort__item-favorite{
+    font-size: large;
+    background-color: var(--white-color);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
 
+.sort__item-takecart{
+    width: 43px;
     border:1px solid var(--black-color) ;
-    border-radius: 40px;
-    padding: 20px;
+    border-radius: 15px;
+    padding: 5px;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    background-color: var(--white-color);
+}
+
+.sort__item-takecart:hover{
+    transform: scale(1.1);
+}
+
+.sort__item-takecart-enable::after{
+    font-family: 'Font Awesome 5 Free';
+    content:'\f004';
+    font: var(--fa-font-solid);
+    color: var(--primary-color);
+}
+
+.sort__item-takecart-disable::after{
+    font-family: 'Font Awesome 5 Free';
+    content:'\f004';
+    font: var(--fa-font-regular);
+
 }
 
 .sort__item-star{
-
+    display: flex;
 }
 
 .sort__item-star-number{
+    display: flex;
+}
 
+.sort__item-price{
+    font-size: large;
+    font-weight: bold;
+    line-height: 25px;
+}
+
+.sort__item-star i{
+    color: #f4d34c;
 }
 /* Container end */

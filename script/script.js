@@ -14,4 +14,21 @@ function sort__tab(a){
             }
 // sort-tab end//
 
-//item 
+//item start//
+
+function favoritebutton(a){
+    console.log(a.classList[1])
+    if(a.classList[1]==='sort__item-takecart-disable'){
+        a.classList.remove('sort__item-takecart-disable');
+        a.classList.add('sort__item-takecart-enable');
+    }
+    else{
+        a.classList.remove('sort__item-takecart-enable');
+        a.classList.add('sort__item-takecart-disable');
+    }
+}
+
+//item end//
+
+
+
