@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/base.css">
+    <link rel="stylesheet" href="./style/main.css">
+    <link rel="stylesheet" href="./style/grid.css">
+    <link rel="stylesheet" href="./style/login-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/d72dd2144a.js" crossorigin="anonymous"></script>
+    <title>ログイン-TS-shop</title>
+</head>
+<body>
+    <header class="header header-login">
+        <div class="grid wide">
+            <div class="header__logo"><img src="./image/logo.png" alt="logo" class="logo-img"></div>
+        </div> 
+    </header>
+
+    <div class="container">
+        <div class="grid wide">
+            <div class="login-container grid">
+                <div class="login-form">
+                    <form action="" method="get">
+                        <div class="row">  
+                            <p class="login-form-title">ログイン</p>
+                        </div>
+                        <div class="row">
+                            <div class="col l-6">
+                                <label for="login-id">ユーザー名</label>
+                                <input type="text" class="login-form-input_userid" placeholder="ID" name="login-id">
+            
+                                <label for="login-password">パスワード</label>
+                                <input type="text" class="login-form-input_userpassword" placeholder="パスワード" name="login-password">
+                                <span class="">表示</span>
+            
+                                <a href="#">パスワードを忘れた方（再設定）</a>
+            
+                                <p class="passloss-form">アカウントまたはパスワードを忘れた方は <a href="http://">こちら</a></p>
+                                <button class="login-form-button">ログイン</button>
+                            </div>
+                            <div class="login-container-orther col l-6">
+                                <div class="login-container-orther-line">
+                                    <img src="" alt="">
+                                    <p>LINEでログイン</p>
+                                </div>
+                                <div class="login-container-orther-yahoo">
+                                    <img src="" alt="">
+                                    <p>Yahoo! JAPAN IDでログイン</p>
+                                </div>
+                                <div class="login-container-orther-apple">
+                                    <img src="" alt="">
+                                    <p>Appleでサインイン</p>
+                                </div>
+                            </div>
+                        </div>
+                    </form>               
+                </div>
+    
+            </div>
+
+            <div class="regist-container">
+                <div class="regist-container_text">はじめてご利用の方</div>
+                <div class="regist-container_button"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
