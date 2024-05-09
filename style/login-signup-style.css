@@ -1,3 +1,4 @@
+
 /* --------------Header Start-------------- */
 .header-login{
     box-shadow: 0px 5px 6px -6px #999999;
@@ -35,12 +36,6 @@
 }
 
 
-.login-form input{
-    width: 100%;
-    height: 50px;
-    border-radius: 10px;
-    border-color: var(--border-color)
-}
 
 .login-container-main{
     padding:0 40px;
@@ -95,6 +90,9 @@
 }
 
 .login-form-input{
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
     border: 1px solid var(--border-color);
     padding: 15px 12px 0;
     &:focus{
@@ -236,33 +234,143 @@
 }
 
 /* SIGNUP */
-.user-policy{
+.signup-container-main{
     width: 100%;
+    >div{
+        padding:45px 45px;
+        height: 70px;
+        min-height: 60px;
+    }
+    .col.l-4{
+        label{
+            font-size: 2rem;
+            font-weight: 600;
+        }
+    }
+}
+.signup-sex-box,
+.signup-born-box,
+.signup-id-box,
+.signup-password-box{
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+}
+.required_label{
+    padding: 2px 5px;
+    background-color: var(--error-color);
+    color: #fff;
+    font-size: 10px;
+    line-height: 1;
+    border-radius: 2px;
+}
+
+.signup-sex-content{
+    display: flex;
+    align-items: center;
+    input{
+        width: auto;
+        height: auto;
+    }
+}
+
+.signup-form{
+    width: 100px;
+}
+
+.signup-born-box{
+    .col.l-8{
+        display: flex;
+        .signup-born-year_content{
+            margin-right: 20px;
+            select{
+                margin-right:5px;
+                height: 30px;
+                cursor: pointer;
+                border-radius: 10px;
+                width: 80px;
+                padding: 0 10px;
+            }
+        }
+    }
+
+}
+.signup-password-input{
+    position: relative;
+    .pass-hide{
+        position: absolute;
+        top:12px;
+        right:20px;
+        cursor: pointer;
+    }
+}
+
+.signup-input{
+    padding: 0 15px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    width: 100%;
+    outline-color: var(--primary-color);
+}
+
+
+.signup-agreement-box{
+    
     display: flex;
     justify-content: center;
-    margin-top: 35px;
-    padding: 2px 10px ;
-    color: var(--primary-color);
-    font-weight: 600;
-}
-
-.user-policy_use{
-    cursor: pointer;
-    padding: 0 10px ;
-    margin-right: 10px;
-    border-right: 1px solid var(--border-color);
-    &:hover{
-        text-decoration: underline;
+    align-items: center;
+    #signup-agreement{
+        display: none;
+        &:checked+i{
+            display: flex;
+        }
     }
-}
-
-.user-policy_privacy{
-    cursor: pointer;
-    &:hover{
-        text-decoration: underline;
+    .signup-agreement-content{
+        display: flex; 
+        padding-left: 30px;
+        position: relative;
+        i{ 
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 5px;
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            left: 0.5px;
+            top:-1.5px;
+            z-index: 1;
+            color: var(--white-color);
+            background-color: var(--primary-color);
+        }
+        &::after{
+            content: '';
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            border: 1px solid var(--border-color);
+            position: absolute;
+            left: 0;
+            top:-2px;
+            background-color: var(--white-color);
+            border-radius: 5px;
+            cursor: pointer;   
+        }
     }
-}
+    a{
+       
+        color: var(--primary-color);
+        &:hover{
+            text-decoration: underline;
+        }
+    }
 
+}
+.signup-agreement-errorcontent{
+    text-align: center;
+    font-size: small;
+}
 
 
 /*  */

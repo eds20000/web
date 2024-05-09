@@ -3,8 +3,9 @@
     --white-color:#fff;
     --black-color:#000;
     --text-color:#333;
-    --primary-color:#d48ca4;
-    --primary-color-rgba:rgba(203, 136, 158, 0.996);
+    --error-color:#e62b4f;
+    --primary-color:#DB0021;
+    --primary-color-rgba:rgba(219, 0, 0, 0.979);
     --border-color: #bdbdbd;
     --hover-color:#f7f6f6;
     --star-gold-color:#ffce3e;
