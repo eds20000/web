@@ -286,6 +286,29 @@ body{
 .sort__item-img{
     height: 200px;
     width: 100%;
+    position: relative;
+}
+
+.sort__item-img_btn{
+    background-color: var(--white-color);
+    
+    position: absolute;
+    padding:20px 5px;
+    opacity: 0.4;
+}
+
+.sort__item-img_btn:hover{
+    opacity: 0.8;
+}
+
+.sort__item-img_btn-left{
+    top:40%;
+    left:2px;
+}
+
+.sort__item-img_btn-right{
+    top:40%;
+    right:2px;
 }
 
 .sort__item-img img{
@@ -470,4 +493,6 @@ body{
     background-color: var(--black-color);
     color: white;
 }
+
+
 /* <!-- Footer End --> */

@@ -1,4 +1,8 @@
-
+body{
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
 /* --------------Header Start-------------- */
 .header-login{
     box-shadow: 0px 5px 6px -6px #999999;
@@ -268,8 +272,8 @@
     display: flex;
     align-items: center;
     input{
-        width: auto;
-        height: auto;
+        width: 21px;
+        height: 21px;
     }
 }
 
@@ -336,8 +340,8 @@
             cursor: pointer;
             border-radius: 5px;
             position: absolute;
-            width: 20px;
-            height: 20px;
+            width: 21px;
+            height: 21px;
             left: 0.5px;
             top:-1.5px;
             z-index: 1;
@@ -372,6 +376,57 @@
     font-size: small;
 }
 
+.agreement-container{
+    position: fixed;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6) ;
+    z-index: 2;
+    display: none;
+    place-items: center;
+}
+.agreement-container-content{
+    padding: 30px;
+    margin: 100px;
+    background-color: var(--white-color);
+    width: 794px;
+    height: 80%;
+    /* z-index: 3; */
+}
+body.overlay-open {
+    overflow: hidden;
+}
+
+.agreement-container {
+    display: none;
+    
+}
+
+.overlay-open .agreement-container {
+    display: grid;
+}
+
+.agreement-title{
+    text-align: center;
+}
+
+.agreement-title h1{
+    display: inline;
+    font-size: 2rem;
+}
+.agreement-container-close{
+    display: grid;
+    place-items: center;
+    height: 50px;
+    width: 50px;
+    float: right;
+    font-size: 4rem;
+    cursor: pointer;
+}
 
 /*  */
 

@@ -1,3 +1,4 @@
+
 // SIGNUP
 var yearSelect = document.getElementById("signup-born-year");
 var monthSelect = document.getElementById("signup-born-month");
@@ -40,4 +41,23 @@ $('.pass-hide').onclick = function () {
 
     }
 
+}
+
+// Agrrement
+
+var agreement_btn = $('.signup-agreement-content a');
+var agreement_btn_close = $('.agreement-container-close')
+
+agreement_btn.onclick = function(){
+    var overlay = $(".agreement-container");
+    var body = document.body;
+
+    
+    body.classList.toggle("overlay-open");
+
+    if (body.classList.contains("overlay-open")) {
+        body.style.position = "fixed";
+    } else {
+        body.style.position = "";
+    }
 }
