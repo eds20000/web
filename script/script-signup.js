@@ -1,4 +1,5 @@
-
+const $ = document.querySelector.bind(document);
+const $$ = document.querySelectorAll.bind(document);
 // SIGNUP
 var yearSelect = document.getElementById("signup-born-year");
 var monthSelect = document.getElementById("signup-born-month");
@@ -59,5 +60,12 @@ agreement_btn.onclick = function(){
         body.style.position = "fixed";
     } else {
         body.style.position = "";
+    }
+}
+
+agreement_btn_close.onclick = function(){
+    console.log(body.classList)
+    if (body.classList.contains("overlay-open")){
+        body.classList.remove("overlay-open");
     }
 }

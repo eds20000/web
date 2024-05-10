@@ -401,11 +401,6 @@ body.overlay-open {
     overflow: hidden;
 }
 
-.agreement-container {
-    display: none;
-    
-}
-
 .overlay-open .agreement-container {
     display: grid;
 }
