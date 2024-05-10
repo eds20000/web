@@ -363,7 +363,6 @@ body{
         }
     }
     a{
-       
         color: var(--primary-color);
         &:hover{
             text-decoration: underline;
@@ -376,7 +375,7 @@ body{
     font-size: small;
 }
 
-.agreement-container{
+.agreement-container,.privacy-container{
     position: fixed;
     top:0;
     left: 0;
@@ -389,7 +388,8 @@ body{
     display: none;
     place-items: center;
 }
-.agreement-container-content{
+.agreement-container-content,
+.privacy-container-content{
     padding: 30px;
     margin: 100px;
     background-color: var(--white-color);
@@ -401,19 +401,24 @@ body.overlay-open {
     overflow: hidden;
 }
 
-.overlay-open .agreement-container {
+.overlay-open .agreement-container
+,.overlay-open .privacy-container {
     display: grid;
 }
 
-.agreement-title{
+.agreement-title,
+.privacy{
     text-align: center;
 }
 
-.agreement-title h1{
+.agreement-title h1,
+.privacy-title h1
+{
     display: inline;
     font-size: 2rem;
 }
-.agreement-container-close{
+.agreement-container-close,
+.privacy-container-close{
     display: grid;
     place-items: center;
     height: 50px;

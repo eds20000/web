@@ -46,9 +46,12 @@ $('.pass-hide').onclick = function () {
 
 // Agrrement
 
-var agreement_btn = $('.signup-agreement-content a');
+var agreement_btn = $('.agreement');
 var agreement_btn_close = $('.agreement-container-close')
+var privacy_btn = $('.privacy')
+var privacy_btn_close = $('.privacy-container-close')
 
+//agreement
 agreement_btn.onclick = function(){
     var overlay = $(".agreement-container");
     var body = document.body;
@@ -64,7 +67,29 @@ agreement_btn.onclick = function(){
 }
 
 agreement_btn_close.onclick = function(){
-    console.log(body.classList)
+    var body = document.body;
+    if (body.classList.contains("overlay-open")){
+        body.classList.remove("overlay-open");
+    }
+}
+
+//privacy
+privacy_btn.onclick = function(){
+    var overlay = $(".privacy-container");
+    var body = document.body;
+
+    
+    body.classList.toggle("overlay-open");
+
+    if (body.classList.contains("overlay-open")) {
+        body.style.position = "fixed";
+    } else {
+        body.style.position = "";
+    }
+}
+
+privacy_btn_close.onclick = function(){
+    var body = document.body;
     if (body.classList.contains("overlay-open")){
         body.classList.remove("overlay-open");
     }
