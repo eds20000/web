@@ -4,9 +4,7 @@ body{
     width: 100%;
 }
 /* --------------Header Start-------------- */
-.header-login{
-    box-shadow: 0px 5px 6px -6px #999999;
-}
+
 /* --------------Header End-------------- */
 
 /* --------------Forn Start---------------- */
@@ -397,12 +395,14 @@ body{
     height: 80%;
     /* z-index: 3; */
 }
-body.overlay-open {
+body.overlay-open_agreement,
+body.overlay-open_privacy
+ {
     overflow: hidden;
 }
 
-.overlay-open .agreement-container
-,.overlay-open .privacy-container {
+.overlay-open_agreement .agreement-container
+,.overlay-open_privacy .privacy-container {
     display: grid;
 }
 

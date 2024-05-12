@@ -17,7 +17,9 @@ body{
     background-color: rgba(255, 255, 255, 0.7);
     z-index: 1;
 }
-
+.header-only{
+    box-shadow: 0px 5px 6px -6px #999999;
+}
 
 .header .grid.wide{
     height: var(--header-height);
@@ -208,9 +210,6 @@ body{
     font-weight: 600;
 }
 
-.fa-solid.fa-chevron-down{
-    margin-left: 5px;
-}
 
 .content__title-sort{
     height: 36px;

@@ -57,7 +57,7 @@ agreement_btn.onclick = function(){
     var body = document.body;
 
     
-    body.classList.toggle("overlay-open");
+    body.classList.toggle("overlay-open_agreement");
 
     if (body.classList.contains("overlay-open")) {
         body.style.position = "fixed";
@@ -68,8 +68,8 @@ agreement_btn.onclick = function(){
 
 agreement_btn_close.onclick = function(){
     var body = document.body;
-    if (body.classList.contains("overlay-open")){
-        body.classList.remove("overlay-open");
+    if (body.classList.contains("overlay-open_agreement")){
+        body.classList.remove("overlay-open_agreement");
     }
 }
 
@@ -79,7 +79,7 @@ privacy_btn.onclick = function(){
     var body = document.body;
 
     
-    body.classList.toggle("overlay-open");
+    body.classList.toggle("overlay-open_privacy");
 
     if (body.classList.contains("overlay-open")) {
         body.style.position = "fixed";
@@ -90,7 +90,7 @@ privacy_btn.onclick = function(){
 
 privacy_btn_close.onclick = function(){
     var body = document.body;
-    if (body.classList.contains("overlay-open")){
-        body.classList.remove("overlay-open");
+    if (body.classList.contains("overlay-open_privacy")){
+        body.classList.remove("overlay-open_privacy");
     }
 }
