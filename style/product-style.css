@@ -19,12 +19,22 @@ ul{
 
 .breadcrumb-list{
     display: flex;
+    a{
+        cursor: pointer;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
 }
 
 .breadcrumb-item::before{
     content: ">";
     margin: 0 10px;
     
+}
+
+.breadcrumb-item-main{
+    color: var(--primary-color);
 }
 
 .product-item-image-main{
@@ -146,6 +156,8 @@ ul{
 
 .product-item-data-color_list{
     margin-bottom: 5px;
+    overflow: hidden;
+    height: auto;
 }
 
 .product-item-data-color_item{
@@ -185,26 +197,15 @@ ul{
 }
 
 .product-item-data-size{
-    height: 0;
-    overflow: hidden;
-    transition: height 0.5s ease;
-
+    max-height: 0;
+    transition: max-height 0.4s ease;
 }
+
 
 .product-item-data-size.item-data-open{
-    height: 100px;
-   
+    max-height: 500px;
 }
 
-/* @keyframes slipdown{
-    from{
-        height: 0;
-    }
-    to{
-        height: auto;
-
-    }
-} */
 
 .product-item-data-content{
     padding: 12px;

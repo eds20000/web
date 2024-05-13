@@ -44,6 +44,17 @@ $('.pass-hide').onclick = function () {
 
 }
 
+// Agrrement input----------------------------
+var Agreement_input = $('.signup-agreement-content-input')
+var Agreement_input_box = $('.signup-agreement-content-input-box')
+var Agreement_input_check = $('.signup-agreement-content-input i')
+
+
+Agreement_input_box.onclick = function(){
+    Agreement_input_box.classList.toggle('checked')
+}
+
+
 // Agrrement
 
 var agreement_btn = $('.agreement');
@@ -51,7 +62,6 @@ var agreement_btn_close = $('.agreement-container-close')
 var privacy_btn = $('.privacy')
 var privacy_btn_close = $('.privacy-container-close')
 
-//agreement
 agreement_btn.onclick = function(){
     var overlay = $(".agreement-container");
     var body = document.body;

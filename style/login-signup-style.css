@@ -321,53 +321,55 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    #signup-agreement{
-        display: none;
-        &:checked+i{
-            display: flex;
-        }
-    }
-    .signup-agreement-content{
-        display: flex; 
-        padding-left: 30px;
-        position: relative;
-        i{ 
-            display: none;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            border-radius: 5px;
-            position: absolute;
-            width: 21px;
-            height: 21px;
-            left: 0.5px;
-            top:-1.5px;
-            z-index: 1;
-            color: var(--white-color);
-            background-color: var(--primary-color);
-        }
-        &::after{
-            content: '';
-            width: 20px;
-            height: 20px;
-            display: inline-block;
-            border: 1px solid var(--border-color);
-            position: absolute;
-            left: 0;
-            top:-2px;
-            background-color: var(--white-color);
-            border-radius: 5px;
-            cursor: pointer;   
-        }
-    }
-    a{
-        color: var(--primary-color);
-        &:hover{
-            text-decoration: underline;
-        }
-    }
-
+    position: relative;
+   
 }
+.signup-agreement-content-input{
+    position: relative;
+    margin-right: 10px;
+    i{
+        position: absolute;
+        left: 18%;
+        top: 18%;
+        z-index: 1;
+        color:var(--white-color);
+        display:none;
+    }
+    input{
+        display: none;
+    }
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.signup-agreement-input-box{
+    display: flex;
+} 
+
+.signup-agreement-input-box a{
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+.signup-agreement-content-input-box{
+    width: 21px;
+    height: 21px;
+    display: inline-block;
+    border: 1px solid var(--border-color);
+    background-color: var(--white-color);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.signup-agreement-content-input-box.checked{
+    background-color: var(--primary-color);
+    i{
+        display: block;
+    }
+}
+
+
 .signup-agreement-errorcontent{
     text-align: center;
     font-size: small;
