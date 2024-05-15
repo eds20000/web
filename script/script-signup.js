@@ -27,22 +27,25 @@ var daySelect = document.getElementById("signup-born-day");
         daySelect.add(option);
     }
 
-var input_password = $('.signup-input-pass')
-$('.pass-hide').onclick = function () {
-    if(this.classList.contains('hidden')){
-        input_password.type='text'
-        this.classList.remove('hidden');
-        this.classList.add('visible');
-        this.innerHTML = '非表示';
-    }else{
-        input_password.type='password'
-        this.classList.remove('visible');
-        this.classList.add('hidden');
-        this.innerHTML = '表示';
-
+var input_password = $$('.signup-input-pass')
+input_password.forEach(element => {
+    element.parentElement.querySelector('.pass-hide').onclick = function () {
+        if(this.classList.contains('hidden')){
+            element.type='text'
+            this.classList.remove('hidden');
+            this.classList.add('visible');
+            this.innerHTML = '非表示';
+        }else{
+            element.type='password'
+            this.classList.remove('visible');
+            this.classList.add('hidden');
+            this.innerHTML = '表示';
+    
+        }
+    
     }
+});
 
-}
 
 // Agrrement input----------------------------
 var Agreement_input = $('.signup-agreement-content-input')
@@ -103,4 +106,29 @@ privacy_btn_close.onclick = function(){
     if (body.classList.contains("overlay-open_privacy")){
         body.classList.remove("overlay-open_privacy");
     }
+}
+
+//Form-group--------------------------------------
+
+function Validator(opitions){
+    var formElement = document.querySelector(opitions.form);
+    
+    if(formElement){
+        
+
+
+    }
+}
+
+Validator.isRequired = function(){
+    return {
+        selector: selector,
+        test: function () {
+
+        }
+
+    };
+}
+Validator.isEmail = function(){
+    
 }

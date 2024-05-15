@@ -239,7 +239,7 @@ body{
 .signup-container-main{
     width: 100%;
     >div{
-        padding:45px 45px;
+        padding:30px 45px 65px;
         height: 70px;
         min-height: 60px;
     }
@@ -250,13 +250,21 @@ body{
         }
     }
 }
-.signup-sex-box,
-.signup-born-box,
-.signup-id-box,
-.signup-password-box{
+
+.form-group{
     align-items: center;
     border-bottom: 1px solid var(--border-color);
 }
+
+.invalid{
+    .form-message{
+        color:var(--error-color);
+    }
+    input{
+        border-color: var(--error-color);
+    }
+}
+
 .required_label{
     padding: 2px 5px;
     background-color: var(--error-color);
@@ -279,23 +287,22 @@ body{
     width: 100px;
 }
 
-.signup-born-box{
-    .col.l-8{
-        display: flex;
-        .signup-born-year_content{
-            margin-right: 20px;
-            select{
-                margin-right:5px;
-                height: 30px;
-                cursor: pointer;
-                border-radius: 10px;
-                width: 80px;
-                padding: 0 10px;
-            }
+.signup-born-year_input{
+    display: flex;
+    .signup-born-year_content{
+        margin-right: 20px;
+        select{
+            margin-right:5px;
+            height: 30px;
+            cursor: pointer;
+            border-radius: 10px;
+            width: 80px;
+            padding: 0 10px;
         }
-    }
-
+     }
 }
+
+
 .signup-password-input{
     position: relative;
     .pass-hide{

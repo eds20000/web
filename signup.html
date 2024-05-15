@@ -25,13 +25,14 @@
         <div class="grid wide">
             <div class="login-container">
                 <div class="login-form">
-                    <form action="" method="get">
+                    <form action="" method="POST" class="form" id="signup-form">
                         <div class="row">  
                             <p class="login-form-title">新規会員登録</p>
                         </div>
                         <div class="row">
                             <div class="signup-container-main">
-                                <div class="signup-sex-box row">
+
+                                <div class="form-group row">
                                     <div class="col l-4">
                                         <label for="signup-sex-radio" class="signup-sex-label">性別</label>
                                     </div>
@@ -42,19 +43,18 @@
                                         </div>
                                         <div class="signup-form">
                                             <input type="radio" name="signup-sex-radio" id="female" value="男性">
-                                            <label for="male">男性</label>
+                                            <label for="female">男性</label>
                                         </div>
-                                        
-                                        
+                                        <span class="form-message"></span>
                                     </div>
                                 </div>
 
-                                <div class="signup-born-box row">
+                                <div class="form-group row">
                                     <div class="col l-4">
                                         <label for="signup-born-year" class="signup-born-year">生年月日</label>
                                         <span class="required_label">必須</span>
                                     </div>
-                                    <div class="col l-8">
+                                    <div class="col l-8 signup-born-year_input">
                                         <div class="signup-born-year_content">
 
                                             <select id="signup-born-year" name="year">
@@ -74,9 +74,8 @@
                                             <option value="">-</option>
                                             </select>
                                             <label for="signup-born-day" class="signup-born-day">日</label>
-                                        </div>
-    
-                                        
+                                        </div>  
+                                        <span class="form-message"></span>
                                     </div>
                                     
                                     
@@ -84,25 +83,50 @@
                                     
                                 </div>
 
-                                <div class="signup-id-box row">
+                                <div class="form-group row">
                                     <div class="col l-4">
-                                        <label for="signup-id" class="signup-id">ユーザー名</label>
+                                        <label for="signup-id" class="form-label">ユーザー名</label>
                                         <span class="required_label">必須</span>
                                     </div>
                                     <div class="col l-8">
-                                        <input type="text" class="signup-input signup-input-id" name="login-id">
+                                        <input type="text" id="signup-id" class="signup-input signup-input-id" name="signup-id">
+                                        <span class="form-message"></span>
                                     </div>
-                                    
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col l-4">
+                                        <label for="signup-email" class="form-label">ユーザー名</label>
+                                        <span class="required_label">必須</span>
+                                    </div>
+                                    <div class="col l-8">
+                                        <input type="text" id="signup-email" class="signup-input signup-input-id" name="signup-id">
+                                        <span class="form-message"></span>
+                                    </div>
                                 </div>
                                 
-                                <div class="signup-password-box row">
+                                <div class="form-group row">
                                     <div class="col l-4">
-                                        <label for="signup-password" class="signup-password">パスワード</label>
+                                        <label for="signup-password" class="form-label">パスワード</label>
                                         <span class="required_label">必須</span>
                                     </div>
                                     <div class="col l-8 signup-password-input">
-                                        <input type="password" class="signup-input signup-input-pass" name="login-password">
+                                        <input id ="signup-password" type="password" class="signup-input signup-input-pass" name="signup-password">
                                         <span class="pass-hide hidden">表示</span>
+                                        <span class="form-message"></span>
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col l-4">
+                                        <label for="signup-password signup-password_confi" class="signup-password">パスワード(確認用)</label>
+                                        <span class="required_label">必須</span>
+                                    </div>
+                                    <div class="col l-8 signup-password-input">
+                                        <input id ="signup-password signup-password_confi" type="password" class="signup-input signup-input-pass" name="signup-password-confi">
+                                        <span class="pass-hide hidden">表示</span>
+                                        <span class="form-message"></span>
                                     </div>
                                     
                                 </div>
@@ -200,5 +224,16 @@ SHOPLISTはレディースからメンズ・キッズまで、幅広いジャン
 
 <!-- Footer End -->
 <script src="./script/script-signup.js"></script>
+<script>
+
+    Validator({
+        form:'#signup-form',
+        rule:[
+            Validator.isRequired('#signup-id'),
+            Validator.isEmail('#signup-email')
+        ]
+    });
+
+</script>
 </body>
 </html>
