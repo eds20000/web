@@ -79,6 +79,7 @@ body{
 
 .header__navbar{
     list-style: none;
+    position: relative;
 }
 
 .header__navbar li{
@@ -97,6 +98,67 @@ body{
 .icon-center a{
     margin-right: -9px;
 }
+
+.header__navbar-cart-box{
+    position: absolute;
+    right: 0;
+    top:var(--header-height);
+    z-index: 100;
+    width: 300px;
+    min-height: 400px;
+    background-color: var(--hover-color);
+}
+
+.header__navbar-cart-list{
+
+}
+
+.header__navbar-cart-item{
+
+}
+
+.header__navbar-cart-item_img{
+    img{
+        width: 100%;
+    }
+}
+
+.header__navbar-cart-item_title{
+
+}
+
+.header__navbar-cart-item_info{
+
+}
+
+.header__navbar-cart-item_info-box{
+
+}
+
+.header__navbar-cart-item_info-color{
+
+}
+
+.header__navbar-cart-item_info-size{
+
+}
+
+.header__navbar-cart-item_info-quantity-box{
+
+}
+
+.header__navbar-cart-item_info-quantity-down{
+
+}
+
+.header__navbar-cart-item_info-quantity-num{
+
+}
+
+.header__navbar-cart-item_info-quantity-up{
+
+}
+
 
 /* Header end */
 
