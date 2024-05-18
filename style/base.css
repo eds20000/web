@@ -6,7 +6,7 @@
     --heart-color:#ed8f8f;
     --error-color:#e62b4f;
     --primary-color:#DB0021;
-    --primary-color-rgba:rgba(219, 0, 0, 0.979);
+    --primary-color-hover:rgba(219, 68, 68, 0.979);
     --border-color: #bdbdbd;
     --hover-color:#eeeeee;
     --hover-color1:rgb(244, 244, 244);
@@ -43,3 +43,6 @@ ul{
     list-style: none;
 }
 
+.active-block{
+    display: block;
+}

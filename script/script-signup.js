@@ -110,25 +110,81 @@ privacy_btn_close.onclick = function(){
 
 //Form-group--------------------------------------
 
-function Validator(opitions){
-    var formElement = document.querySelector(opitions.form);
+function Validator(options){
+
+    function validate(inputElement,rule){
+        var errorMessage = rule.test(inputElement.value)
+        var errorElement = inputElement.parentElement.querySelector(options.errorSelector);
+                    
+                    if(errorMessage){
+                        errorElement.innerText = errorMessage;
+                        errorElement.parentElement.classList.add('invalid')
+                    }else{
+                        errorElement.innerText = '';
+                        errorElement.parentElement.classList.remove('invalid')
+                    }
+    }
+
+    var formElement = document.querySelector(options.form);
     
     if(formElement){
         
+        options.rules.forEach(function(rule){
+            var inputElement = formElement.querySelector(rule.selector);
+            var errorElement = inputElement.parentElement.querySelector(options.errorSelector);
+            if(inputElement){
+                inputElement.onblur = function(){
+                    validate(inputElement,rule);
+                }
 
+                inputElement.oninput = function () {
+                    errorElement.innerText = '';
+                    errorElement.parentElement.classList.remove('invalid')
+                }
+            }
+
+        });
 
     }
 }
 
-Validator.isRequired = function(){
+Validator.isRequired = function(selector,message){
+
+   
     return {
         selector: selector,
-        test: function () {
-
+        test: function (value) {
+            return value.trim() ? undefined : message
         }
 
     };
 }
-Validator.isEmail = function(){
-    
+Validator.isEmail = function(selector,message){
+    return {
+        selector: selector,
+        test: function (value) {
+            var regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            return regex.test(value) ? undefined :  message || '正しいメールアドレスを入力してください。';
+        }
+
+    };
+}
+
+Validator.minLength = function (selector,min,max){
+    return{
+        selector:selector,
+        test: function (value){
+            return value.length >=min &&value.length <=max ? undefined : `パスワードは${min}〜${max}文字の間で入力してください`;
+        }
+    }
+
+}
+
+Validator.isConfirmed = function (selector,getCofirmValue) {
+    return{
+        selector: selector,
+        test:function (value){
+            return value === getCofirmValue() ? undefined : 'khong dung'
+        }
+    }
 }

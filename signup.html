@@ -96,7 +96,7 @@
 
                                 <div class="form-group row">
                                     <div class="col l-4">
-                                        <label for="signup-email" class="form-label">ユーザー名</label>
+                                        <label for="signup-email" class="form-label">メールアドレス</label>
                                         <span class="required_label">必須</span>
                                     </div>
                                     <div class="col l-8">
@@ -228,9 +228,16 @@ SHOPLISTはレディースからメンズ・キッズまで、幅広いジャン
 
     Validator({
         form:'#signup-form',
-        rule:[
-            Validator.isRequired('#signup-id'),
-            Validator.isEmail('#signup-email')
+        errorSelector:'.form-message',
+        rules:[
+            Validator.isRequired('#signup-id','ユーザー名を入力してください。'),
+            Validator.isEmail('#signup-email'),
+            // Validator.isRequired('#signup-email','メールアドレスを入力してください。'),
+            // Validator.isRequired('#signup-password','パスワードを入力してください。'),
+            Validator.minLength('#signup-password',6,20),
+            Validator.isConfirmed('#signup-password_confi',function (){
+                return document.querySelector('#signup-form #signup-password').value;
+            })
         ]
     });
 
