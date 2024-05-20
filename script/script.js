@@ -59,12 +59,12 @@ for(let i = 0 ; i< list_item.length ; ++i){
             <a href="./product.html" class="sort__item-link" >
                 <div class="sort__item-img">
                     <img src="${list_item[i].img[i]}" alt="">
-                    <div class="sort__item-img_btn sort__item-img_btn-left"><i class="fa-solid fa-angle-left"></i></div>
-                    <div class="sort__item-img_btn sort__item-img_btn-right"><i class="fa-solid fa-angle-right"></i></div>
                 </div>
                 <div class="sort__item-brand">${list_item[i].brand}</div>
                 <div class="sort__item-text">${list_item[i].name}</div>
             </a>
+            <div class="sort__item-img_btn sort__item-img_btn-left"><i class="fa-solid fa-angle-left"></i></div>
+            <div class="sort__item-img_btn sort__item-img_btn-right"><i class="fa-solid fa-angle-right"></i></div>
             <div class="sort__item-content">
                 <div class="sort__item-title">
                     <div class="sort__item-price">￥${list_item[i].price}</div>

@@ -95,57 +95,42 @@
         <div class="container">
             <div class="grid wide">
                 <div class="row">
-                    <ul class="category__list col l-2">
-                        <p class="category_header">カテゴリー</p>
-                        <li class="category_list-item"><a href=""><div class="category_list-item-text">トップス</div><i class="fa-solid fa-chevron-right"></i></a></li>
-                        <li class="category_list-item"><a href=""><div class="category_list-item-text">ジャケット/アウター</div><i class="fa-solid fa-chevron-right"></i></a></li>
-                        <li class="category_list-item"><a href=""><div class="category_list-item-text">パンツ</div><i class="fa-solid fa-chevron-right"></i></a></li>
-                        <li class="category_list-item"><a href=""><div class="category_list-item-text">スカート</div><i class="fa-solid fa-chevron-right"></i></a></li>
-                        <li class="category_list-item"><a href=""><div class="category_list-item-text">ワンピース/ドレス</div><i class="fa-solid fa-chevron-right"></i></a></li>
-                        <li class="category_list-item"><a href=""><div class="category_list-item-text">小物</div><i class="fa-solid fa-chevron-right"></i></a></li>
-                        <li class="category_list-item"><a href=""><div class="category_list-item-text">バッグ</div><i class="fa-solid fa-chevron-right"></i></a></li>
-                        <li class="category_list-item"><a href=""><div class="category_list-item-text">シューズ</div><i class="fa-solid fa-chevron-right"></i></a></li>
-                        <li class="category_list-item"><a href=""><div class="category_list-item-text">ファッション雑貨</div><i class="fa-solid fa-chevron-right"></i></a></li>
-                        <li class="category_list-item"><a href=""><div class="category_list-item-text">帽子</div><i class="fa-solid fa-chevron-right"></i></a></li>
-                        <li class="category_list-item"><a href=""><div class="category_list-item-text">腕時計</div><i class="fa-solid fa-chevron-right"></i></a></li>
-                        <li class="category_list-item"><a href=""><div class="category_list-item-text">アクセサリー</div><i class="fa-solid fa-chevron-right"></i></a></li>
-                        <li class="category_list-item"><a href=""><div class="category_list-item-text">その他</div><i class="fa-solid fa-chevron-right"></i></a></li>
-                    </ul>
-                    <div class="content_body col l-10">
-                        <div class="row">
-                            <div class="content__title">
-                                <div class="content__title-text">すべてのアイテム</div> 
-                                <div class="content__title-sort">
-                                    <div class="content__title-sort-text">並び替え：</div> 
-                                    <input type ="input" class="content__title-sort-selected" value="価格が高い順"></input>
-                                    <i class="fa-solid fa-chevron-down"></i> 
-                                    <div class="sort__tab">
-                                    <div class="sort__tab-list sort__tab-ascen selected" onclick="sort__tab(this)">価格が高い順</div>
-                                    <div class="sort__tab-list sort__tab-descen" onclick="sort__tab(this)" >価格が安い順</div>  
+                  <div class="cart-heading">ショッピングカート</div>
+            
+                </div>
+                <div class="row cart-content">
+                    <div class="col l-8">
+                        <div class="cart__list-box">
+                            <div class="cart__list-item">
+                                <div class="cart__list-item-img">
+                                    <img src="./image/item-image/item1-img1.jpg" alt="">
                                 </div>
+                                <ul class="cart__list-item-title">
+                                    <li class="cart__list-item-name">Manfinity EMRG メンズシャツ バギー クルーネック 半袖 グラフィックティー 夏用</li>
+                                    <li class="cart__list-item-category">Tシャツ</li>
+                                    <li class="cart__list-item-color">ブラック</li>
+                                    <li class="cart__list-item-size">L</li>
+                                </ul>
+                                <div class="cart__list-item-price">
+                                    ￥1023
                                 </div>
+                                <div class="cart__list-item-count">
+                                    <div class="cart__list-item-count-index">1</div>
+                                    <div class="cart__list-item-count-btn">+</div>
+                                </div>
+                                <div class="cart__list-item-delete-btn"><i class="fa-regular fa-trash-can" aria-hidden="true"></i></div>
                             </div>
                         </div>
-                        <div class="row sort__item-list">
-                        </div>
-                        <!---------------Page-bar--------Start--> 
-                        <div class="row">
-                            <div class="bar-page">
-                                <div class="bar-page_list">
-                                    <a  class="bar-page_list-item page-checked">1</a>
-                                    <a  class="bar-page_list-item">2</a>
-                                    <a  class="bar-page_list-item">3</a>
-                                    <a  class="bar-page_list-item">4</a>
-                                    <a  class="bar-page_list-item">5</a>
-                                    <nav  class="bar-page_list-item page-dotted ">...</nav>
-                                    <a  class="bar-page_list-item">100</a>
-                                    <a  class="bar-page_list-item page-next"><i class="fa-solid fa-angle-right"></i></a>
-                                </div>
+                    </div>
+                    <div class="col l-4">
+                        <div class="cart-total-box">
+                            <div class="cart-total-title">
+                                商品合計
                             </div>
+                            <div class="cart-total"></div>
+                            <div class="cart-total"></div>
                         </div>
-                        <!---------------Page-bar--------End--> 
-
-                    </div>  
+                    </div>
                 </div>
                 </div>
             </div>

@@ -100,6 +100,7 @@ body{
 }
 .navbar-cart{
     position: relative;
+    z-index: 100;
 }
 
 .navbar-cart:hover .header__navbar-cart-box{
@@ -454,6 +455,7 @@ body{
     width: 100%;
     padding: 10px;
     margin: 5px 0;
+    position: relative;
 }
 
 .sort__item:hover{
@@ -463,7 +465,7 @@ body{
 .sort__item-img{
     height: 200px;
     width: 100%;
-    position: relative;
+    
 }
 
 .sort__item-img_btn{
@@ -472,6 +474,7 @@ body{
     position: absolute;
     padding:20px 5px;
     opacity: 0.4;
+    cursor: pointer;
 }
 
 .sort__item-img_btn:hover{
@@ -479,13 +482,13 @@ body{
 }
 
 .sort__item-img_btn-left{
-    top:40%;
-    left:2px;
+    top: 24%;
+    left: 13px;
 }
 
 .sort__item-img_btn-right{
-    top:40%;
-    right:2px;
+    top: 24%;
+    right: 13px;
 }
 
 .sort__item-img img{
