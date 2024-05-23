@@ -15,7 +15,7 @@
     <title>ログイン-TS-shop</title>
 </head>
 <body>
-    <header class="header header-login">
+    <header class="header header-only">
         <div class="grid wide">
             <a href="./index.html" class="header__logo"><img src="./image/logo.png" alt="logo" class="logo-img"></a>
         </div> 
@@ -120,11 +120,11 @@
 
                                 <div class="form-group row">
                                     <div class="col l-4">
-                                        <label for="signup-password signup-password_confi" class="signup-password">パスワード(確認用)</label>
+                                        <label for="signup-password_confi" class="signup-password">パスワード(確認用)</label>
                                         <span class="required_label">必須</span>
                                     </div>
                                     <div class="col l-8 signup-password-input">
-                                        <input id ="signup-password signup-password_confi" type="password" class="signup-input signup-input-pass" name="signup-password-confi">
+                                        <input id ="signup-password_confi" type="password" class="signup-input signup-input-pass" name="signup-password-confi">
                                         <span class="pass-hide hidden">表示</span>
                                         <span class="form-message"></span>
                                     </div>
@@ -231,13 +231,18 @@ SHOPLISTはレディースからメンズ・キッズまで、幅広いジャン
         errorSelector:'.form-message',
         rules:[
             Validator.isRequired('#signup-id','ユーザー名を入力してください。'),
-            Validator.isEmail('#signup-email'),
-            // Validator.isRequired('#signup-email','メールアドレスを入力してください。'),
-            // Validator.isRequired('#signup-password','パスワードを入力してください。'),
+
+            Validator.isRequired('#signup-email','メールアドレスを入力してください。'),
+            Validator.isEmail('#signup-email','正しいメールアドレスを入力してください。'),
+
+            Validator.isRequired('#signup-password','パスワードを入力してください。'),
             Validator.minLength('#signup-password',6,20),
-            Validator.isConfirmed('#signup-password_confi',function (){
+
+            Validator.isRequired('#signup-password_confi','確認パスワードを入力してください。'),
+            Validator.isConfirmed('#signup-password_confi',
+            function (){
                 return document.querySelector('#signup-form #signup-password').value;
-            })
+            },'確認パスワードが一致しません。')
         ]
     });
 

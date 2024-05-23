@@ -112,24 +112,51 @@ privacy_btn_close.onclick = function(){
 
 function Validator(options){
 
+    var selectedRules = {};
+
     function validate(inputElement,rule){
-        var errorMessage = rule.test(inputElement.value)
+        var errorMessage;
         var errorElement = inputElement.parentElement.querySelector(options.errorSelector);
-                    
-                    if(errorMessage){
-                        errorElement.innerText = errorMessage;
-                        errorElement.parentElement.classList.add('invalid')
-                    }else{
-                        errorElement.innerText = '';
-                        errorElement.parentElement.classList.remove('invalid')
-                    }
+        
+        //ルールを取り出し、チェック
+        var rules = selectedRules[rule.selector];
+        for (var i =0; i < rules.length; ++i){
+            errorMessage = rules[i](inputElement.value);
+            if(errorMessage){
+                break;
+            }
+        }
+        if(errorMessage){
+            errorElement.innerText = errorMessage;
+            errorElement.parentElement.classList.add('invalid')
+            }else{
+                errorElement.innerText = '';
+                errorElement.parentElement.classList.remove('invalid')
+            }
     }
 
     var formElement = document.querySelector(options.form);
     
     if(formElement){
-        
+
+        formElement.onsubmit = function(e){
+            e.preventDefault();
+
+            options.rules.forEach(function(rule){
+                var inputElement = formElement.querySelector(rule.selector);
+                validate(inputElement,rule);
+            })
+        }
         options.rules.forEach(function(rule){
+            // ルールの保存
+            if(Array.isArray(selectedRules[rule.selector])){
+                selectedRules[rule.selector].push(rule.test);
+            }
+            else{
+                selectedRules[rule.selector] = [rule.test];
+            }
+
+            
             var inputElement = formElement.querySelector(rule.selector);
             var errorElement = inputElement.parentElement.querySelector(options.errorSelector);
             if(inputElement){
@@ -145,6 +172,8 @@ function Validator(options){
 
         });
 
+        console.log(selectedRules);
+
     }
 }
 
@@ -154,7 +183,7 @@ Validator.isRequired = function(selector,message){
     return {
         selector: selector,
         test: function (value) {
-            return value.trim() ? undefined : message
+            return value.trim() ? undefined : message || 'ユーザー名を入力してください。'
         }
 
     };
@@ -180,11 +209,11 @@ Validator.minLength = function (selector,min,max){
 
 }
 
-Validator.isConfirmed = function (selector,getCofirmValue) {
+Validator.isConfirmed = function (selector,getCofirmValue,message) {
     return{
         selector: selector,
         test:function (value){
-            return value === getCofirmValue() ? undefined : 'khong dung'
+            return value === getCofirmValue() ? undefined : message ||'確認パスワードが一致しません。'
         }
     }
 }
