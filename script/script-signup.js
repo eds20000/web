@@ -51,10 +51,16 @@ input_password.forEach(element => {
 var Agreement_input = $('.signup-agreement-content-input')
 var Agreement_input_box = $('.signup-agreement-content-input-box')
 var Agreement_input_check = $('.signup-agreement-content-input i')
+var Agreement_input_error = $('.signup-agreement-errorcontent')
 
 
 Agreement_input_box.onclick = function(){
     Agreement_input_box.classList.toggle('checked')
+    if(Agreement_input_box.classList.contains('checked')){
+                
+        Agreement_input_error.style.opacity = "0";
+
+    }
 }
 
 
@@ -109,6 +115,10 @@ privacy_btn_close.onclick = function(){
 }
 
 //Form-group--------------------------------------
+var signup_bornYear = $$('.signup-born-year_content');
+var signup_bornYear_message = $('.form-message-born')
+
+
 
 function Validator(options){
 
@@ -141,10 +151,55 @@ function Validator(options){
 
         formElement.onsubmit = function(e){
             e.preventDefault();
+            console.log(signup_bornYear[0].querySelector("select").value)
+
+            for(var i = 0; i < signup_bornYear.length;i++){
+                
+                var bornYear_value = signup_bornYear[i].querySelector("select").value;
+
+                if(bornYear_value === "-"){
+                
+                    signup_bornYear_message.style.opacity = "1"
+                    break
+                }
+                else{
+                    signup_bornYear_message.style.opacity = "0"
+                }
+            }
+            
+            signup_bornYear.forEach(function(a){
+                a.querySelector("select").onchange = function(){
+                    console.log(a.querySelector("option"))
+                    for(var i = 0; i < signup_bornYear.length;i++){
+                            
+                        var bornYear_value = signup_bornYear[i].querySelector("select").value;
+            
+                        if(bornYear_value === "-"){
+                        
+                            signup_bornYear_message.style.opacity = "1"
+                        }
+                        else{
+                            signup_bornYear_message.style.opacity = "0"
+                        }
+                    }
+                }
+            })
+            
+        
+
+            if(!Agreement_input_box.classList.contains('checked')){
+                
+                Agreement_input_error.style.opacity = "1";
+
+            }else{
+                Agreement_input_error.style.opacity = "0";
+            }
+
 
             options.rules.forEach(function(rule){
                 var inputElement = formElement.querySelector(rule.selector);
                 validate(inputElement,rule);
+
             })
         }
         options.rules.forEach(function(rule){
@@ -171,9 +226,6 @@ function Validator(options){
             }
 
         });
-
-        console.log(selectedRules);
-
     }
 }
 
