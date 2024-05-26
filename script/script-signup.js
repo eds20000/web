@@ -143,6 +143,8 @@ function Validator(options){
                 errorElement.innerText = '';
                 errorElement.parentElement.classList.remove('invalid')
             }
+
+            return !errorMessage;
     }
 
     var formElement = document.querySelector(options.form);
@@ -151,7 +153,9 @@ function Validator(options){
 
         formElement.onsubmit = function(e){
             e.preventDefault();
-            console.log(signup_bornYear[0].querySelector("select").value)
+            
+
+            var isFormValid = true;
 
             for(var i = 0; i < signup_bornYear.length;i++){
                 
@@ -169,7 +173,6 @@ function Validator(options){
             
             signup_bornYear.forEach(function(a){
                 a.querySelector("select").onchange = function(){
-                    console.log(a.querySelector("option"))
                     for(var i = 0; i < signup_bornYear.length;i++){
                             
                         var bornYear_value = signup_bornYear[i].querySelector("select").value;
@@ -198,9 +201,27 @@ function Validator(options){
 
             options.rules.forEach(function(rule){
                 var inputElement = formElement.querySelector(rule.selector);
-                validate(inputElement,rule);
+                var isValid = validate(inputElement,rule);
+                if (!isValid){
+                    isFormValid = false;
+                }
+            });
+            
 
-            })
+            if (isFormValid){
+                if (typeof options.onSubmit === 'function'){
+                    var enableInputs = formElement.querySelectorAll('input:not([type="radio"]):not(select)[name]');
+                    console.log(Array.from(enableInputs))
+                    var formValues = Array.from(enableInputs).reduce(function(values,input){
+                        return (values[input.name] = input.value) && values;
+                    },{});
+                    
+                    options.onSubmit(formValues);
+                }
+            }
+            else{
+                formElement.submit()
+            }
         }
         options.rules.forEach(function(rule){
             // ルールの保存

@@ -102,7 +102,7 @@
                                         <span class="required_label">必須</span>
                                     </div>
                                     <div class="col l-8">
-                                        <input type="text" id="signup-email" class="signup-input signup-input-id" name="signup-id">
+                                        <input type="text" id="signup-email" class="signup-input signup-input-id" name="signup-email">
                                         <span class="form-message"></span>
                                     </div>
                                 </div>
@@ -245,7 +245,10 @@ SHOPLISTはレディースからメンズ・キッズまで、幅広いジャン
             function (){
                 return document.querySelector('#signup-form #signup-password').value;
             },'確認パスワードが一致しません。')
-        ]
+        ],
+        // onSubmit: function (data) {
+        //     console.log(data);
+        // }
     });
 
 </script>

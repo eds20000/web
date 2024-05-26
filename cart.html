@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./style/base.css">
     <link rel="stylesheet" href="./style/grid.css">
     <link rel="stylesheet" href="./style/main.css">
+    <link rel="stylesheet" href="./style/cart.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -76,18 +77,6 @@
                 </ul>
             </div>
             
-            <div class="tab">  
-                <ul class="tab__list">
-                    <li class="tab__list-item "><a href="">おすすめ</a></li>
-                    <li class="tab__list-item"><a href="">新着</a></li>
-                    <li class="tab__list-item"><a href="">マイリスト</a></li>
-                    <li class="tab__list-item"><a href="">ベストセラ</a></li>
-                    <li class="tab__list-item"><a href="">メンズ</a></li>
-                    <li class="tab__list-item"><a href="">レディース</a></li>
-                    <li class="tab__list-item"><a href="">コスメ</a></li>
-                    <li class="tab__list-item tab__list-start"><a href="">すべて</a></li>
-                </ul>
-            </div>
         </header>
         <!-- Header end -->
 
@@ -103,22 +92,36 @@
                         <div class="cart__list-box">
                             <div class="cart__list-item">
                                 <div class="cart__list-item-img">
-                                    <img src="./image/item-image/item1-img1.jpg" alt="">
+                                    <a href="./product.html"><img src="./image/item-image/item1-img1.jpg" alt=""></a>
                                 </div>
                                 <ul class="cart__list-item-title">
                                     <li class="cart__list-item-name">Manfinity EMRG メンズシャツ バギー クルーネック 半袖 グラフィックティー 夏用</li>
                                     <li class="cart__list-item-category">Tシャツ</li>
-                                    <li class="cart__list-item-color">ブラック</li>
-                                    <li class="cart__list-item-size">L</li>
+                                    <li class="cart__list-item-color">カラー：ブラック</li>
+                                    <li class="cart__list-item-size">サイズ：L</li>
                                 </ul>
                                 <div class="cart__list-item-price">
-                                    ￥1023
+                                    ￥ <span>1023</span> 
                                 </div>
-                                <div class="cart__list-item-count">
-                                    <div class="cart__list-item-count-index">1</div>
-                                    <div class="cart__list-item-count-btn">+</div>
+                                <div class="cart__list-item-quantily">
+                                    <select class="cart__list-item-count" name="item-quantily">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                            
+                                    </select>
+                                    <!-- <i class="fa-solid fa-chevron-down"></i> -->
                                 </div>
-                                <div class="cart__list-item-delete-btn"><i class="fa-regular fa-trash-can" aria-hidden="true"></i></div>
+                                <div class="cart__list-item-delete-btn">
+                                    <span>削除</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -127,20 +130,25 @@
                             <div class="cart-total-title">
                                 商品合計
                             </div>
-                            <div class="cart-detail">
-                                <div class="cart-detail-title">小計(税込)</div>
-                                <div class="cart-detail-price">￥1023</div>
+                            <div class="cart-detail-box">
+                                <div class="cart-detail">
+                                    <div class="cart-detail-title">小計(税込)</div>
+                                    <div class="cart-detail-price">￥ <span></span> </div>
+                                </div>
+                                <div class="cart-detail">
+                                    <div class="cart-detail-title">送料(税込)</div>
+                                    <div class="cart-detail-price-ship">￥<span>0</span> </div>
+                                </div>
+                                <div class="cart-detail">
+                                    <div class="cart-detail-total-titletext">
+                                        <div class="cart-detail-total-title">合計</div>
+                                        <div class="cart-detail-total-tax"> 税込</div>
+                                    </div>
+                                    <div class="cart-detail-total-price">￥<span></span> </div>
+                                </div>
                             </div>
-                            <div class="cart-detail">
-                                <div class="cart-detail-title">送料(税込)</div>
-                                <div class="cart-detail-price">0</div>
-                            </div>
-                            <div class="cart-detail-total ">
-                                <div class="cart-detail-total-title">合計税込</div>
-                                <div class="cart-detail-total-price">￥1023</div>
-                            </div>
+                            <div class="cart-total-account primary-btn">ご購入手続きへ(1)</div>
                         </div>
-                        <div class="cart-total-account">ご購入手続きへ(1)</div>
                     </div>
                 </div>
                 </div>
@@ -190,6 +198,6 @@ TS-SHOPはレディースからメンズ・キッズまで、幅広いジャン�
         </div>
         <!-- Footer End -->
     </div>
-<script src="./script/script.js"></script>
+<script src="./script/cart.js"></script>
 </body>
 </html>

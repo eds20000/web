@@ -1,0 +1,134 @@
+.cart-heading{
+    font-size: var(--font-header-size);
+    font-weight: 600;
+    padding: 30px 0;
+}
+
+.cart__list-item{
+    display: grid;
+    grid-template-columns: 2fr 3fr 1fr 1fr 1fr;
+    gap: 10px;
+    padding:20px 10px;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.cart__list-item-img{
+}
+
+
+.cart__list-item-img img{
+    width: 150px;
+    height: 150px;
+}
+
+ul{
+    padding:0px;
+}
+
+.cart__list-item-title li{
+    margin-bottom: 20px;
+}
+
+.cart__list-item-price{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart__list-item-price{
+    color: var(--primary-color);
+}
+
+.cart__list-item-quantily{
+    display: grid;
+    place-items: center;
+    position: relative;
+}
+
+.cart__list-item-count{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:10px 30px 10px 10px ;
+}
+
+.cart__list-item-quantily i{
+    position: absolute;
+    right: 10px;
+    border-left: 1px solid var(--border-color);
+    
+    padding: 7px;
+    background-color: var(--white-color);
+    opacity: 0;
+}
+
+.cart__list-item-delete-btn span{
+    cursor: pointer;
+}
+
+.cart__list-item-delete-btn span:hover{
+    text-decoration: underline;
+}
+
+
+.cart__list-item-delete-btn{
+    display: grid;
+    place-items: center;
+}
+
+.cart-total-box{
+    display: grid;
+    grid-template-columns: 1fr;
+    place-items: center;
+    padding: 30px 20px; 
+    background-color: var(--hover-color1);
+    margin-left: 50px;
+    border: 2px solid var(--primary-color);
+    border-radius: 20px;
+}
+
+.cart-total-title{
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.cart-detail-box{
+    background-color: var(--white-color);
+    width: 100%;
+    padding: 0 20px;
+    display: grid;
+    place-items: center;
+}
+
+.cart-detail{
+    padding: 30px 0;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart-detail:not(:nth-last-child(1)){
+    border-bottom: 1px solid var(--border-color);
+}
+
+.cart-detail-total-titletext{
+    display: flex;
+    gap:5px;
+}
+
+.cart-detail-total-title,
+.cart-detail-total-price{
+    font-size: 2rem;
+    
+}
+
+.cart-detail-total-tax{
+    font-size: var(--font-size);
+}
+
+.cart-total-account{
+    margin-top:30px;
+    background-color: ;
+}
