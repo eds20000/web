@@ -226,6 +226,7 @@ SHOPLISTはレディースからメンズ・キッズまで、幅広いジャン
 
 <!-- Footer End -->
 <script src="./script/script-signup.js"></script>
+<script src="./script/valida.js"></script>
 <script>
 
     Validator({
@@ -246,9 +247,9 @@ SHOPLISTはレディースからメンズ・キッズまで、幅広いジャン
                 return document.querySelector('#signup-form #signup-password').value;
             },'確認パスワードが一致しません。')
         ],
-        // onSubmit: function (data) {
-        //     console.log(data);
-        // }
+        onSubmit: function (data) {
+            console.log(data);
+        }
     });
 
 </script>

@@ -25,7 +25,7 @@
         <div class="grid wide">
             <div class="login-container">
                 <div class="login-form">
-                    <form action="" method="get">
+                    <form action="" method="get" id="login-form">
                         <div class="row">  
                             <p class="login-form-title">ログイン</p>
                         </div>
@@ -33,13 +33,15 @@
                             <div class="col l-6 login-container-main">
                                 <div class="login-id-box">
                                     <label for="login-id" class="login-id">ユーザー名</label>
-                                    <input type="text" class="login-form-input login-form-input_userid" name="login-id">
+                                    <input type="text" class="login-form-input login-form-input_userid" name="login-id" id="login-id">
+                                    <span class="form-message"></span>
                                 </div>
                                 
                                 <div class="login-password-box">
                                     <label for="login-password" class="login-password">パスワード</label>
-                                    <input type="password" class="login-form-input login-form-input_userpassword" name="login-password">
+                                    <input type="password" id="login-password" class="login-form-input login-form-input_userpassword" name="login-password">
                                     <span class="pass-hide hidden">表示</span>
+                                    <span class="form-message"></span>
                                 </div>
                                 <div class="pass-loss-box">
                                 <a href="#" class="pass-lose">パスワードを忘れた方（再設定）</a>                                   
@@ -123,5 +125,23 @@ SHOPLISTはレディースからメンズ・キッズまで、幅広いジャン
 </div>
 <!-- Footer End -->
 <script src="./script/script-loginup.js"></script>
+<script src="./script/valida.js"></script>
+<script>
+
+    Validator({
+        form:'#login-form',
+        errorSelector:'.form-message',
+        rules:[
+            Validator.isRequired('#login-id','ユーザー名を入力してください。'),
+
+
+            Validator.isRequired('#login-password','パスワードを入力してください。'),
+        ],
+        onSubmit: function (data) {
+            console.log(data);
+        }
+    });
+
+</script>
 </body>
 </html>

@@ -83,9 +83,10 @@ body{
     }
     .pass-hide{
         position: absolute;
+        top:15px;
         right:12px;
         cursor: pointer;
-        height: 100%;
+        height: auto;
         display: inline-flex;
         align-items: center;
     }

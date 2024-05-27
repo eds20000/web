@@ -50,7 +50,13 @@ ul{
     width: 100%;
 }
 .product-item-image_list{
+    margin-top: 20px;
+    padding:0 30px;
     width: 82px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    width: 100%;
+    gap:5px;
 }
 .product-item-image_list img{
     max-width: 100%;
@@ -84,11 +90,6 @@ ul{
 .product-item-btnPrev{
     left: 10%;
 }
-
-.product-item-image_list{
-    display: flex;
-}
-
 .product-item-image_list img{
     margin: 10px 5px 5px;
     

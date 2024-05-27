@@ -27,3 +27,18 @@ favorBtn.forEach(a => {
         this.classList.toggle('favor-btn-available')
     }
 });
+
+
+///Image-------------------------------
+
+var itemImageMain = $('.product-item-image-main');
+var itemImage = $$('.product-item-image-item');
+
+console.log(document.querySelector('.product-item-image-item.main img').src)
+
+itemImage.forEach = function(a){
+    
+    if(a.classList.contains('main')){
+        itemImageMain.querySelector('img').src = a.querySelector('img').src;
+    }
+}
