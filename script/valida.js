@@ -1,3 +1,7 @@
+var signup_bornYear = $$('.signup-born-year_content');
+var signup_bornYear_message = $('.form-message-born')
+
+
 
 function Validator(options){
 
@@ -36,9 +40,46 @@ function Validator(options){
 
             var isFormValid = true;
 
-            
-            
+            for(var i = 0; i < signup_bornYear.length;i++){
+                
+                var bornYear_value = signup_bornYear[i].querySelector("select").value;
 
+                if(bornYear_value === "-"){
+                
+                    signup_bornYear_message.style.opacity = "1"
+                    break
+                }
+                else{
+                    signup_bornYear_message.style.opacity = "0"
+                }
+            }
+            
+            signup_bornYear.forEach(function(a){
+                a.querySelector("select").onchange = function(){
+                    for(var i = 0; i < signup_bornYear.length;i++){
+                            
+                        var bornYear_value = signup_bornYear[i].querySelector("select").value;
+            
+                        if(bornYear_value === "-"){
+                        
+                            signup_bornYear_message.style.opacity = "1"
+                        }
+                        else{
+                            signup_bornYear_message.style.opacity = "0"
+                        }
+                    }
+                }
+            })
+            
+        
+
+            if(!Agreement_input_box.classList.contains('checked')){
+                
+                Agreement_input_error.style.opacity = "1";
+
+            }else{
+                Agreement_input_error.style.opacity = "0";
+            }
 
 
             options.rules.forEach(function(rule){
@@ -61,9 +102,9 @@ function Validator(options){
                     options.onSubmit(formValues);
                 }
             }
-            // else{
-            //     formElement.submit()
-            // }
+            else{
+                formElement.submit()
+            }
         }
         options.rules.forEach(function(rule){
             // ルールの保存

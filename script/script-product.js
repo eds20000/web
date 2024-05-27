@@ -34,7 +34,6 @@ favorBtn.forEach(a => {
 var itemImageMain = $('.product-item-image-main');
 var itemImage = $$('.product-item-image-item');
 
-console.log(document.querySelector('.product-item-image-item.main img').src)
 
 itemImage.forEach = function(a){
     
