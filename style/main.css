@@ -609,6 +609,130 @@ body{
     border: none ;
 }
 
+
+/* Cartitem-select */
+.item__select-cart-container{
+    position: fixed;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5) ;
+    z-index: 2;
+    display: none;
+    place-items: center;
+}
+
+.item__select-cart-box{
+    padding: 10px;
+    margin: 100px;
+    background-color: var(--white-color);
+    width: 794px;
+    height: 80%;
+}
+
+.select-cart-box-close{
+    text-align: right;
+    width: 100%;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+
+
+body.overlay-open_select-cart-box{
+    overflow: hidden;
+}
+
+.overlay-open_select-cart-box .item__select-cart-container{
+    display: grid;
+}
+
+
+.item-checklist-img-main{
+    padding:0 10px;
+}
+
+.item-checklist-imglist-item img{
+    width: 100%;
+}
+
+.item-checklist-imglist-item:hover{
+    cursor: pointer;
+    border: 2px solid var(--white-color);
+    outline: 1px solid var(--black-color);
+}
+
+.item-checklist-img-main img{
+    width: 100%;
+}
+
+.item-checklist-name{
+    font-size: 2rem;
+    line-height: 2rem;
+}
+
+.item-checklist-price{
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    margin: 30px 0;
+}
+
+.checklist-color-list{
+    display: flex;
+    padding: 5px 0;
+}
+
+.blackColor{
+    background-color: black;
+}
+.redColor{
+    background-color: red;
+}
+
+.checklist-color{
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    border-radius: 50%;
+}
+
+.checklist-color:hover{
+    cursor: pointer;
+    border: 2px solid var(--white-color);
+    outline: 1px solid var(--black-color);
+}
+
+.checklist-size-list{
+    display: flex;
+    padding: 5px 0;
+}
+
+.checklist-size{
+    width: 60px;
+    text-align: center;
+    padding:5px 10px;
+    margin: 10px 0 10px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.checklist-size:hover{
+    border-color: var(--black-color);
+}
+
+.item-checklist-btn{
+    height: 100%;
+    display: flex;
+}
+.item-checklist-takecart-btn{
+    margin-top: 50px;
+}
+
 /* <!---------------Page-bar--------End-->  */
 
 /* Container end */

@@ -46,7 +46,9 @@ var list_item = [
     brand:'SHEIN',
     name:'Manfinity EMRG メンズシャツ バギー クルーネック 半袖 グラフィックティー 夏用',
     img:['./image/item-image/item1-img1.jpg','./image/item-image/item1-img2.jpg','./image/item-image/item1-img3.webp','./image/item-image/item1-img4.webp','./image/item-image/item1-img5.webp','./image/item-image/item1-img6.webp'],
-    price:1.023
+    price:1.023,
+    size:['M','L'],
+    color:['black','red']
     }
 ]
 
@@ -117,6 +119,95 @@ for(let i = 0 ; i< list_item.length ; ++i){
 
 // <!---------------Page-bar--------End--> 
 
+//-----------------------Take-cart--------------------------------Start
+
+var takeCartBoxBtn = $('.sort__item-takecart');
+var takeCartBtn = $('.item-checklist-takecart-btn')
+var myCart = [];
+// var ItemParent = $('')
+
+function getItemParent(element) {
+    while (element.parentElement) {
+        if (element.parentElement.matches('.select-cart-box-content')) {
+            return element.parentElement;
+        }
+        element = element.parentElement;
+    }
+}
+
+
+takeCartBoxBtn.onclick = function(a){
+    var body = document.body;
+    var SelectCartCloseBtn = $('.select-cart-box-close')
+    
+    body.classList.toggle("overlay-open_select-cart-box");
+
+    if (body.classList.contains("overlay-open")) {
+        body.style.position = "fixed";
+    } else {
+        body.style.position = "";
+    }
+
+    SelectCartCloseBtn.onclick = function(){
+        var body = document.body;
+        if (body.classList.contains("overlay-open_select-cart-box")){
+            body.classList.remove("overlay-open_select-cart-box");
+        }
+    }
+
+    console.log(myCart);
+    
+}
+
+takeCartBtn.onclick = function(){
+    var ItemImgSrc = getItemParent(this).querySelector('.item-checklist-img-main img').src;
+    var ItemName = getItemParent(this).querySelector('.item-checklist-name').innerHTML;
+    var ItemPrice = getItemParent(this).querySelector('.item-checklist-price').innerHTML;
+    var ItemColor = getItemParent(this).querySelector('.checklist-color-name span').innerHTML;
+    var ItemSize = getItemParent(this).querySelector('.checklist-size.size_checked').innerHTML;
+
+    $('.header__navbar-cart-box').innerHTML = 
+    `<div class=" header__navbar-cart-list">
+    <div class="row header__navbar-cart-item">
+        <div class="col l-3 header__navbar-cart-item_img">
+            <a href="http://" class="item-link">
+                <img src="${ItemImgSrc}" alt="">
+            </a> 
+        </div>
+
+        <div class="col l-9 header__navbar-cart-item_content">
+            <a href="" class="item-link">
+                <div class="header__navbar-cart-item_title">
+                    ${ItemName}
+                </div>
+            </a>
+            <div class="header__navbar-cart-item_info">
+                <div class="header__navbar-cart-item_info-box">
+                    <div class="header__navbar-cart-item_info-color"><b>カラー：</b>${ItemColor}</div>
+                    <div class="header__navbar-cart-item_info-size"><b>サイズ：</b>${ItemSize}</div>
+                </div>
+                <div class="header__navbar-cart-item_info-quantity-box">
+                    <div class="header__navbar-cart-item_info-quantity-down">-</div>
+                    <div class="header__navbar-cart-item_info-quantity-num">1</div>
+                    <div class="header__navbar-cart-item_info-quantity-up">+</div>
+                </div>
+            </div>
+            <div class="header__navbar-cart-item_info-footer">
+                <div class="header__navbar-cart-item_info-price">￥${ItemPrice}</div>
+                <div class="header__navbar-cart-item_btn-remove"><i class="fa-regular fa-trash-can"></i></div>
+            </div>
+        </div>
+
+    </div>
+</div>`
+
+
+}
+
+
+
+
+//-----------------------Take-cart--------------------------------End
 
 
 
