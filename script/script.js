@@ -98,7 +98,7 @@ for(let i = 0 ; i< list_item.length ; ++i){
         if(index < 0 ){
             index = list_itemLength+index
         }
-        console.log(index)
+
         $('.sort__item-img img').src = list_item[i].img[index]
     }
 
@@ -107,7 +107,7 @@ for(let i = 0 ; i< list_item.length ; ++i){
         if(index >= list_itemLength ){
             index = 0
         }
-        console.log(index)
+
         $('.sort__item-img img').src = list_item[i].img[index]
     }
 }
@@ -153,56 +153,64 @@ takeCartBoxBtn.onclick = function(a){
         if (body.classList.contains("overlay-open_select-cart-box")){
             body.classList.remove("overlay-open_select-cart-box");
         }
-    }
-
-    console.log(myCart);
-    
+    }   
 }
 
 takeCartBtn.onclick = function(){
     var ItemImgSrc = getItemParent(this).querySelector('.item-checklist-img-main img').src;
     var ItemName = getItemParent(this).querySelector('.item-checklist-name').innerHTML;
-    var ItemPrice = getItemParent(this).querySelector('.item-checklist-price').innerHTML;
+    var ItemPrice = getItemParent(this).querySelector('.item-checklist-price span').innerHTML;
     var ItemColor = getItemParent(this).querySelector('.checklist-color-name span').innerHTML;
     var ItemSize = getItemParent(this).querySelector('.checklist-size.size_checked').innerHTML;
 
-    $('.header__navbar-cart-box').innerHTML = 
-    `<div class=" header__navbar-cart-list">
-    <div class="row header__navbar-cart-item">
-        <div class="col l-3 header__navbar-cart-item_img">
-            <a href="http://" class="item-link">
-                <img src="${ItemImgSrc}" alt="">
-            </a> 
-        </div>
-
-        <div class="col l-9 header__navbar-cart-item_content">
-            <a href="" class="item-link">
-                <div class="header__navbar-cart-item_title">
-                    ${ItemName}
+    myCart.push({
+        name: ItemName,
+        img : ItemImgSrc,
+        price : ItemPrice,
+        size : ItemSize,
+        color : ItemColor
+    })
+    console.log(myCart)
+    $('.header__navbar-cart-list').innerHTML = "";
+    myCart.forEach (function(a) {
+        
+        $('.header__navbar-cart-list').innerHTML+=
+            `<div class="row header__navbar-cart-item">
+                <div class="col l-3 header__navbar-cart-item_img">
+                    <a href="http://" class="item-link">
+                        <img src="${a.img}" alt="">
+                    </a> 
                 </div>
-            </a>
-            <div class="header__navbar-cart-item_info">
-                <div class="header__navbar-cart-item_info-box">
-                    <div class="header__navbar-cart-item_info-color"><b>カラー：</b>${ItemColor}</div>
-                    <div class="header__navbar-cart-item_info-size"><b>サイズ：</b>${ItemSize}</div>
+        
+                <div class="col l-9 header__navbar-cart-item_content">
+                    <a href="" class="item-link">
+                        <div class="header__navbar-cart-item_title">
+                            ${a.name}
+                        </div>
+                    </a>
+                    <div class="header__navbar-cart-item_info">
+                        <div class="header__navbar-cart-item_info-box">
+                            <div class="header__navbar-cart-item_info-color"><b>カラー：</b>${a.color}</div>
+                            <div class="header__navbar-cart-item_info-size"><b>サイズ：</b>${a.size}</div>
+                        </div>
+                        <div class="header__navbar-cart-item_info-quantity-box">
+                            <div class="header__navbar-cart-item_info-quantity-down">-</div>
+                            <div class="header__navbar-cart-item_info-quantity-num">1</div>
+                            <div class="header__navbar-cart-item_info-quantity-up">+</div>
+                        </div>
+                    </div>
+                    <div class="header__navbar-cart-item_info-footer">
+                        <div class="header__navbar-cart-item_info-price">￥${a.price}</div>
+                        <div class="header__navbar-cart-item_btn-remove"><i class="fa-regular fa-trash-can"></i></div>
+                    </div>
                 </div>
-                <div class="header__navbar-cart-item_info-quantity-box">
-                    <div class="header__navbar-cart-item_info-quantity-down">-</div>
-                    <div class="header__navbar-cart-item_info-quantity-num">1</div>
-                    <div class="header__navbar-cart-item_info-quantity-up">+</div>
-                </div>
-            </div>
-            <div class="header__navbar-cart-item_info-footer">
-                <div class="header__navbar-cart-item_info-price">￥${ItemPrice}</div>
-                <div class="header__navbar-cart-item_btn-remove"><i class="fa-regular fa-trash-can"></i></div>
-            </div>
-        </div>
+        
+            </div>`
+        
+        }
+    )
+};
 
-    </div>
-</div>`
-
-
-}
 
 
 

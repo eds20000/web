@@ -151,7 +151,7 @@ body{
 
 .header__navbar-cart-item{
     border-bottom: 1px dashed var(--border-color);
-    padding-bottom: 12px;
+    padding: 12px 0;
     margin-top: 0;
 }
 
