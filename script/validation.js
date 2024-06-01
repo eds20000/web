@@ -1,31 +1,48 @@
-var signup_bornYear = $$('.signup-born-year_content');
-var signup_bornYear_message = $('.form-message-born')
-
-
 
 function Validator(options){
 
-    var selectedRules = {};
+    function getParent(element,selector){
+        while(element.parentElement){
+            if(element.parentElement.matches(selector)){
+                return element.parentElement;
+            }
+            element = element.parentElement;
+        }
+    }
 
+    var selectedRules = {};
     function validate(inputElement,rule){
         var errorMessage;
-        var errorElement = inputElement.parentElement.querySelector(options.errorSelector);
+        var errorElement = getParent(inputElement,options.formGroupSelector).querySelector(options.errorSelector);
         
         //ルールを取り出し、チェック
         var rules = selectedRules[rule.selector];
         for (var i =0; i < rules.length; ++i){
-            errorMessage = rules[i](inputElement.value);
+            for (var i =0; i < rules.length; ++i){
+                switch(inputElement.type){
+                    case 'radio':
+                    case 'checkbox':
+                        errorMessage = rules[i](
+                            formElement.querySelector(rule.selector + ':checked')
+                        );
+                        break;
+                    default:
+                        errorMessage = rules[i](inputElement.value);
+                }
+                if(errorMessage) break;
+                
+            }
             if(errorMessage){
                 break;
             }
         }
         if(errorMessage){
             errorElement.innerText = errorMessage;
-            errorElement.parentElement.classList.add('invalid')
-            }else{
-                errorElement.innerText = '';
-                errorElement.parentElement.classList.remove('invalid')
-            }
+            getParent(inputElement,options.formGroupSelector).classList.add('invalid')
+        }else{
+            errorElement.innerText = '';
+            getParent(inputElement,options.formGroupSelector).classList.remove('invalid')
+        }
 
             return !errorMessage;
     }
@@ -35,53 +52,10 @@ function Validator(options){
     if(formElement){
 
         formElement.onsubmit = function(e){
+
             e.preventDefault();
-            
-
             var isFormValid = true;
-
-            for(var i = 0; i < signup_bornYear.length;i++){
-                
-                var bornYear_value = signup_bornYear[i].querySelector("select").value;
-
-                if(bornYear_value === "-"){
-                
-                    signup_bornYear_message.style.opacity = "1"
-                    break
-                }
-                else{
-                    signup_bornYear_message.style.opacity = "0"
-                }
-            }
-            
-            signup_bornYear.forEach(function(a){
-                a.querySelector("select").onchange = function(){
-                    for(var i = 0; i < signup_bornYear.length;i++){
-                            
-                        var bornYear_value = signup_bornYear[i].querySelector("select").value;
-            
-                        if(bornYear_value === "-"){
-                        
-                            signup_bornYear_message.style.opacity = "1"
-                        }
-                        else{
-                            signup_bornYear_message.style.opacity = "0"
-                        }
-                    }
-                }
-            })
-            
         
-
-            if(!Agreement_input_box.classList.contains('checked')){
-                
-                Agreement_input_error.style.opacity = "1";
-
-            }else{
-                Agreement_input_error.style.opacity = "0";
-            }
-
-
             options.rules.forEach(function(rule){
                 var inputElement = formElement.querySelector(rule.selector);
                 var isValid = validate(inputElement,rule);
@@ -94,17 +68,17 @@ function Validator(options){
             if (isFormValid){
                 if (typeof options.onSubmit === 'function'){
                     var enableInputs = formElement.querySelectorAll('input:not([type="radio"]):not(select)[name]');
-                    console.log(Array.from(enableInputs))
                     var formValues = Array.from(enableInputs).reduce(function(values,input){
-                        return (values[input.name] = input.value) && values;
+                        values[input.name] = input.value
+                        return values;
                     },{});
                     
                     options.onSubmit(formValues);
                 }
             }
-            else{
-                formElement.submit()
-            }
+            // else{
+            //     formElement.submit()
+            // }
         }
         options.rules.forEach(function(rule){
             // ルールの保存
@@ -125,7 +99,7 @@ function Validator(options){
 
                 inputElement.oninput = function () {
                     errorElement.innerText = '';
-                    errorElement.parentElement.classList.remove('invalid')
+                    getParent(inputElement,options.formGroupSelector).classList.remove('invalid')
                 }
             }
 
@@ -165,11 +139,11 @@ Validator.minLength = function (selector,min,max){
 
 }
 
-Validator.isConfirmed = function (selector,getCofirmValue,message) {
+Validator.isConfirmed = function (selector,getConfirmValue,message) {
     return{
         selector: selector,
         test:function (value){
-            return value === getCofirmValue() ? undefined : message ||'確認パスワードが一致しません。'
+            return value === getConfirmValue() ? undefined : message ||'確認パスワードが一致しません。'
         }
     }
 }

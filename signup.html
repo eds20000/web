@@ -36,14 +36,16 @@
                                     <div class="col l-4">
                                         <label for="signup-sex-radio" class="signup-sex-label">性別</label>
                                     </div>
-                                    <div class="col l-8 signup-sex-content">
-                                        <div class="signup-form">
-                                            <input type="radio" name="signup-sex-radio" id="male" value="">
-                                            <label for="male">女性</label>
-                                        </div>
-                                        <div class="signup-form">
-                                            <input type="radio" name="signup-sex-radio" id="female" value="男性">
-                                            <label for="female">男性</label>
+                                    <div class="col l-8 ">
+                                        <div class="signup-sex-content">
+                                            <div class="signup-form">
+                                                <input type="radio" name="signup-sex-radio" id="male" value="male">
+                                                <label for="male">女性</label>
+                                            </div>
+                                            <div class="signup-form">
+                                                <input type="radio" name="signup-sex-radio" id="female" value="female">
+                                                <label for="female">男性</label>
+                                            </div>
                                         </div>
                                         <span class="form-message"></span>
                                     </div>
@@ -57,27 +59,26 @@
                                     <div class="col l-8">
                                         <div class="signup-born-year_input">
                                             <div class="signup-born-year_content">
-    
-                                                <select id="signup-born-year" name="year">
-                                                <option value="-">-</option>
+                                                <select id="signup-born-year" name="year" class="signup-born-year-select">
+                                                <option value="">-</option>
                                                 </select>
-                                                <label for="signup-born-year" class="signup-born-year">年</label>
+                                                <label for="signup-born-year" class="signup-born-year-label">年</label>
                                             </div>
     
                                             <div class="signup-born-year_content">
-                                                <select id="signup-born-month" name="month">
-                                                <option value="-">-</option>
+                                                <select id="signup-born-month" name="month" class="signup-born-month-select">
+                                                <option value="">-</option>
                                                 </select>
-                                                <label for="signup-born-month" class="signup-born-month">月</label>
+                                                <label for="signup-born-month" class="signup-born-year-label">月</label>
                                             </div>
                                             <div class="signup-born-year_content">
-                                                <select id="signup-born-day" name="day">
-                                                <option value="-">-</option>
+                                                <select id="signup-born-day" name="day" class="signup-born-day-select">
+                                                <option value="">-</option>
                                                 </select>
-                                                <label for="signup-born-day" class="signup-born-day">日</label>
+                                                <label for="signup-born-day" class="signup-born-year-label">日</label>
                                             </div>  
                                         </div>
-                                        <span class="form-message-born">誕生日の入力が必要です。</span>
+                                        <span class="form-message"></span>
                                     </div>
                                     
                                     
@@ -231,8 +232,15 @@ SHOPLISTはレディースからメンズ・キッズまで、幅広いジャン
 
     Validator({
         form:'#signup-form',
+        formGroupSelector:'.form-group',
         errorSelector:'.form-message',
         rules:[
+            Validator.isRequired('input[name="signup-sex-radio"]','性別を選択してください。'),
+
+            Validator.isRequired('#signup-born-year','誕生日の入力が必要です。'),
+            Validator.isRequired('#signup-born-month','誕生日の入力が必要です。'),
+            Validator.isRequired('#signup-born-day','誕生日の入力が必要です。'),
+
             Validator.isRequired('#signup-id','ユーザー名を入力してください。'),
 
             Validator.isRequired('#signup-email','メールアドレスを入力してください。'),

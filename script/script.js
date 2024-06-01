@@ -122,9 +122,11 @@ for(let i = 0 ; i< list_item.length ; ++i){
 //-----------------------Take-cart--------------------------------Start
 
 var takeCartBoxBtn = $('.sort__item-takecart');
-var takeCartBtn = $('.item-checklist-takecart-btn')
+var takeCartBtn = $('.item-checklist-takecart-btn');
+var headerCartBox = $('.header__navbar-cart-box');
 var myCart = [];
-// var ItemParent = $('')
+
+
 
 function getItemParent(element) {
     while (element.parentElement) {
@@ -163,53 +165,99 @@ takeCartBtn.onclick = function(){
     var ItemColor = getItemParent(this).querySelector('.checklist-color-name span').innerHTML;
     var ItemSize = getItemParent(this).querySelector('.checklist-size.size_checked').innerHTML;
 
-    myCart.push({
+    myCartProxy.push({
         name: ItemName,
         img : ItemImgSrc,
         price : ItemPrice,
         size : ItemSize,
         color : ItemColor
     })
-    console.log(myCart)
-    $('.header__navbar-cart-list').innerHTML = "";
-    myCart.forEach (function(a) {
-        
-        $('.header__navbar-cart-list').innerHTML+=
-            `<div class="row header__navbar-cart-item">
-                <div class="col l-3 header__navbar-cart-item_img">
-                    <a href="http://" class="item-link">
-                        <img src="${a.img}" alt="">
-                    </a> 
-                </div>
-        
-                <div class="col l-9 header__navbar-cart-item_content">
-                    <a href="" class="item-link">
-                        <div class="header__navbar-cart-item_title">
-                            ${a.name}
-                        </div>
-                    </a>
-                    <div class="header__navbar-cart-item_info">
-                        <div class="header__navbar-cart-item_info-box">
-                            <div class="header__navbar-cart-item_info-color"><b>カラー：</b>${a.color}</div>
-                            <div class="header__navbar-cart-item_info-size"><b>サイズ：</b>${a.size}</div>
-                        </div>
-                        <div class="header__navbar-cart-item_info-quantity-box">
-                            <div class="header__navbar-cart-item_info-quantity-down">-</div>
-                            <div class="header__navbar-cart-item_info-quantity-num">1</div>
-                            <div class="header__navbar-cart-item_info-quantity-up">+</div>
-                        </div>
-                    </div>
-                    <div class="header__navbar-cart-item_info-footer">
-                        <div class="header__navbar-cart-item_info-price">￥${a.price}</div>
-                        <div class="header__navbar-cart-item_btn-remove"><i class="fa-regular fa-trash-can"></i></div>
-                    </div>
-                </div>
-        
-            </div>`
-        
-        }
-    )
 };
+
+var onChangeCart = function(){
+    if (myCart.length === 0){
+        headerCartBox.innerHTML = 
+        `<div class="header__navbar-cart-list">
+            <div class="header__navbar-cart-box-empty">
+                <div class="header__navbar-cart-box-empty-img">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+                <div class="header__navbar-cart-box-empty-content">
+                    現在カートに商品はありません。
+                </div>
+            </div>                       
+        </div>
+        `
+        }else{
+            headerCartBox.innerHTML = 
+            `<div class="header__navbar-cart-list">
+                                
+            </div>
+            <div class="header__navbar-cart-checkox">
+                <div class="header__navbar-cart-total">合計：<div class="header__navbar-cart-total-index">￥1023</div></div>
+                <div class="header__navbar-cart-check-btn"><a href="./cart.html">買い物かごを見る(1)</a></div>
+            </div>`
+    }
+    myCart.forEach (function(a) {  
+        $('.header__navbar-cart-list').innerHTML +=
+            `   <div class="row header__navbar-cart-item">
+                    <div class="col l-3 header__navbar-cart-item_img">
+                        <a href="http://" class="item-link">
+                        <img src="${a.img}" alt="">
+                        </a> 
+                    </div>
+        
+                    <div class="col l-9 header__navbar-cart-item_content">
+                        <a href="" class="item-link">
+                            <div class="header__navbar-cart-item_title">
+                                ${a.name}
+                            </div>
+                        </a>
+                        <div class="header__navbar-cart-item_info">
+                            <div class="header__navbar-cart-item_info-box">
+                                <div class="header__navbar-cart-item_info-color"><b>カラー：</b>${a.color}</div>
+                                <div class="header__navbar-cart-item_info-size"><b>サイズ：</b>${a.size}</div>
+                            </div>
+                            <div class="header__navbar-cart-item_info-quantity-box">
+                                <div class="header__navbar-cart-item_info-quantity-down">-</div>
+                                <div class="header__navbar-cart-item_info-quantity-num">1</div>
+                                <div class="header__navbar-cart-item_info-quantity-up">+</div>
+                            </div>
+                        </div>
+                        <div class="header__navbar-cart-item_info-footer">
+                            <div class="header__navbar-cart-item_info-price">￥${a.price}</div>
+                            <div class="header__navbar-cart-item_btn-remove"><i class="fa-regular fa-trash-can"></i></div>
+                        </div>
+                    </div>
+                </div>`  
+        })
+        console.log(myCart)
+}
+
+let myCartProxy = new Proxy(myCart, {
+    set(target, property, value, receiver) {
+        // Thực hiện hành động mặc định
+        let result = Reflect.set(target, property, value, receiver);
+
+        // Kiểm tra nếu hành động là thêm hoặc thay đổi một phần tử trong mảng
+        if (property !== 'length') {
+            onChangeCart();
+        }
+
+        return result;
+    },
+    deleteProperty(target, property) {
+        // Thực hiện hành động mặc định
+        let result = Reflect.deleteProperty(target, property);
+
+        // Gọi hàm khi một phần tử bị xóa
+        onChangeCart();
+
+        return result;
+    }
+});
+
+onChangeCart();
 
 
 
