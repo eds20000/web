@@ -48,7 +48,26 @@ var list_item = [
     img:['./image/item-image/item1-img1.jpg','./image/item-image/item1-img2.jpg','./image/item-image/item1-img3.webp','./image/item-image/item1-img4.webp','./image/item-image/item1-img5.webp','./image/item-image/item1-img6.webp'],
     price:1.023,
     size:['M','L'],
-    color:['black','red']
+    color_img:[
+        {
+        color_nameEng:'black',
+        color_name:'ブラック',
+        img:['./image/item-image/item1-img1.jpg',
+        './image/item-image/item1-img2.webp',
+        './image/item-image/item1-img3.webp',
+        './image/item-image/item1-img4.webp',
+        './image/item-image/item1-img5.webp']
+        },
+        {
+        color_nameEng:'red',
+        color_name:'レッド',
+        img:[`./image/item-image/item1-img7.webp',
+        './image/item-image/item1-img8.webp',
+        './image/item-image/item1-img9.webp',
+        './image/item-image/item1-img10.webp',
+        './image/item-image/item1-img11.webp',
+        './image/item-image/item1-img12.webp`]
+        }]
     }
 ]
 
@@ -137,10 +156,29 @@ function getItemParent(element) {
     }
 }
 
+function getItemMainParent(element) {
+    while (element.parentElement) {
+        if (element.parentElement.matches('.sort__item')) {
+            return element.parentElement;
+        }
+        element = element.parentElement;
+    }
+}
+
 
 takeCartBoxBtn.onclick = function(a){
-    var body = document.body;
-    var SelectCartCloseBtn = $('.select-cart-box-close')
+    var ItemName = getItemMainParent(this).querySelector('.sort__item-text').innerHTML;
+    const itemCurrent = list_item.find(function(item){
+        return item.name === ItemName;
+    });
+    let ItemImg_Color = itemCurrent.color_img;
+    let ItemImgSrc = ItemImg_Color[0].img[0];
+    let ItemColor = ItemImg_Color[0].color_name;
+    let ItemPrice = itemCurrent.price;
+    let ItemSize = itemCurrent.size;
+
+    let body = document.body;
+    let SelectCartCloseBtn = $('.select-cart-box-close')
     
     body.classList.toggle("overlay-open_select-cart-box");
 
@@ -155,29 +193,69 @@ takeCartBoxBtn.onclick = function(a){
         if (body.classList.contains("overlay-open_select-cart-box")){
             body.classList.remove("overlay-open_select-cart-box");
         }
-    }   
+    } 
+    //chuyền thông tin sản phẩm vào box take cart
+
+    var SelectCartBox = $('.select-cart-box-content');
+    var itemChecklistImg =$('.item-checklist-imglist');
+    var itemCheckSizeList = $('.checklist-size-list');
+    itemChecklistImg.innerHTML="";
+    for ( var i = 0 ; i < ItemImg_Color[0].img.length ;++i){
+        itemChecklistImg.innerHTML += 
+        `<li class="item-checklist-imglist-item"><img src="${ItemImg_Color[0].img[i]}" alt=""></li>
+        `
+    }
+    $('.item-checklist-img-main').innerHTML = 
+    `<img src="${ItemImg_Color[0].img[0]}" alt="">`;
+    $('.item-checklist-name').innerHTML = ItemName;
+    $('.item-checklist-price span').innerHTML = ItemPrice;
+    $('.checklist-color-name span').innerHTML = ItemSize[0];
+    $('.checklist-size.size_checked').innerHTML = itemCurrent.size[0];
+    for(var i = 1; i < itemCurrent.size.length; ++i){
+        itemCheckSizeList.innerHTML+=`
+        <li class="checklist-size">${itemCurrent.size[i]}</li>
+        `
+    }
+//Item product take -------------------------------- Enđ
 }
 
+//Item product take --------------------------------- Start
 takeCartBtn.onclick = function(){
-    var ItemImgSrc = getItemParent(this).querySelector('.item-checklist-img-main img').src;
     var ItemName = getItemParent(this).querySelector('.item-checklist-name').innerHTML;
-    var ItemPrice = getItemParent(this).querySelector('.item-checklist-price span').innerHTML;
-    var ItemColor = getItemParent(this).querySelector('.checklist-color-name span').innerHTML;
-    var ItemSize = getItemParent(this).querySelector('.checklist-size.size_checked').innerHTML;
-
+    const itemCurrent = list_item.find(function(item){
+        return item.name === ItemName;
+    });
+    var ItemImg_Color = itemCurrent.color_img;
+    var ItemImgSrc = ItemImg_Color[0].img[0];
+    var ItemColor = ItemImg_Color[0].color_name;
+    var ItemPrice = itemCurrent.price;
+    var ItemSize = itemCurrent.size[0];
+    
     myCartProxy.push({
         name: ItemName,
         img : ItemImgSrc,
         price : ItemPrice,
         size : ItemSize,
         color : ItemColor
-    })
-};
+    })   
+    
+};    
 
 var onChangeCart = function(){
+    var myCartCount = $('.header__navbar-cart-count');
+
+    if (myCart.length === 0){
+        myCartCount.style.display = 'none';
+    }else{
+        myCartCount.style.display = 'block';
+        myCartCount.innerHTML = myCart.length;
+        headerCartBox.style.maxHeight = '80vh'
+
+    }
+
     if (myCart.length === 0){
         headerCartBox.innerHTML = 
-        `<div class="header__navbar-cart-list">
+        `
             <div class="header__navbar-cart-box-empty">
                 <div class="header__navbar-cart-box-empty-img">
                     <i class="fa-solid fa-cart-shopping"></i>
@@ -186,7 +264,7 @@ var onChangeCart = function(){
                     現在カートに商品はありません。
                 </div>
             </div>                       
-        </div>
+
         `
         }else{
             headerCartBox.innerHTML = 
