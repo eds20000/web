@@ -190,6 +190,7 @@ takeCartBoxBtn.onclick = function(a){
 
     SelectCartCloseBtn.onclick = function(){
         var body = document.body;
+        
         if (body.classList.contains("overlay-open_select-cart-box")){
             body.classList.remove("overlay-open_select-cart-box");
         }
@@ -209,13 +210,57 @@ takeCartBoxBtn.onclick = function(a){
     `<img src="${ItemImg_Color[0].img[0]}" alt="">`;
     $('.item-checklist-name').innerHTML = ItemName;
     $('.item-checklist-price span').innerHTML = ItemPrice;
-    $('.checklist-color-name span').innerHTML = ItemSize[0];
-    $('.checklist-size.size_checked').innerHTML = itemCurrent.size[0];
-    for(var i = 1; i < itemCurrent.size.length; ++i){
+   
+    itemCheckSizeList.innerHTML="";
+    itemCheckSizeList.innerHTML += `<li class="checklist-size size_checked">${itemCurrent.size[0]}</li>`;
+     
+     for(var i = 1; i < itemCurrent.size.length; ++i){
         itemCheckSizeList.innerHTML+=`
         <li class="checklist-size">${itemCurrent.size[i]}</li>
         `
     }
+
+    //trich xuat color tu list item
+    var CheckColorList = $('.checklist-color-list');
+    
+    CheckColorList.innerHTML = "";
+    for(let i = 0; i < itemCurrent.color_img.length; ++i){
+        
+        CheckColorList.innerHTML += `<li class="checklist-color"></li>`;
+    }
+    var checkListItem = $$('.checklist-color');
+    checkListItem[0].classList.add('color-checked')
+    function colorNameChange(){
+        for(let i = 0; i < itemCurrent.color_img.length; ++i){
+            checkListItem[i].style.backgroundColor = itemCurrent.color_img[i].color_nameEng;
+            if(checkListItem[i].classList.contains('color_checked')){
+                $('.checklist-color-name span').innerHTML = itemCurrent.color_img[i].color_name;//trich xuat ten mau vao box
+            }
+        }
+    }
+    colorNameChange();
+ 
+    // THIET LAP NUT CHON SIZE
+    let sizeBtn = $$('.checklist-size');
+    sizeBtn.forEach(function(a){
+        a.onclick = function(){
+            $('.size_checked').classList.remove('size_checked');
+            this.classList.add('size_checked');
+        }
+    });
+
+    //THIET LAP NUT CHON MAU
+    let colorBtn = $$('.checklist-color');
+    colorBtn.forEach(function(color){
+        color.onclick = function(){
+            console.log($('.color-checked'))
+            $('.color-checked').classList.remove('color-checked');
+            this.classList.add('color-checked');
+            colorNameChange();
+        }
+    })
+
+
 //Item product take -------------------------------- Enđ
 }
 
@@ -309,7 +354,7 @@ var onChangeCart = function(){
                     </div>
                 </div>`  
         })
-        console.log(myCart)
+
 }
 
 let myCartProxy = new Proxy(myCart, {

@@ -709,11 +709,9 @@ body.overlay-open_select-cart-box{
     padding: 5px 0;
 }
 
-.blackColor{
-    background-color: black;
-}
-.redColor{
-    background-color: red;
+.color-checked{
+    border: 2px solid var(--white-color);
+    outline: 1px solid var(--black-color);
 }
 
 .checklist-color{
