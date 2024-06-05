@@ -61,12 +61,20 @@ var list_item = [
         {
         color_nameEng:'red',
         color_name:'レッド',
-        img:[`./image/item-image/item1-img7.webp',
+        img:['./image/item-image/item1-img7.webp',
         './image/item-image/item1-img8.webp',
         './image/item-image/item1-img9.webp',
         './image/item-image/item1-img10.webp',
-        './image/item-image/item1-img11.webp',
-        './image/item-image/item1-img12.webp`]
+        './image/item-image/item1-img11.webp']
+        },
+        {
+        color_nameEng:'blue',
+        color_name:'ブルー',
+        img:['./image/item-image/item1-img12.webp',
+        './image/item-image/item1-img13.webp',
+        './image/item-image/item1-img14.webp',
+        './image/item-image/item1-img15.webp',
+        './image/item-image/item1-img16.webp']
         }]
     }
 ]
@@ -144,12 +152,12 @@ var takeCartBoxBtn = $('.sort__item-takecart');
 var takeCartBtn = $('.item-checklist-takecart-btn');
 var headerCartBox = $('.header__navbar-cart-box');
 var myCart = [];
+var cartItems = {};
 
 
-
-function getItemParent(element) {
+function getItemParent(element,parentAdress) {
     while (element.parentElement) {
-        if (element.parentElement.matches('.select-cart-box-content')) {
+        if (element.parentElement.matches(parentAdress)) {
             return element.parentElement;
         }
         element = element.parentElement;
@@ -164,127 +172,6 @@ function getItemMainParent(element) {
         element = element.parentElement;
     }
 }
-
-
-takeCartBoxBtn.onclick = function(a){
-    var ItemName = getItemMainParent(this).querySelector('.sort__item-text').innerHTML;
-    const itemCurrent = list_item.find(function(item){
-        return item.name === ItemName;
-    });
-    let ItemImg_Color = itemCurrent.color_img;
-    let ItemImgSrc = ItemImg_Color[0].img[0];
-    let ItemColor = ItemImg_Color[0].color_name;
-    let ItemPrice = itemCurrent.price;
-    let ItemSize = itemCurrent.size;
-
-    let body = document.body;
-    let SelectCartCloseBtn = $('.select-cart-box-close')
-    
-    body.classList.toggle("overlay-open_select-cart-box");
-
-    if (body.classList.contains("overlay-open")) {
-        body.style.position = "fixed";
-    } else {
-        body.style.position = "";
-    }
-
-    SelectCartCloseBtn.onclick = function(){
-        var body = document.body;
-        
-        if (body.classList.contains("overlay-open_select-cart-box")){
-            body.classList.remove("overlay-open_select-cart-box");
-        }
-    } 
-    //chuyền thông tin sản phẩm vào box take cart
-
-    var SelectCartBox = $('.select-cart-box-content');
-    var itemChecklistImg =$('.item-checklist-imglist');
-    var itemCheckSizeList = $('.checklist-size-list');
-    itemChecklistImg.innerHTML="";
-    for ( var i = 0 ; i < ItemImg_Color[0].img.length ;++i){
-        itemChecklistImg.innerHTML += 
-        `<li class="item-checklist-imglist-item"><img src="${ItemImg_Color[0].img[i]}" alt=""></li>
-        `
-    }
-    $('.item-checklist-img-main').innerHTML = 
-    `<img src="${ItemImg_Color[0].img[0]}" alt="">`;
-    $('.item-checklist-name').innerHTML = ItemName;
-    $('.item-checklist-price span').innerHTML = ItemPrice;
-   
-    itemCheckSizeList.innerHTML="";
-    itemCheckSizeList.innerHTML += `<li class="checklist-size size_checked">${itemCurrent.size[0]}</li>`;
-     
-     for(var i = 1; i < itemCurrent.size.length; ++i){
-        itemCheckSizeList.innerHTML+=`
-        <li class="checklist-size">${itemCurrent.size[i]}</li>
-        `
-    }
-
-    //trich xuat color tu list item
-    var CheckColorList = $('.checklist-color-list');
-    
-    CheckColorList.innerHTML = "";
-    for(let i = 0; i < itemCurrent.color_img.length; ++i){
-        
-        CheckColorList.innerHTML += `<li class="checklist-color"></li>`;
-    }
-    var checkListItem = $$('.checklist-color');
-    checkListItem[0].classList.add('color-checked')
-    function colorNameChange(){
-        for(let i = 0; i < itemCurrent.color_img.length; ++i){
-            checkListItem[i].style.backgroundColor = itemCurrent.color_img[i].color_nameEng;
-            if(checkListItem[i].classList.contains('color_checked')){
-                $('.checklist-color-name span').innerHTML = itemCurrent.color_img[i].color_name;//trich xuat ten mau vao box
-            }
-        }
-    }
-    colorNameChange();
- 
-    // THIET LAP NUT CHON SIZE
-    let sizeBtn = $$('.checklist-size');
-    sizeBtn.forEach(function(a){
-        a.onclick = function(){
-            $('.size_checked').classList.remove('size_checked');
-            this.classList.add('size_checked');
-        }
-    });
-
-    //THIET LAP NUT CHON MAU
-    let colorBtn = $$('.checklist-color');
-    colorBtn.forEach(function(color){
-        color.onclick = function(){
-            console.log($('.color-checked'))
-            $('.color-checked').classList.remove('color-checked');
-            this.classList.add('color-checked');
-            colorNameChange();
-        }
-    })
-
-
-//Item product take -------------------------------- Enđ
-}
-
-//Item product take --------------------------------- Start
-takeCartBtn.onclick = function(){
-    var ItemName = getItemParent(this).querySelector('.item-checklist-name').innerHTML;
-    const itemCurrent = list_item.find(function(item){
-        return item.name === ItemName;
-    });
-    var ItemImg_Color = itemCurrent.color_img;
-    var ItemImgSrc = ItemImg_Color[0].img[0];
-    var ItemColor = ItemImg_Color[0].color_name;
-    var ItemPrice = itemCurrent.price;
-    var ItemSize = itemCurrent.size[0];
-    
-    myCartProxy.push({
-        name: ItemName,
-        img : ItemImgSrc,
-        price : ItemPrice,
-        size : ItemSize,
-        color : ItemColor
-    })   
-    
-};    
 
 var onChangeCart = function(){
     var myCartCount = $('.header__navbar-cart-count');
@@ -321,7 +208,18 @@ var onChangeCart = function(){
                 <div class="header__navbar-cart-check-btn"><a href="./cart.html">買い物かごを見る(1)</a></div>
             </div>`
     }
-    myCart.forEach (function(a) {  
+
+    // Duyệt qua myCart và đếm số lượng của mỗi sản phẩm
+    myCart.forEach(function(item) {
+        const key = `${item.name}-${item.brand}-${item.color}-${item.size}-${item.img}-${item.price}`;
+        if (!cartItems[key]) {
+            cartItems[key] = { ...item, quantity: 0 };
+        }
+        cartItems[key].quantity++;
+    });
+    console.log(myCart)
+// Duyệt qua cartItems để hiển thị các sản phẩm và số lượng của chúng
+    Object.values(cartItems).forEach(function(a) {  
         $('.header__navbar-cart-list').innerHTML +=
             `   <div class="row header__navbar-cart-item">
                     <div class="col l-3 header__navbar-cart-item_img">
@@ -336,6 +234,8 @@ var onChangeCart = function(){
                                 ${a.name}
                             </div>
                         </a>
+
+                        <div class = "header__navbar-cart-item_brand">${a.brand}</div>
                         <div class="header__navbar-cart-item_info">
                             <div class="header__navbar-cart-item_info-box">
                                 <div class="header__navbar-cart-item_info-color"><b>カラー：</b>${a.color}</div>
@@ -343,7 +243,7 @@ var onChangeCart = function(){
                             </div>
                             <div class="header__navbar-cart-item_info-quantity-box">
                                 <div class="header__navbar-cart-item_info-quantity-down">-</div>
-                                <div class="header__navbar-cart-item_info-quantity-num">1</div>
+                                <div class="header__navbar-cart-item_info-quantity-num">${a.quantity}</div>
                                 <div class="header__navbar-cart-item_info-quantity-up">+</div>
                             </div>
                         </div>
@@ -357,38 +257,183 @@ var onChangeCart = function(){
 
 }
 
-let myCartProxy = new Proxy(myCart, {
-    set(target, property, value, receiver) {
-        // Thực hiện hành động mặc định
-        let result = Reflect.set(target, property, value, receiver);
+takeCartBoxBtn.onclick = function(a){
+    var ItemName = getItemMainParent(this).querySelector('.sort__item-text').innerHTML;
+    var itemCurrent = list_item.find(function(item){
+        return item.name === ItemName;
+    });
 
-        // Kiểm tra nếu hành động là thêm hoặc thay đổi một phần tử trong mảng
-        if (property !== 'length') {
-            onChangeCart();
-        }
+    let ItemImg_Color = itemCurrent.color_img;
+    let ItemPrice = itemCurrent.price;
+    let ItemBrand = itemCurrent.brand;
 
-        return result;
-    },
-    deleteProperty(target, property) {
-        // Thực hiện hành động mặc định
-        let result = Reflect.deleteProperty(target, property);
 
-        // Gọi hàm khi một phần tử bị xóa
-        onChangeCart();
+    let body = document.body;
+    let SelectCartCloseBtn = $('.select-cart-box-close')
+    
+    body.classList.toggle("overlay-open_select-cart-box");
 
-        return result;
+    if (body.classList.contains("overlay-open")) {
+        body.style.position = "fixed";
+    } else {
+        body.style.position = "";
     }
-});
 
+    SelectCartCloseBtn.onclick = function(){
+        var body = document.body;
+        
+        if (body.classList.contains("overlay-open_select-cart-box")){
+            body.classList.remove("overlay-open_select-cart-box");
+        }
+    } 
+    //chuyền thông tin sản phẩm vào box take cart
+
+    var SelectCartBox = $('.select-cart-box-content');
+    var itemChecklistImg =$('.item-checklist-imglist');
+    var itemCheckSizeList = $('.checklist-size-list');    
+    var iteamCheckBrand = $('.item-checklist-brand');
+    
+
+    itemChecklistImg.innerHTML="";
+    for ( var i = 0 ; i < ItemImg_Color[0].img.length ;++i){
+        itemChecklistImg.innerHTML += 
+        `<li class="item-checklist-imglist-item"><img src="${ItemImg_Color[0].img[i]}" alt=""></li>
+        `
+    }
+    $('.item-checklist-name').innerHTML = ItemName;
+    $('.item-checklist-price span').innerHTML = ItemPrice;
+   
+    itemCheckSizeList.innerHTML="";
+    itemCheckSizeList.innerHTML += `<li class="checklist-size size_checked">${itemCurrent.size[0]}</li>`;
+    iteamCheckBrand.innerHTML = ItemBrand;
+     for(var i = 1; i < itemCurrent.size.length; ++i){
+        itemCheckSizeList.innerHTML+=`
+        <li class="checklist-size">${itemCurrent.size[i]}</li>
+        `
+    }
+
+    //trich xuat color tu list item
+    var CheckColorList = $('.checklist-color-list');
+    var CheckColorName = $('.checklist-color-name span');
+    var itemColorCurrent = itemCurrent.color_img.find(
+        colorList => colorList.color_name == CheckColorName.innerHTML);
+    CheckColorList.innerHTML = "";
+    for(let i = 0; i < itemCurrent.color_img.length; ++i){
+        
+        CheckColorList.innerHTML += `<li class="checklist-color"></li>`;
+    }
+    var checkListItem = $$('.checklist-color');
+    checkListItem[0].classList.add('color-checked')
+    colorNameChange();
+    colorImageChange();
+
+    function colorNameChange(){
+        for(let i = 0; i < itemCurrent.color_img.length; ++i){
+            checkListItem[i].style.backgroundColor = itemCurrent.color_img[i].color_nameEng;
+            if(checkListItem[i].classList.contains('color-checked')){
+                CheckColorName.innerHTML = itemCurrent.color_img[i].color_name;//trich xuat ten mau vao box
+            }
+        }
+    }
+    function colorImageChange(){//Ham doi hinh anh khi chon color
+        itemColorCurrent = itemCurrent.color_img.find(
+            colorList => colorList.color_name == CheckColorName.innerHTML);
+        
+
+        itemChecklistImg.innerHTML="";
+        for ( var i = 0 ; i < itemColorCurrent.img.length ;++i){
+            itemChecklistImg.innerHTML += 
+            `<li class="item-checklist-imglist-item"><img src="${itemColorCurrent.img[i]}" alt=""></li>
+            `
+            $('.item-checklist-img-main').innerHTML = 
+            `<img src="${itemColorCurrent.img[0]}" alt="">`;
+        }
+    }
+
+
+    // THIET LAP NUT CHON SIZE
+    let sizeBtn = $$('.checklist-size');
+    sizeBtn.forEach(function(a){
+        a.onclick = function(){
+            $('.size_checked').classList.remove('size_checked');
+            this.classList.add('size_checked');
+        }
+    });
+
+    //THIET LAP NUT CHON MAU
+    let colorBtn = $$('.checklist-color');
+    colorBtn.forEach(function(color){
+        color.onclick = function(){
+            $('.color-checked').classList.remove('color-checked');
+            this.classList.add('color-checked');
+
+            colorNameChange();   
+            colorImageChange();
+        }
+    })
+
+
+    //Item product take --------------------------------- Start
+    takeCartBtn.onclick = function(){
+        var ItemImgSrc = itemColorCurrent.img[0];
+        var ItemColor = itemColorCurrent.color_name;
+        var ItemPrice = itemCurrent.price;
+        var ItemSize = $('.checklist-size.size_checked').innerHTML;
+        var ItemBrand = itemCurrent.brand;
+
+        myCartProxy.push({
+            name : ItemName,
+            brand : ItemBrand,
+            img : ItemImgSrc,
+            price : ItemPrice,
+            size : ItemSize,
+            color : ItemColor
+
+        })   
+        
+    };    
+    onChangeCart();
+    
+    let myCartProxy = new Proxy(myCart, {
+        set(target, property, value, receiver) {
+            // Thực hiện hành động mặc định
+            let result = Reflect.set(target, property, value, receiver);
+    
+            // Kiểm tra nếu hành động là thêm hoặc thay đổi một phần tử trong mảng
+            if (property !== 'length') {
+                onChangeCart();
+            }
+    
+            return result;
+        },
+        deleteProperty(target, property) {
+            // Thực hiện hành động mặc định
+            let result = Reflect.deleteProperty(target, property);
+    
+            // Gọi hàm khi một phần tử bị xóa
+            onChangeCart();
+    
+            return result;
+        }
+    });
+    
+//Item product take -------------------------------- Enđ
+}
 onChangeCart();
 
 
 
 
 
+
 //-----------------------Take-cart--------------------------------End
+var itemQuantityDown = $('.header__navbar-cart-item_info-quantity-down');
+var itemQuantityUp = $('.header__navbar-cart-item_info-quantity-up');
 
 
+// itemQuantityDown.onclick = function (){
+//     var item
+// }
 
 // }
 // 
