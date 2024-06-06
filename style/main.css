@@ -267,12 +267,16 @@ body{
     justify-content: right;
     align-items: center;
     font-size: 2rem;
+    
+}
+.header__navbar-cart-total span{
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
 }
 
-.header__navbar-cart-total-index{
-    color: var(--primary-color);
+.header__navbar-cart-total-index {
     margin: 10px 0;
-    
 }
 
 .header__navbar-cart-check-btn{
