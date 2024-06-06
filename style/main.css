@@ -200,11 +200,10 @@ body{
 }
 
 .header__navbar-cart-item_info-box{
-    display: flex;
 }
 
 .header__navbar-cart-item_info-color{
-    margin-right: 10px;
+    margin:5px 0 10px 0;
 }
 
 
