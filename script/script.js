@@ -120,13 +120,16 @@ var list_item = [
     }
 ]
 
+
+export default list_item;
+
 var sort__item_list = $('.sort__item-list')
-console.log(list_item)
-for(let i = 0 ; i < list_item.length ; ++i){
+if (sort__item_list){
+    for(let i = 0 ; i < list_item.length ; ++i){
     sort__item_list.innerHTML +=
     `<div class="col l-2-4">
         <div class="sort__item" item-index = "${i}">
-            <a href="./product.html" class="sort__item-link" >
+            <a class="sort__item-link" data-id="${list_item[i].id}" >
                 <div class="sort__item-img">
                     <img src="${list_item[i].img[0]}" alt="">
                 </div>
@@ -160,11 +163,12 @@ for(let i = 0 ; i < list_item.length ; ++i){
 
     
 }
+}
+
 
 $$('.sort__item').forEach(function(item){
     var index = 0;
     let itemId = item.getAttribute('item-index');
-    console.log(itemId)
     item.querySelector('.sort__item-img_btn-left').onclick = function(){
         index = index - 1
         if(index < 0 ){
@@ -198,6 +202,8 @@ var takeCartBtn = $('.item-checklist-takecart-btn');
 var headerCartBox = $('.header__navbar-cart-box');
 var myCart = [];
 var cartItems = {};
+
+
 
 function getItemParent(element,parentAdress) {
     while (element.parentElement) {
@@ -347,7 +353,9 @@ var onChangeCart = function(){
         });
     }
     // Thêm sự kiện click cho các nút tăng và giảm số lượng
-    
+    console.log(myCart)
+    console.log(cartItems)
+
 }
 takeCartBoxBtn.forEach(function(currentItemBox){
     currentItemBox.onclick = function(a){
@@ -519,14 +527,16 @@ onChangeCart();
 
 
 
-
 //-----------------------Take-cart--------------------------------End
 
 
-// itemQuantityDown.onclick = function (){
-//     var item
-// }
+//--------------------------Thanhchuyenhuonggiaodiensanpham----------]
 
-// }
-// 
+$$('.sort__item-link').forEach(function(item){
+    item.onclick = function(){
+        const productId = this.dataset.id;
+        window.location.href = `product.html?id=${productId}`;
+    }
+
+})
 
