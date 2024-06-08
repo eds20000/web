@@ -49,6 +49,10 @@ ul{
 .product-item-image img{
     width: 100%;
 }
+.product-item-image-item.main img{
+    border: 5px solid var(--white-color);
+    outline: 1px solid var(--black-color);
+}
 .product-item-image_list{
     margin-top: 20px;
     padding:0 30px;
@@ -113,7 +117,7 @@ ul{
     font-size: 2rem;
     font-weight: 600;
     line-height: 2.5rem;
-    margin-right: 10px;
+    margin-right: 40px;
 }
 
 .product-item-data-title_favor::after{
@@ -127,6 +131,12 @@ ul{
     position: absolute;
     right: 2px;
     bottom: 0;
+}
+
+.product-item-data-brand{
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 20px 0;
 }
 
 .product-item-data-price{

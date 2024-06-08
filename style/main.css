@@ -479,6 +479,9 @@ body{
 .sort__item:hover{
     box-shadow: var(--box-shadow) ;
 }
+.sort__item-link{
+    cursor: pointer;
+}
 
 .sort__item-img{
     height: 200px;
@@ -651,7 +654,7 @@ body{
     margin: 100px;
     background-color: var(--white-color);
     width: 794px;
-    height: 60%;
+    min-height: 70%;
     transform: translateY(-110%);
     transition: all 0.1s ease-out;
 }
