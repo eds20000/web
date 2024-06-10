@@ -1,5 +1,6 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
+
 //sort-tab start
 
 
@@ -19,6 +20,7 @@ $$('.sort__tab-list').forEach(function(a){
 // sort-tab end//
 
 //item start//
+
 
 function favoritebutton(a){
     console.log(a.classList[1])
@@ -207,6 +209,22 @@ var takeCartBtn = $('.item-checklist-takecart-btn');
 var myCart = [];
 
 
+// Hàm chuyển đổi hình ảnh
+function itemImgChange() {
+    var itemImageMain = $('.item-checklist-img-main img');
+    var itemImage = $$('.item-checklist-imglist-item');
+
+    itemImage.forEach(function(a) {
+        a.onclick = function() {
+            itemImage.forEach(function(b) {
+                b.classList.remove('main');
+            });
+            this.classList.add('main');
+            itemImageMain.src = this.querySelector('img').src;
+        };
+    });
+}
+//
 
 export function getItemParent(element,parentAdress) {
     while (element.parentElement) {
@@ -354,6 +372,7 @@ var onChangeCart = function(){
 if(true){
     takeCartBoxBtn.forEach(function(currentItemBox){
         currentItemBox.onclick = function(a){
+            itemImgChange($(".item-checklist-img-main"),$$(".item-checklist-imglist-item"));
             var ItemName = getItemParent(this,'.sort__item').querySelector('.sort__item-text').innerHTML;
             var itemCurrent = list_item.find(function(item){
                 return item.name === ItemName;
@@ -465,9 +484,9 @@ if(true){
         
                     colorNameChange();   
                     colorImageChange();
+                    itemImgChange();//goi ham lua chon hinh anh
                 }
             })
-        
         
             //Item product take --------------------------------- Start
             takeCartBtn.onclick = function(){
