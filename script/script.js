@@ -170,7 +170,7 @@ if (sort__item_list){
 }
 
 
-$$('.sort__item').forEach(function(item){
+$$('.sort__item').forEach(function(item){//thay doi hinh anh bang nut bam o muc item
     var index = 0;
     let itemId = item.getAttribute('item-index');
     item.querySelector('.sort__item-img_btn-left').onclick = function(){
@@ -203,9 +203,8 @@ $$('.sort__item').forEach(function(item){
 
 var takeCartBoxBtn = $$('.sort__item-takecart');
 var takeCartBtn = $('.item-checklist-takecart-btn');
-var headerCartBox = $('.header__navbar-cart-box');
+
 var myCart = [];
-var cartItems = {};
 
 
 
@@ -220,8 +219,9 @@ export function getItemParent(element,parentAdress) {
 
 
 var onChangeCart = function(){
+    var headerCartBox = $('.header__navbar-cart-box');
     var myCartCount = $('.header__navbar-cart-count');
-    cartItems={};
+    var cartItems = {};
     var priceTotal = myCart.reduce((total, item) => total + item.price, 0);
   
     if (myCart.length === 0){
@@ -349,9 +349,7 @@ var onChangeCart = function(){
         });
     }
     // Thêm sự kiện click cho các nút tăng và giảm số lượng
-    console.log(myCart)
-    console.log(cartItems)
-
+    console.log(cartItems);
 }
 if(true){
     takeCartBoxBtn.forEach(function(currentItemBox){
