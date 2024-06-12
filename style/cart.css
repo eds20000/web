@@ -1,8 +1,20 @@
 .cart-heading{
-    font-size: var(--font-header-size);
-    font-weight: 600;
-    padding: 30px 0;
+    font-size: var(--font-size);
+    padding : 30px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap:10px;
 }
+
+.cart-heading-list{
+    position: relative;
+}
+.cart-heading-list.cart-cast-main{
+    font-size: 2rem;
+    font-weight: 600;
+}
+
 
 .cart__list-item{
     display: grid;
@@ -130,5 +142,58 @@ ul{
 
 .cart-total-account{
     margin-top:30px;
-    background-color: ;
 }
+/*<-----------------------PAY-FORM--------------------------------START*/
+#cart__pay-form{
+    background-color: var(--hover-color1);
+    padding:30px;
+}
+.cart__pay-form-title{
+    font-size: 2rem;
+    padding-bottom: 30px;
+}
+#cart__pay-form .row{
+    border-bottom: 1px solid var(--border-color);
+    padding: 10px 0 40px;
+}
+
+.input-group{
+    font-size: var(--font-size);
+}
+
+.input-group label{
+    width: 30%;
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 40px;
+}
+
+.pay-form-input{
+    padding: 0 15px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    width: 70%;
+    outline-color: var(--primary-color);
+}
+
+.input_zip-code-box{
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    align-items: center;
+    gap:20px;
+}
+.zip-code-checkBtn{
+    padding: 0 10px;
+    width: 30%;
+    border-radius: 20px;
+}
+
+
+
+
+
+
+/*<-----------------------PAY-FORM-------------------------------->END*/
+
