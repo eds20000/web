@@ -172,25 +172,32 @@
                 </div>
                 <div class="row cart-content">
                     <div class="col l-8">
-                        <div class="">
+                        <div class="cart__pay-form">
                             <form action="" action="get" id ="cart__pay-form">
                                 <div class="row">
                                     <div class="cart__pay-form-title">届け先</div>
                                 </div>
                                 <div class="input-group row">
-                                    <label for="adress-name" class="address-id">名前</label>
+                                    <label for="adress-name" class="address-id">名前
+                                        <span class="required_label">必須</span>
+                                    </label>
+                                    
                                     <input type="text" class="pay-form-input pay-form-input_name" name="adress-name" id="adress-name">
                                     <span class="form-message"></span>
 
                                 </div>
                                 <div class="input-group row">
-                                    <label for="adress-phone" class="address-phone">電話番号</label>
+                                    <label for="adress-phone" class="address-phone">電話番号
+                                        <span class="required_label">必須</span>
+                                    </label>
                                     <input type="text" class="pay-form-input pay-form-input_phone" name="adress-phone" id="adress-phone">
                                     
                                     <span class="form-message"></span>
                                 </div>
                                 <div class="input-group row">
-                                    <label for="adress-zipcode" class="address-zip-code">郵便番号</label>
+                                    <label for="adress-zipcode" class="address-zip-code">郵便番号
+                                        <span class="required_label">必須</span>
+                                    </label>
                                     <div class="input_zip-code-box">
                                         <input type="text" class="pay-form-input pay-form-input_zip-code" name="adress-zip-code" id="adress-zip-code">
                                         <div class="zip-code-checkBtn primary-btn">住所を自動入力</div>
@@ -198,17 +205,23 @@
                                     <span class="form-message"></span>
                                 </div>
                                 <div class="input-group row">
-                                    <label for="adress-prefecture" class="address-prefecture">都道府県</label>
+                                    <label for="adress-prefecture" class="address-prefecture">都道府県
+                                        <span class="required_label">必須</span>
+                                    </label>
                                     <input type="text" class="pay-form-input pay-form-input_prefecture" name="adress-prefecture" id="adress-zip-code">
                                     <span class="form-message"></span>
                                 </div>
                                 <div class="input-group row">
-                                    <label for="adress-city" class="address-city">市区町村</label>
+                                    <label for="adress-city" class="address-city">市区町村
+                                        <span class="required_label">必須</span>
+                                    </label>
                                     <input type="text" class="pay-form-input pay-form-input_city" name="adress-city" id="adress-zip-code">
                                     <span class="form-message"></span>
                                 </div>
                                 <div class="input-group row">
-                                    <label for="adress-add" class="address-add">町名・丁番地等</label>
+                                    <label for="adress-add" class="address-add">町名・丁番地等
+                                        <span class="required_label">必須</span>
+                                    </label>
                                     <input type="text" class="pay-form-input pay-form-input_add" name="adress-add" id="adress-zip-code">
                                     <span class="form-message"></span>
                                 </div>
@@ -218,6 +231,41 @@
                                     <span class="form-message"></span>
                                 </div>
                             </form>
+                        </div>
+
+                        <div class="payment-form">
+                            <form action="" action="get" id ="payment-form">
+                                <div class="row">
+                                    <div class="payment-form-title">お支払方法</div>
+                                </div>
+                                <div class="input-group row">
+                                    <input type="radio" name="payment" id="payment-cashon" class="payment-cashon">
+                                    <label for="payment-cashon">代金引換 手数料 : 550円～※</label>
+                                    <span class="form-message"></span>
+                                </div> 
+                                <div class="input-group row">
+                                    <input type="radio" name="payment" id="payment-credit" class="payment-credit">
+                                    <label for="payment-credit">クレジットカード決済</label>
+                                    <span class="form-message"></span>
+                                </div>
+                                <div class="input-group row">
+                                    <input type="radio" name="payment" id="payment-paypay" class="payment-paypay">
+                                    <label for="payment-paypay">PayPay</label>
+                                    <span class="form-message"></span>
+                                </div>
+                               
+                                <div class="input-group row">
+                                    <input type="radio" name="payment" id="payment-d" class="payment-d">
+                                    <label for="payment-d">d払い ｄポイントがたまる・つかえる</label>
+                                    <span class="form-message"></span>
+                                </div>
+                                <div class="input-group row">
+                                    <input type="radio" name="payment" id="payment-paydy" class="payment-paydy">
+                                    <label for="payment-paydy">Paidyあと払い（3･6･12回払いも可能）</label>
+                                    <span class="form-message"></span>
+                                </div>
+                            </form>
+                            <div class="close-formBtn">他のお支払い方法で支払う<i class="fa-solid fa-chevron-down"></i></div>
                         </div>
                     </div>
                     <div class="col l-4">

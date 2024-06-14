@@ -12,13 +12,25 @@ var itemPricePay = $('.cart-detail-price span');
 var itemShipPay = $('.cart-detail-price-ship span');
 var TotalPay = $('.cart-detail-total-price span');
 var itemPayCount =$('.cart__list-item-count')
-
-console.log(parseInt(itemPricePay.innerHTML))
-itemPricePay.innerHTML = parseInt(itemPrice.innerHTML) * parseInt(itemPayCount.value);
-    
-    TotalPay.innerHTML = (parseInt(itemPricePay.innerHTML) + parseInt(itemShipPay.innerHTML)).toLocaleString();
-itemPayCount.addEventListener("change",function(){
+if(itemPricePay){
     itemPricePay.innerHTML = parseInt(itemPrice.innerHTML) * parseInt(itemPayCount.value);
     
     TotalPay.innerHTML = (parseInt(itemPricePay.innerHTML) + parseInt(itemShipPay.innerHTML)).toLocaleString();
-})
+    itemPayCount.addEventListener("change",function(){
+    itemPricePay.innerHTML = parseInt(itemPrice.innerHTML) * parseInt(itemPayCount.value);
+    
+    TotalPay.innerHTML = (parseInt(itemPricePay.innerHTML) + parseInt(itemShipPay.innerHTML)).toLocaleString();
+    })
+}
+
+
+// payment-CloseBtn---------------------------------------------Start
+
+var paymentCloseBtn = $('.close-formBtn')
+
+paymentCloseBtn.onclick = function(){
+    console.log(1)
+    $('#payment-form').classList.toggle('form-close');
+}
+
+// payment-CloseBtn---------------------------------------------End
