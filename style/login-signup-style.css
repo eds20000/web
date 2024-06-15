@@ -260,14 +260,6 @@ body{
 
 
 
-.invalid{
-    .form-message{
-        color:var(--error-color);
-    }
-    input{
-        border-color: var(--error-color);
-    }
-}
 
 .required_label{
     padding: 2px 5px;

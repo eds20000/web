@@ -128,6 +128,16 @@ Validator.isEmail = function(selector,message){
 
     };
 }
+Validator.isPhoneNumber = function(selector,message){
+    return {
+        selector: selector,
+        test: function (value) {
+            var regex = /^[0-9-]{10,13}$/i;
+            return regex.test(value) ? undefined :  message || '正しい電話番号を入力してください。';
+        }
+
+    };
+}
 
 Validator.minLength = function (selector,min,max){
     return{

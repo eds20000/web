@@ -173,68 +173,99 @@
                 <div class="row cart-content">
                     <div class="col l-8">
                         <div class="cart__pay-form">
-                            <form action="" action="get" id ="cart__pay-form">
+                            <form action="" action="post" id ="cart__pay-form">
                                 <div class="row">
                                     <div class="cart__pay-form-title">届け先</div>
                                 </div>
                                 <div class="input-group row">
-                                    <label for="adress-name" class="address-id">名前
-                                        <span class="required_label">必須</span>
-                                    </label>
+                                    <div class="col l-4">
+                                        <label for="adress-name" class="address-id">
+                                            名前
+                                            <span class="required_label">必須</span>
+                                        </label>
+                                    </div>
                                     
-                                    <input type="text" class="pay-form-input pay-form-input_name" name="adress-name" id="adress-name">
-                                    <span class="form-message"></span>
+                                    <div class="col l-8">
+                                        <input type="text" class="pay-form-input pay-form-input_name" name="adress-name" id="adress-name">
+                                        <span class="form-message"></span>
+                                    </div>
+                                    
 
                                 </div>
                                 <div class="input-group row">
-                                    <label for="adress-phone" class="address-phone">電話番号
-                                        <span class="required_label">必須</span>
-                                    </label>
-                                    <input type="text" class="pay-form-input pay-form-input_phone" name="adress-phone" id="adress-phone">
-                                    
-                                    <span class="form-message"></span>
-                                </div>
-                                <div class="input-group row">
-                                    <label for="adress-zipcode" class="address-zip-code">郵便番号
-                                        <span class="required_label">必須</span>
-                                    </label>
-                                    <div class="input_zip-code-box">
-                                        <input type="text" class="pay-form-input pay-form-input_zip-code" name="adress-zip-code" id="adress-zip-code">
-                                        <div class="zip-code-checkBtn primary-btn">住所を自動入力</div>
+                                    <div class="col l-4">
+                                        <label for="adress-phone" class="address-phone">電話番号
+                                            <span class="required_label">必須</span>
+                                        </label>
                                     </div>
-                                    <span class="form-message"></span>
+                                    <div class="col l-8">
+                                        <input type="text" class="pay-form-input pay-form-input_phone" name="adress-phone" id="adress-phone">                                  
+                                        <span class="form-message"></span>
+                                    </div>
                                 </div>
                                 <div class="input-group row">
-                                    <label for="adress-prefecture" class="address-prefecture">都道府県
-                                        <span class="required_label">必須</span>
-                                    </label>
-                                    <input type="text" class="pay-form-input pay-form-input_prefecture" name="adress-prefecture" id="adress-zip-code">
-                                    <span class="form-message"></span>
+                                    <div class="col l-4">
+                                        <label for="adress-zipcode" class="address-zip-code">郵便番号
+                                            <span class="required_label">必須</span>
+                                        </label>
+                                    </div>
+                                    <div class="col l-8">
+                                        <div class="input_zip-code-box">
+                                            <input type="text" class="pay-form-input pay-form-input_zip-code" name="adress-zip-code" id="adress-zip-code" >
+                                            <div class="zip-code-checkBtn primary-btn" onclick = "AjaxZip3.zip2addr('adress-zip-code','','adress-prefecture','adress-city');">住所を自動入力</div>
+                                        </div>
+                                        <span class="form-message"></span>
+                                    </div>
+                                    
                                 </div>
                                 <div class="input-group row">
-                                    <label for="adress-city" class="address-city">市区町村
-                                        <span class="required_label">必須</span>
-                                    </label>
-                                    <input type="text" class="pay-form-input pay-form-input_city" name="adress-city" id="adress-zip-code">
-                                    <span class="form-message"></span>
+                                    <div class="col l-4">
+                                        <label for="adress-prefecture" class="address-prefecture">都道府県
+                                            <span class="required_label">必須</span>
+                                        </label>
+                                    </div>
+                                    <div class="col l-8">
+                                        <input type="text" class="pay-form-input pay-form-input_prefecture" name="adress-prefecture" id="adress-prefecture">
+                                        <span class="form-message"></span>
+                                    </div>
+                                    
                                 </div>
                                 <div class="input-group row">
-                                    <label for="adress-add" class="address-add">町名・丁番地等
-                                        <span class="required_label">必須</span>
-                                    </label>
-                                    <input type="text" class="pay-form-input pay-form-input_add" name="adress-add" id="adress-zip-code">
-                                    <span class="form-message"></span>
+                                    <div class="col l-4">
+                                        <label for="adress-city" class="address-city">市区町村
+                                            <span class="required_label">必須</span>
+                                        </label>
+                                    </div>
+                                    <div class="col l-8">
+                                        <input type="text" class="pay-form-input pay-form-input_city" name="adress-city" id="adress-city">
+                                        <span class="form-message"></span>
+                                    </div>
                                 </div>
                                 <div class="input-group row">
-                                    <label for="adress-building" class="address-building">マンション名・号室等</label>
-                                    <input type="text" class="pay-form-input pay-form-input_building" name="adress-building" id="adress-zip-code">
-                                    <span class="form-message"></span>
+                                    <div class="col l-4">
+                                        <label for="adress-add" class="address-add">町名・丁番地等
+                                            <span class="required_label">必須</span>
+                                        </label>
+                                    </div>
+                                    <div class="col l-8">
+                                        <input type="text" class="pay-form-input pay-form-input_add" name="adress-add" id="adress-add">
+                                        <span class="form-message"></span>
+                                    </div>
+                                </div>
+                                <div class="input-group row">
+                                    <div class="col l-4">
+                                        <label for="adress-building" class="address-building">マンション名・号室等</label>
+                                    </div>
+                                    <div class="col l-8">
+                                        <input type="text" class="pay-form-input pay-form-input_building" name="adress-building" id="adress-building">
+                                        <span class="form-message"></span>
+                                    </div>
                                 </div>
                             </form>
                         </div>
 
                         <div class="payment-form">
-                            <form action="" action="get" id ="payment-form">
+                            <form action="" action="get" id ="payment-form" class="form-close">
                                 <div class="row">
                                     <div class="payment-form-title">お支払方法</div>
                                 </div>
@@ -333,5 +364,29 @@ TS-SHOPはレディースからメンズ・キッズまで、幅広いジャン�
         <!-- Footer End -->
     </div>
 <script src="./script/cart.js"></script>
+<script src="./script/validation.js"></script>
+<script src="https://ajaxzip3.github.io/ajaxzip3.js"></script>
+<script>
+     Validator({
+        form:'#cart__pay-form',
+        formGroupSelector:'.input-group',
+        errorSelector:'.form-message',
+        rules:[
+            Validator.isRequired('#adress-name','ユーザー名を入力してください'),
+
+            Validator.isRequired('#adress-phone','電話番号を入力してください'),
+            Validator.isPhoneNumber('#adress-phone','正しい電話番号を入力してください'),
+
+            Validator.isRequired('#adress-zip-code','郵便番号を入力してください'),
+            Validator.isRequired('#adress-prefecture','都道府県を入力してください'),
+            Validator.isRequired('#adress-city','市区町村を入力してください'),
+            Validator.isRequired('#adress-add','町名・丁番地等を入力してくださいを入力してください。'),
+
+        ],
+        onSubmit: function (data) {
+            console.log(data);
+        }
+    });
+</script>
 </body>
 </html>
