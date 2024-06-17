@@ -140,13 +140,18 @@ ul{
     font-size: var(--font-size);
 }
 
-.cart-total-account{
+.cart-total-account,
+.payment-agree-btn{
     margin-top:30px;
 }
 /*<-----------------------PAY-FORM--------------------------------START*/
-#cart__pay-form,#payment-form{
+.address-form,
+.payment-form{
     background-color: var(--hover-color1);
     padding:30px;
+}
+.payment-form{
+    margin-top: 30px;
 }
 #payment-form{
     padding-bottom: 0;
@@ -254,8 +259,14 @@ input[type="radio"]{
 .close-formBtn i{
     margin-left: 10px;
 }
-
-
+.payment-error{
+    position: absolute;
+    right: 50px;
+    top:50px;
+}
+.payment-form {
+    position: relative;
+}
 
 
 

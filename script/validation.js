@@ -108,12 +108,10 @@ function Validator(options){
 }
 
 Validator.isRequired = function(selector,message){
-
-   
-    return {
+  return {
         selector: selector,
         test: function (value) {
-            return value.trim() ? undefined : message || 'ユーザー名を入力してください。'
+            return value ? undefined : message || 'ユーザー名を入力してください。'
         }
 
     };
