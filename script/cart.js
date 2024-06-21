@@ -136,34 +136,35 @@ if(payBtn){
                                 
                                 
                                     <div class="payment-form">
-                                        <div id ="payment-form" class="form-close">
+                                        <div id ="payment-form" class="form-close input-group">
                                             <div class="row">
                                                 <div class="payment-form-title">お支払方法</div>
                                             </div>
-                                            <div class="input-group row">
-                                                <input type="radio" name="payment" id="payment-cashon" class="payment-cashon">
+                                            <div class="radio-group row">
+                                                <input type="radio" name="payment" id="payment-cashon" class="payment-cashon" value ="cash">
                                                 <label for="payment-cashon">代金引換 手数料 : 550円～※</label>
-                                                <span class="form-message payment-error"></span>
                                             </div> 
-                                            <div class="input-group row">
-                                                <input type="radio" name="payment" id="payment-credit" class="payment-credit">
+                                            <div class="radio-group row">
+                                                <input type="radio" name="payment" id="payment-credit" class="payment-credit" value ="credit">
                                                 <label for="payment-credit">クレジットカード決済</label>
                                             </div>
-                                            <div class="input-group row">
-                                                <input type="radio" name="payment" id="payment-paypay" class="payment-paypay">
+                                            <div class="radio-group row">
+                                                <input type="radio" name="payment" id="payment-paypay" class="payment-paypay" value ="paypay">
                                                 <label for="payment-paypay">PayPay</label>
                                             </div>
                                            
-                                            <div class="input-group row">
-                                                <input type="radio" name="payment" id="payment-d" class="payment-d">
+                                            <div class="radio-group row">
+                                                <input type="radio" name="payment" id="payment-d" class="payment-d" value = "dbarai">
                                                 <label for="payment-d">d払い ｄポイントがたまる・つかえる</label>
                                             </div>
-                                            <div class="input-group row">
-                                                <input type="radio" name="payment" id="payment-paydy" class="payment-paydy">
+                                            <div class="radio-group row">
+                                                <input type="radio" name="payment" id="payment-paydy" class="payment-paydy value ="paidy">
                                                 <label for="payment-paydy">Paidyあと払い（3･6･12回払いも可能）</label>
-                                                <span class="form-message"></span>
+                                            
                                             </div>
+                                            <span class="form-message payment-error"></span>
                                         </div>
+                                        
                                         <div class="close-formBtn">他のお支払い方法で支払う<i class="fa-solid fa-chevron-down"></i></div>
                                     </div>
                             </div>
@@ -189,24 +190,89 @@ if(payBtn){
                     </form>
                 </div>
         `
-        
-        
-    }
-    var paymentCloseBtn = $('.close-formBtn')
-    if(paymentCloseBtn){
-    console.log(1)
-    paymentCloseBtn.onclick = function(){
-        let paymentForm = $('#payment-form')
-        paymentForm.classList.toggle('form-close');
-        if(paymentForm.classList.contains('form-close')){
-            paymentCloseBtn.innerHTML = '他のお支払い方法で支払う<i class="fa-solid fa-chevron-down"></i>';
-        }
-        else{
-            paymentCloseBtn.innerHTML = '閉じる<i class="fa-solid fa-chevron-up"></i>';
-        }
+        let paymentCloseBtn = $('.close-formBtn')
+        paymentCloseBtn.onclick = function(){
+            let paymentForm = $('#payment-form')
+            paymentForm.classList.toggle('form-close');
+            if(paymentForm.classList.contains('form-close')){
+                paymentCloseBtn.innerHTML = '他のお支払い方法で支払う<i class="fa-solid fa-chevron-down"></i>';
+            }
+            else{
+                paymentCloseBtn.innerHTML = '閉じる<i class="fa-solid fa-chevron-up"></i>';
+            }
 
+        }
+        Validator({
+            form:'#cart__pay-form',
+            formGroupSelector:'.input-group',
+            errorSelector:'.form-message',
+            rules:[
+                Validator.isRequired('#adress-name','ユーザー名を入力してください'),
+    
+                Validator.isRequired('#adress-phone','電話番号を入力してください'),
+                Validator.isPhoneNumber('#adress-phone','正しい電話番号を入力してください'),
+    
+                Validator.isRequired('#adress-zip-code','郵便番号を入力してください'),
+                Validator.isRequired('#adress-prefecture','都道府県を入力してください'),
+                Validator.isRequired('#adress-city','市区町村を入力してください'),
+                Validator.isRequired('#adress-add','町名・丁番地等を入力してくださいを入力してください。'),
+    
+                Validator.isRequired('input[name="payment"]','支払い方法を選択しください')
+            ],
+            onSubmit: function (data) {
+                console.log(data);
+                let PaymentSuccessBtn = $('.payment-agree-btn');
+                $('.container').innerHTML = 
+                `<div class="gird wide">
+                <div class="row">
+                    <div class="cart-heading">
+                        <div class="cart-heading-list cart-heading-cartshow ">ショッピングカート</div>
+                        <div class="cart-heading-list">></div>
+                        <div class="cart-heading-list cart-heading-pay">お届け先･発送方法･お支払い方法</div>
+                        <div class="cart-heading-list">></div>
+                        <div class="cart-heading-list cart-heading-paysucess cart-cast-main">注文完了</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="payment-success__content">
+                        <div class="payment-success__content-title">
+                            THANK YOU!
+                        </div>
+                        <div class="payment-success__content-thank">
+                            ご注文ありがとうございます
+                        </div>
+                        <div class="payment-success__content-img">
+                            <i class="fa-solid fa-truck"></i>
+                        </div>
+                        <div class="payment-success__content-number-box">
+                            <div class="payment-success__content-number-title">
+                                お客様のご注文番号
+                            </div>
+                            <div class="payment-success__content-number">
+                                SL00------------
+                            </div>
+                        </div>
+                        <div class="payment-success__content-notification">ご注文詳細メールを</div>
+                        <div class="payment-success__content-notification">ご登録メールアドレスに送りしました</div>
+                        <div class="payment-success__content-cancel">ご注文キャンセルについて</div>
+                        <div class="payment-success__content-change">返品・交換について</div>
+                        <a href="./index.html" class="primary-btn payment-success__content-keepBtn ">
+                            買い物を続けます
+                        </a>
+                    </div>
+                </div>
+            </div>
+                `
+            }
+        });
+
+        
+        
     }
-}
+    
+
+    
+
 }
 
 

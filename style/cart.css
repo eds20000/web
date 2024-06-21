@@ -5,6 +5,7 @@
     display: flex;
     justify-content: center;
     gap:10px;
+    margin-bottom: 30px;
 }
 
 .cart-heading-list{
@@ -233,7 +234,7 @@ ul{
 
 input[type="radio"]{
     margin-right: 5px;
-    width: 30px;
+    width: 20px;
 }
 
 #payment-form.form-close{
@@ -273,3 +274,57 @@ input[type="radio"]{
 
 /*<-----------------------PAY-FORM-------------------------------->END*/
 
+/* Payment Success Layout------------------------------------------>START */
+.payment-success__content{
+    width: 50%;
+    text-align: center;
+    background-color: var(--hover-color1);
+    margin: 0 auto;
+    padding: 50px;
+}
+.payment-success__content-title{
+    font-size: 4rem;
+    font-weight: 600;
+    margin: 40px 0 30px;
+    color: var(--primary-color);
+}
+.payment-success__content-thank{
+    margin-bottom: 40px;
+}
+.payment-success__content-img{
+    font-size: 5rem;
+    margin-bottom: 20px;
+}
+.payment-success__content-number-box{
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 30px 0;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 3rem;
+    margin-bottom: 40px;
+    
+    
+}
+
+.payment-success__content-notification{
+    line-height: 3rem;
+}
+.payment-success__content-cancel{
+    margin: 30px 0 10px;
+}
+.payment-success__content-cancel,
+.payment-success__content-change{
+    color: var(--primary-color);
+    cursor: pointer;
+}
+.payment-success__content-cancel:hover,
+.payment-success__content-change:hover{
+    text-decoration: underline;
+}
+.payment-success__content-keepBtn{
+    margin: 40px auto 0;
+    width: 50%;
+}
+/* Payment Success Layout------------------------------------------>END */

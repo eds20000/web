@@ -11,30 +11,28 @@ function Validator(options){
     }
 
     var selectedRules = {};
+
     function validate(inputElement,rule){
+        var errorElement = getParent(inputElement,
+            options.formGroupSelector).querySelector(options.errorSelector);
         var errorMessage;
-        var errorElement = getParent(inputElement,options.formGroupSelector).querySelector(options.errorSelector);
         
         //ルールを取り出し、チェック
         var rules = selectedRules[rule.selector];
+
         for (var i =0; i < rules.length; ++i){
-            for (var i =0; i < rules.length; ++i){
-                switch(inputElement.type){
-                    case 'radio':
-                    case 'checkbox':
-                        errorMessage = rules[i](
-                            formElement.querySelector(rule.selector + ':checked')
-                        );
-                        break;
-                    default:
-                        errorMessage = rules[i](inputElement.value);
-                }
-                if(errorMessage) break;
-                
+            switch(inputElement.type){
+                case 'radio':
+                case 'checkbox':
+                    errorMessage = rules[i](
+                        formElement.querySelector(rule.selector + ':checked')
+                    );
+                    break;
+                default:
+                    errorMessage = rules[i](inputElement.value);
             }
-            if(errorMessage){
-                break;
-            }
+            if(errorMessage) break;
+            
         }
         if(errorMessage){
             errorElement.innerText = errorMessage;
@@ -67,9 +65,30 @@ function Validator(options){
 
             if (isFormValid){
                 if (typeof options.onSubmit === 'function'){
-                    var enableInputs = formElement.querySelectorAll('input:not([type="radio"]):not(select)[name]');
+                    var enableInputs = formElement.querySelectorAll('[name]');
                     var formValues = Array.from(enableInputs).reduce(function(values,input){
-                        values[input.name] = input.value
+                        
+                        switch(input.type){
+                            case 'radio':
+                                values[input.name] = formElement.querySelector('input[name="' + input.name + '"]:checked').value;
+                                break;
+                            case 'checkbox':
+                                if (!input.matches(':checked')) {
+                                    values[input.name] = '';
+                                    return values;
+                                }
+                                if (!Array.isArray(values[input.name])) {
+                                    values[input.name] = [];
+                                }
+                                values[input.name].push(input.value);
+                                break;
+                            case 'file':
+                                values[input.name] = input.files;
+                                break;
+                            default:
+                                values[input.name] = input.value;
+                        
+                        }
                         return values;
                     },{});
                     
@@ -90,18 +109,20 @@ function Validator(options){
             }
 
             
-            var inputElement = formElement.querySelector(rule.selector);
-            var errorElement = inputElement.parentElement.querySelector(options.errorSelector);
-            if(inputElement){
-                inputElement.onblur = function(){
-                    validate(inputElement,rule);
-                }
-
-                inputElement.oninput = function () {
-                    errorElement.innerText = '';
-                    getParent(inputElement,options.formGroupSelector).classList.remove('invalid')
-                }
-            }
+            var inputElements = formElement.querySelector(rule.selector);
+            Array.from(inputElements).forEach(function (inputElement) {
+                // Xử lý trường hợp blur khỏi input
+                 inputElement.onblur = function () {
+                     validate(inputElement, rule);
+                 }
+ 
+                 // Xử lý mỗi khi người dùng nhập vào input
+                 inputElement.oninput = function () {
+                     var errorElement = getParent(inputElement, options.formGroupSelector).querySelector(options.errorSelector);
+                     errorElement.innerText = '';
+                     getParent(inputElement, options.formGroupSelector).classList.remove('invalid');
+                 } 
+             });
 
         });
     }
