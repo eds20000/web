@@ -67,7 +67,6 @@ function Validator(options){
                 if (typeof options.onSubmit === 'function'){
                     var enableInputs = formElement.querySelectorAll('[name]');
                     var formValues = Array.from(enableInputs).reduce(function(values,input){
-                        
                         switch(input.type){
                             case 'radio':
                                 values[input.name] = formElement.querySelector('input[name="' + input.name + '"]:checked').value;
@@ -91,7 +90,7 @@ function Validator(options){
                         }
                         return values;
                     },{});
-                    
+                    console.log(formValues)
                     options.onSubmit(formValues);
                 }
             }
@@ -109,7 +108,7 @@ function Validator(options){
             }
 
             
-            var inputElements = formElement.querySelector(rule.selector);
+            var inputElements = formElement.querySelectorAll(rule.selector);
             Array.from(inputElements).forEach(function (inputElement) {
                 // Xử lý trường hợp blur khỏi input
                  inputElement.onblur = function () {

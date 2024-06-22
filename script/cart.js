@@ -219,7 +219,7 @@ if(payBtn){
     
                 Validator.isRequired('input[name="payment"]','支払い方法を選択しください')
             ],
-            onSubmit: function (data) {
+            onSubmit: function(data) {
                 console.log(data);
                 let PaymentSuccessBtn = $('.payment-agree-btn');
                 $('.container').innerHTML = 
