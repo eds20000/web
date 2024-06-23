@@ -39,6 +39,7 @@ body{
     height: auto;
 }
 
+
 .header__navbar{
     display: flex;
     gap: 30px;
@@ -53,12 +54,14 @@ body{
     flex-basis: 450px;
     height: 40px;
     display: flex;
+    position: relative;
 }
 
 .header__search-input{
     width: 100%;
     height: 100%;
     background-color:rgba(255, 255, 255, 0.3) ;
+    padding: 0 10px;
 }
 
 .header__search-button{
@@ -76,6 +79,44 @@ body{
 .header__search-button:hover{
     background-color: #3f3e3e;
 }
+
+/* HEADER SEARCH BAR --START*/
+.header__search-box{
+    position: absolute;
+    width: 100%;
+    top: 40px;
+    z-index: 1;
+    background-color: var(--white-color);
+    font-size: var(--font-size);
+    box-shadow: var(--box-shadow);
+    display: none;
+}
+.header__search-item-list{
+    width: 100%;
+    cursor: pointer;
+}
+.header__search-item-list:hover{
+    background-color: var(--hover-color);
+}
+.header__search-item-discription{
+    font-weight: 600;
+    padding: 10px 10px 0;
+}
+.header__search-item-name{
+    padding: 0 20px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    line-height: 35px;
+    
+}
+.header__search-item-list:not(:nth-last-child(1)){
+    border-bottom: 1px solid var(--border-color);
+}
+
+
+/* HEADER SEARCH BAR --END*/
 
 .header__navbar{
     list-style: none;

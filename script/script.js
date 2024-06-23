@@ -555,3 +555,53 @@ $$('.sort__item-link').forEach(function(item){
 
 })
 
+
+// --------------SEARCH-ITEM-BAR-------------START
+
+function seacrhItem(){
+    let searchItemInput = $('.header__search-input');
+    let searchItemBox = $('.header__search-box');
+    searchItemInput.oninput = function(){
+        if(searchItemInput.value !== ''){
+            searchItemBox.style.display = 'block';
+            let searchItemList = list_item.filter( value =>
+                {
+                    return value.name.toLowerCase().includes(searchItemInput.value.toLowerCase())
+                }
+            )
+            if(searchItemList.length > 0){
+                searchItemBox.innerHTML = '';
+                
+                searchItemList.forEach( item =>
+                {
+                    let searchInputIndex = item.name.toLowerCase().indexOf(searchItemInput.value.toLowerCase());
+                    console.log(searchInputIndex);
+                    let beforeMatch = item.name.substring(0, searchInputIndex);
+                    let match = item.name.substring(searchInputIndex, searchInputIndex + searchItemInput.value.length);
+                    let afterMatch = item.name.substring(searchInputIndex + searchItemInput.value.length);
+                    
+                    searchItemBox.innerHTML+=`
+                        <div class="header__search-item-list">
+                            <div class="header__search-item-discription"></div>
+                            <div class="header__search-item-name">
+                                ${beforeMatch}<strong>${match}</strong>${afterMatch}
+                            </div>
+                        </div>
+                    `
+                }
+                )
+            }else{
+                searchItemBox.innerHTML = '';
+            }
+            }
+
+        else{
+                searchItemBox.style.display = 'none';
+            }   
+    }
+}
+
+seacrhItem();
+
+
+// --------------SEARCH-ITEM-BAR-------------END
