@@ -123,9 +123,53 @@ var list_item = [
             './image/item-image/item2-color3-4.webp']
             }
         ]
+    },
+    {
+        id:2,
+        brand:'SHEIN',
+        name:'Manfinity Hypemode メンズ ボンバージャケット ローズフィットファッションウェア アウター',
+        price:2651,
+        size:['S','M','L'],
+        category:'ジャケット/アウター',
+        color_img:[
+            {
+                color_nameEng:'#4CAF50',
+                color_name:'アーミーグリーン',
+                color_size:['S','M','L'],
+                img:[
+                './image/item-image/item3-color1-1.webp',
+                './image/item-image/item3-color1-2.webp',
+                './image/item-image/item3-color1-3.webp',
+                './image/item-image/item3-color1-4.webp']
+                
+            },
+            {
+                color_nameEng:'black',
+                color_name:'ブラック',
+                color_size:['S','M','L'],
+                img:[
+                './image/item-image/item3-color2-1.webp',
+                './image/item-image/item3-color2-2.webp',
+                './image/item-image/item3-color2-3.webp',
+                './image/item-image/item3-color2-4.webp',
+                './image/item-image/item3-color2-5.webp',
+                './image/item-image/item3-color2-6.webp']
+                
+            },
+            {
+                color_nameEng:'rgb(14, 14, 14)',
+                color_name:'ワインレッド',
+                color_size:['S','M','L'],
+                img:[
+                './image/item-image/item3-color3-1.webp',
+                './image/item-image/item3-color3-2.webp',
+                './image/item-image/item3-color3-3.webp',
+                './image/item-image/item3-color3-4.webp']
+                
+            }
+        ]
     }
 ]
-
 
 export default list_item;
 
@@ -166,13 +210,22 @@ if (sort__item_list){
             </div>
         </div>
     </div>`
-
-    
 }
 }
+changeImage();
+takeCart();
+productRedirect();
+export function getItemParent(element,parentAdress) {
+    while (element.parentElement) {
+        if (element.parentElement.matches(parentAdress)) {
+            return element.parentElement;
+        }
+        element = element.parentElement;
+    }
+}
 
-
-$$('.sort__item').forEach(function(item){//thay doi hinh anh bang nut bam o muc item
+function changeImage(){
+    $$('.sort__item').forEach(function(item){//thay doi hinh anh bang nut bam o muc item
     var index = 0;
     let itemId = item.getAttribute('item-index');
     item.querySelector('.sort__item-img_btn-left').onclick = function(){
@@ -193,412 +246,535 @@ $$('.sort__item').forEach(function(item){//thay doi hinh anh bang nut bam o muc 
         item.querySelector('.sort__item-img img').src = list_item[itemId].color_img[0].img[index]
     }
 })
-
-
-
-
-
+}
 
 // <!---------------Page-bar--------End--> 
 
 //-----------------------Take-cart--------------------------------Start
-
-var takeCartBoxBtn = $$('.sort__item-takecart');
-var takeCartBtn = $('.item-checklist-takecart-btn');
-
-var myCart = [];
-
-
-// Hàm chuyển đổi hình ảnh
-function itemImgChange() {
-    var itemImageMain = $('.item-checklist-img-main img');
-    var itemImage = $$('.item-checklist-imglist-item');
-
-    itemImage.forEach(function(a) {
-        a.onclick = function() {
-            itemImage.forEach(function(b) {
-                b.classList.remove('main');
-            });
-            this.classList.add('main');
-            itemImageMain.src = this.querySelector('img').src;
-        };
-    });
-}
-//
-
-export function getItemParent(element,parentAdress) {
-    while (element.parentElement) {
-        if (element.parentElement.matches(parentAdress)) {
-            return element.parentElement;
-        }
-        element = element.parentElement;
+function takeCart(){
+    var takeCartBoxBtn = $$('.sort__item-takecart');
+    var takeCartBtn = $('.item-checklist-takecart-btn');
+    
+    var myCart = [];
+    
+    
+    // Hàm chuyển đổi hình ảnh
+    function itemImgChange() {
+        var itemImageMain = $('.item-checklist-img-main img');
+        var itemImage = $$('.item-checklist-imglist-item');
+    
+        itemImage.forEach(function(a) {
+            a.onclick = function() {
+                itemImage.forEach(function(b) {
+                    b.classList.remove('main');
+                });
+                this.classList.add('main');
+                itemImageMain.src = this.querySelector('img').src;
+            };
+        });
     }
-}
+    //
 
-
-var onChangeCart = function(){
-    var headerCartBox = $('.header__navbar-cart-box');
-    var myCartCount = $('.header__navbar-cart-count');
-    var cartItems = {};
-    var priceTotal = myCart.reduce((total, item) => total + item.price, 0);
-  
-    if (myCart.length === 0){
-        myCartCount.style.display = 'none';
-        headerCartBox.innerHTML = 
-        `
-            <div class="header__navbar-cart-box-empty">
-                <div class="header__navbar-cart-box-empty-img">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                </div>
-                <div class="header__navbar-cart-box-empty-content">
-                    現在カートに商品はありません。
-                </div>
-            </div>                       
-
-        `
-        }else{
-            myCartCount.style.display = 'block';
-            myCartCount.innerHTML = myCart.length;
-            headerCartBox.style.maxHeight = '80vh'
-            
+    
+    
+    var onChangeCart = function(){
+        var headerCartBox = $('.header__navbar-cart-box');
+        var myCartCount = $('.header__navbar-cart-count');
+        var cartItems = {};
+        var priceTotal = myCart.reduce((total, item) => total + item.price, 0);
+      
+        if (myCart.length === 0){
+            myCartCount.style.display = 'none';
             headerCartBox.innerHTML = 
-            `<div class="header__navbar-cart-list">
-                                
-            </div>
-            <div class="header__navbar-cart-checkox">
-                <div class="header__navbar-cart-total">合計：<span>￥<div class="header__navbar-cart-total-index"></div></span></div>
-                <div class="header__navbar-cart-check-btn"><a href="./cart.html">買い物かごを見る(${myCart.length})</a></div>
-            </div>`
-            $('.header__navbar-cart-total-index').innerHTML = priceTotal;
-            // Duyệt qua myCart và đếm số lượng của mỗi sản phẩm
-
-            myCart.forEach(function(item) {
-                const key = `${item.name}-${item.brand}-${item.color}-${item.size}-${item.img}-${item.price}`;
-                if (!cartItems[key]) {
-                    cartItems[key] = { ...item, quantity: 0 };
-                }
-                cartItems[key].quantity++;
-        
-            });
-            renderCart();
-    }
-
-    
-    
-    
-    
-// Duyệt qua cartItems để hiển thị các sản phẩm và số lượng của chúng
-    function renderCart() {
-        const cartList = document.querySelector('.header__navbar-cart-list');
-        cartList.innerHTML = '';
-        Object.values(cartItems).forEach(function(a) {
-            const key = `${a.name}-${a.brand}-${a.color}-${a.size}-${a.img}-${a.price}`;
-            cartList.innerHTML +=
-            `<div class="row header__navbar-cart-item" data-key="${key}">
-                <div class="col l-3 header__navbar-cart-item_img">
-                    <a href="http://" class="item-link">
-                        <img src="${a.img}" alt="">
-                    </a> 
-                </div>
-        
-                <div class="col l-9 header__navbar-cart-item_content">
-                    <a href="" class="item-link">
-                        <div class="header__navbar-cart-item_title">
-                            ${a.name}
-                        </div>
-                    </a>
-                    <div class="header__navbar-cart-item_brand">${a.brand}</div>
-                    <div class="header__navbar-cart-item_info">
-                        <div class="header__navbar-cart-item_info-box">
-                            <div class="header__navbar-cart-item_info-color"><b>カラー：</b>${a.color}</div>
-                            <div class="header__navbar-cart-item_info-size"><b>サイズ：</b>${a.size}</div>
-                        </div>
-                        <div class="header__navbar-cart-item_info-quantity-box">
-                            <div class="header__navbar-cart-item_info-quantity-down">-</div>
-                            <div class="header__navbar-cart-item_info-quantity-num">${a.quantity}</div>
-                            <div class="header__navbar-cart-item_info-quantity-up">+</div>
-                        </div>
+            `
+                <div class="header__navbar-cart-box-empty">
+                    <div class="header__navbar-cart-box-empty-img">
+                        <i class="fa-solid fa-cart-shopping"></i>
                     </div>
-                    <div class="header__navbar-cart-item_info-footer">
-                        <div class="header__navbar-cart-item_info-price">￥${a.price}</div>
-                        <div class="header__navbar-cart-item_btn-remove"><i class="fa-regular fa-trash-can"></i></div>
+                    <div class="header__navbar-cart-box-empty-content">
+                        現在カートに商品はありません。
                     </div>
+                </div>                       
+    
+            `
+            }else{
+                myCartCount.style.display = 'block';
+                myCartCount.innerHTML = myCart.length;
+                headerCartBox.style.maxHeight = '80vh'
+                
+                headerCartBox.innerHTML = 
+                `<div class="header__navbar-cart-list">
+                                    
                 </div>
-            </div>`;
-        });
-       
-        document.querySelectorAll('.header__navbar-cart-item').forEach(function(itemElement) {
-            const key = itemElement.getAttribute('data-key');
-            
-            itemElement.querySelector('.header__navbar-cart-item_info-quantity-down').addEventListener('click', function() {
-                if (cartItems[key].quantity > 1) {
-                    cartItems[key].quantity--;
-                } else {
-                    delete cartItems[key];
-                }
-                updateMyCartFromCartItems(); // Cập nhật lại giỏ hàng sau khi thay đổi số lượng
-                renderCart();
-                onChangeCart();
-            });
+                <div class="header__navbar-cart-checkox">
+                    <div class="header__navbar-cart-total">合計：<span>￥<div class="header__navbar-cart-total-index"></div></span></div>
+                    <div class="header__navbar-cart-check-btn"><a href="./cart.html">買い物かごを見る(${myCart.length})</a></div>
+                </div>`
+                $('.header__navbar-cart-total-index').innerHTML = priceTotal;
+                // Duyệt qua myCart và đếm số lượng của mỗi sản phẩm
     
-            itemElement.querySelector('.header__navbar-cart-item_info-quantity-up').addEventListener('click', function() {
-                cartItems[key].quantity++;
-                updateMyCartFromCartItems(); // Cập nhật lại giỏ hàng sau khi thay đổi số lượng
-                renderCart();
-                onChangeCart();
-            });
-    
-            itemElement.querySelector('.header__navbar-cart-item_btn-remove').addEventListener('click', function() {
-                delete cartItems[key];
-                updateMyCartFromCartItems(); // Cập nhật lại giỏ hàng sau khi thay đổi số lượng
-                renderCart();
-                onChangeCart();
-            });
-        });
-
-    }
-    // Hàm cập nhật myCart từ cartItems
-    function updateMyCartFromCartItems() {
-        myCart = [];
-        Object.values(cartItems).forEach(function(item) {
-            for (let i = 0; i < item.quantity; i++) {
-                myCart.push(item);
-            }
-        });
-    }
-    // Thêm sự kiện click cho các nút tăng và giảm số lượng
-    console.log(cartItems);
-}
-if(true){
-    takeCartBoxBtn.forEach(function(currentItemBox){
-        currentItemBox.onclick = function(a){
-            itemImgChange($(".item-checklist-img-main"),$$(".item-checklist-imglist-item"));
-            var ItemName = getItemParent(this,'.sort__item').querySelector('.sort__item-text').innerHTML;
-            var itemCurrent = list_item.find(function(item){
-                return item.name === ItemName;
-            });
-        
-            let ItemImg_Color = itemCurrent.color_img;
-            let ItemPrice = itemCurrent.price;
-            let ItemBrand = itemCurrent.brand;
-        
-        
-            let body = document.body;
-            let SelectCartCloseBtn = $('.select-cart-box-close')
-            
-            body.classList.toggle("overlay-open_select-cart-box");
-        
-            if (body.classList.contains("overlay-open")) {
-                body.style.position = "fixed";
-            } else {
-                body.style.position = "";
-            }
-        
-            SelectCartCloseBtn.onclick = function(){
-                var body = document.body;
-                
-                if (body.classList.contains("overlay-open_select-cart-box")){
-                    body.classList.remove("overlay-open_select-cart-box");
-                }
-            } 
-            //chuyền thông tin sản phẩm vào box take cart
-        
-            var SelectCartBox = $('.select-cart-box-content');
-            var itemChecklistImg =$('.item-checklist-imglist');
-            var itemCheckSizeList = $('.checklist-size-list');    
-            var iteamCheckBrand = $('.item-checklist-brand');
-            
-        
-            itemChecklistImg.innerHTML="";
-            for ( var i = 0 ; i < ItemImg_Color[0].img.length ;++i){
-                itemChecklistImg.innerHTML += 
-                `<li class="item-checklist-imglist-item"><img src="${ItemImg_Color[0].img[i]}" alt=""></li>
-                `
-            }
-            $('.item-checklist-name').innerHTML = ItemName;
-            $('.item-checklist-price span').innerHTML = ItemPrice;
-           
-            itemCheckSizeList.innerHTML="";
-            itemCheckSizeList.innerHTML += `<li class="checklist-size size_checked">${itemCurrent.size[0]}</li>`;
-            iteamCheckBrand.innerHTML = ItemBrand;
-             for(var i = 1; i < itemCurrent.size.length; ++i){
-                itemCheckSizeList.innerHTML+=`
-                <li class="checklist-size">${itemCurrent.size[i]}</li>
-                `
-            }
-        
-            //trich xuat color tu list item
-            var CheckColorList = $('.checklist-color-list');
-            var CheckColorName = $('.checklist-color-name span');
-            var itemColorCurrent = itemCurrent.color_img.find(
-                colorList => colorList.color_name == CheckColorName.innerHTML);
-            CheckColorList.innerHTML = "";
-            for(let i = 0; i < itemCurrent.color_img.length; ++i){
-                
-                CheckColorList.innerHTML += `<li class="checklist-color"></li>`;
-            }
-            var checkListItem = $$('.checklist-color');
-            checkListItem[0].classList.add('color-checked')
-            colorNameChange();
-            colorImageChange();
-        
-            function colorNameChange(){
-                for(let i = 0; i < itemCurrent.color_img.length; ++i){
-                    checkListItem[i].style.backgroundColor = itemCurrent.color_img[i].color_nameEng;
-                    if(checkListItem[i].classList.contains('color-checked')){
-                        CheckColorName.innerHTML = itemCurrent.color_img[i].color_name;//trich xuat ten mau vao box
+                myCart.forEach(function(item) {
+                    const key = `${item.name}-${item.brand}-${item.color}-${item.size}-${item.img}-${item.price}`;
+                    if (!cartItems[key]) {
+                        cartItems[key] = { ...item, quantity: 0 };
                     }
-                }
-            }
-            function colorImageChange(){//Ham doi hinh anh khi chon color
-                itemColorCurrent = itemCurrent.color_img.find(
-                    colorList => colorList.color_name == CheckColorName.innerHTML);
-                
-        
-                itemChecklistImg.innerHTML="";
-                for ( var i = 0 ; i < itemColorCurrent.img.length ;++i){
-                    itemChecklistImg.innerHTML += 
-                    `<li class="item-checklist-imglist-item"><img src="${itemColorCurrent.img[i]}" alt=""></li>
-                    `
-                    $('.item-checklist-img-main').innerHTML = 
-                    `<img src="${itemColorCurrent.img[0]}" alt="">`;
-                }
-            }
-        
-        
-            // THIET LAP NUT CHON SIZE
-            let sizeBtn = $$('.checklist-size');
-            sizeBtn.forEach(function(a){
-                a.onclick = function(){
-                    $('.size_checked').classList.remove('size_checked');
-                    this.classList.add('size_checked');
-                }
-            });
-        
-            //THIET LAP NUT CHON MAU
-            let colorBtn = $$('.checklist-color');
-            colorBtn.forEach(function(color){
-                color.onclick = function(){
-                    $('.color-checked').classList.remove('color-checked');
-                    this.classList.add('color-checked');
-        
-                    colorNameChange();   
-                    colorImageChange();
-                    itemImgChange();//goi ham lua chon hinh anh
-                }
-            })
-        
-            //Item product take --------------------------------- Start
-            takeCartBtn.onclick = function(){
-                var ItemImgSrc = itemColorCurrent.img[0];
-                var ItemColor = itemColorCurrent.color_name;
-                var ItemPrice = itemCurrent.price;
-                var ItemSize = $('.checklist-size.size_checked').innerHTML;
-                var ItemBrand = itemCurrent.brand;
-        
-                myCartProxy.push({
-                    name : ItemName,
-                    brand : ItemBrand,
-                    img : ItemImgSrc,
-                    price : ItemPrice,
-                    size : ItemSize,
-                    color : ItemColor
-        
-                })   
-                
-            };    
+                    cartItems[key].quantity++;
             
-            let myCartProxy = new Proxy(myCart, {
-                set(target, property, value, receiver) {
-                    // Thực hiện hành động mặc định
-                    let result = Reflect.set(target, property, value, receiver);
-            
-                    // Kiểm tra nếu hành động là thêm hoặc thay đổi một phần tử trong mảng
-                    if (property !== 'length') {
-                        onChangeCart();
-                    }
-            
-                    return result;
-                },
-                deleteProperty(target, property) {
-                    // Thực hiện hành động mặc định
-                    let result = Reflect.deleteProperty(target, property);
-            
-                    // Gọi hàm khi một phần tử bị xóa
-                    onChangeCart();
-            
-                    return result;
-                }
-            });
-            
-        //Item product take -------------------------------- Enđ
+                });
+                renderCart();
         }
     
-    })
+        
+        
+        
+        
+    // Duyệt qua cartItems để hiển thị các sản phẩm và số lượng của chúng
+        function renderCart() {
+            const cartList = document.querySelector('.header__navbar-cart-list');
+            cartList.innerHTML = '';
+            Object.values(cartItems).forEach(function(a) {
+                const key = `${a.name}-${a.brand}-${a.color}-${a.size}-${a.img}-${a.price}`;
+                cartList.innerHTML +=
+                `<div class="row header__navbar-cart-item" data-key="${key}">
+                    <div class="col l-3 header__navbar-cart-item_img">
+                        <a href="http://" class="item-link">
+                            <img src="${a.img}" alt="">
+                        </a> 
+                    </div>
+            
+                    <div class="col l-9 header__navbar-cart-item_content">
+                        <a href="" class="item-link">
+                            <div class="header__navbar-cart-item_title">
+                                ${a.name}
+                            </div>
+                        </a>
+                        <div class="header__navbar-cart-item_brand">${a.brand}</div>
+                        <div class="header__navbar-cart-item_info">
+                            <div class="header__navbar-cart-item_info-box">
+                                <div class="header__navbar-cart-item_info-color"><b>カラー：</b>${a.color}</div>
+                                <div class="header__navbar-cart-item_info-size"><b>サイズ：</b>${a.size}</div>
+                            </div>
+                            <div class="header__navbar-cart-item_info-quantity-box">
+                                <div class="header__navbar-cart-item_info-quantity-down">-</div>
+                                <div class="header__navbar-cart-item_info-quantity-num">${a.quantity}</div>
+                                <div class="header__navbar-cart-item_info-quantity-up">+</div>
+                            </div>
+                        </div>
+                        <div class="header__navbar-cart-item_info-footer">
+                            <div class="header__navbar-cart-item_info-price">￥${a.price}</div>
+                            <div class="header__navbar-cart-item_btn-remove"><i class="fa-regular fa-trash-can"></i></div>
+                        </div>
+                    </div>
+                </div>`;
+            });
+           
+            document.querySelectorAll('.header__navbar-cart-item').forEach(function(itemElement) {
+                const key = itemElement.getAttribute('data-key');
+                
+                itemElement.querySelector('.header__navbar-cart-item_info-quantity-down').addEventListener('click', function() {
+                    if (cartItems[key].quantity > 1) {
+                        cartItems[key].quantity--;
+                    } else {
+                        delete cartItems[key];
+                    }
+                    updateMyCartFromCartItems(); // Cập nhật lại giỏ hàng sau khi thay đổi số lượng
+                    renderCart();
+                    onChangeCart();
+                });
+        
+                itemElement.querySelector('.header__navbar-cart-item_info-quantity-up').addEventListener('click', function() {
+                    cartItems[key].quantity++;
+                    updateMyCartFromCartItems(); // Cập nhật lại giỏ hàng sau khi thay đổi số lượng
+                    renderCart();
+                    onChangeCart();
+                });
+        
+                itemElement.querySelector('.header__navbar-cart-item_btn-remove').addEventListener('click', function() {
+                    delete cartItems[key];
+                    updateMyCartFromCartItems(); // Cập nhật lại giỏ hàng sau khi thay đổi số lượng
+                    renderCart();
+                    onChangeCart();
+                });
+            });
+    
+        }
+        // Hàm cập nhật myCart từ cartItems
+        function updateMyCartFromCartItems() {
+            myCart = [];
+            Object.values(cartItems).forEach(function(item) {
+                for (let i = 0; i < item.quantity; i++) {
+                    myCart.push(item);
+                }
+            });
+        }
+        // Thêm sự kiện click cho các nút tăng và giảm số lượng
+        console.log(cartItems);
+    }
+    if(true){
+        takeCartBoxBtn.forEach(function(currentItemBox){
+            currentItemBox.onclick = function(a){
+                itemImgChange($(".item-checklist-img-main"),$$(".item-checklist-imglist-item"));
+                var ItemName = getItemParent(this,'.sort__item').querySelector('.sort__item-text').innerHTML;
+                var itemCurrent = list_item.find(function(item){
+                    return item.name === ItemName;
+                });
+            
+                let ItemImg_Color = itemCurrent.color_img;
+                let ItemPrice = itemCurrent.price;
+                let ItemBrand = itemCurrent.brand;
+            
+            
+                let body = document.body;
+                let SelectCartCloseBtn = $('.select-cart-box-close')
+                
+                body.classList.toggle("overlay-open_select-cart-box");
+            
+                if (body.classList.contains("overlay-open")) {
+                    body.style.position = "fixed";
+                } else {
+                    body.style.position = "";
+                }
+            
+                SelectCartCloseBtn.onclick = function(){
+                    var body = document.body;
+                    
+                    if (body.classList.contains("overlay-open_select-cart-box")){
+                        body.classList.remove("overlay-open_select-cart-box");
+                    }
+                } 
+                //chuyền thông tin sản phẩm vào box take cart
+            
+                var SelectCartBox = $('.select-cart-box-content');
+                var itemChecklistImg =$('.item-checklist-imglist');
+                var itemCheckSizeList = $('.checklist-size-list');    
+                var iteamCheckBrand = $('.item-checklist-brand');
+                
+            
+                itemChecklistImg.innerHTML="";
+                for ( var i = 0 ; i < ItemImg_Color[0].img.length ;++i){
+                    itemChecklistImg.innerHTML += 
+                    `<li class="item-checklist-imglist-item"><img src="${ItemImg_Color[0].img[i]}" alt=""></li>
+                    `
+                }
+                $('.item-checklist-name').innerHTML = ItemName;
+                $('.item-checklist-price span').innerHTML = ItemPrice;
+               
+                itemCheckSizeList.innerHTML="";
+                itemCheckSizeList.innerHTML += `<li class="checklist-size size_checked">${itemCurrent.size[0]}</li>`;
+                iteamCheckBrand.innerHTML = ItemBrand;
+                 for(var i = 1; i < itemCurrent.size.length; ++i){
+                    itemCheckSizeList.innerHTML+=`
+                    <li class="checklist-size">${itemCurrent.size[i]}</li>
+                    `
+                }
+            
+                //trich xuat color tu list item
+                var CheckColorList = $('.checklist-color-list');
+                var CheckColorName = $('.checklist-color-name span');
+                var itemColorCurrent = itemCurrent.color_img.find(
+                    colorList => colorList.color_name == CheckColorName.innerHTML);
+                CheckColorList.innerHTML = "";
+                for(let i = 0; i < itemCurrent.color_img.length; ++i){
+                    
+                    CheckColorList.innerHTML += `<li class="checklist-color"></li>`;
+                }
+                var checkListItem = $$('.checklist-color');
+                checkListItem[0].classList.add('color-checked')
+                colorNameChange();
+                colorImageChange();
+            
+                function colorNameChange(){
+                    for(let i = 0; i < itemCurrent.color_img.length; ++i){
+                        checkListItem[i].style.backgroundColor = itemCurrent.color_img[i].color_nameEng;
+                        if(checkListItem[i].classList.contains('color-checked')){
+                            CheckColorName.innerHTML = itemCurrent.color_img[i].color_name;//trich xuat ten mau vao box
+                        }
+                    }
+                }
+                function colorImageChange(){//Ham doi hinh anh khi chon color
+                    itemColorCurrent = itemCurrent.color_img.find(
+                        colorList => colorList.color_name == CheckColorName.innerHTML);
+                    
+            
+                    itemChecklistImg.innerHTML="";
+                    for ( var i = 0 ; i < itemColorCurrent.img.length ;++i){
+                        itemChecklistImg.innerHTML += 
+                        `<li class="item-checklist-imglist-item"><img src="${itemColorCurrent.img[i]}" alt=""></li>
+                        `
+                        $('.item-checklist-img-main').innerHTML = 
+                        `<img src="${itemColorCurrent.img[0]}" alt="">`;
+                    }
+                }
+            
+            
+                // THIET LAP NUT CHON SIZE
+                let sizeBtn = $$('.checklist-size');
+                sizeBtn.forEach(function(a){
+                    a.onclick = function(){
+                        $('.size_checked').classList.remove('size_checked');
+                        this.classList.add('size_checked');
+                    }
+                });
+            
+                //THIET LAP NUT CHON MAU
+                let colorBtn = $$('.checklist-color');
+                colorBtn.forEach(function(color){
+                    color.onclick = function(){
+                        $('.color-checked').classList.remove('color-checked');
+                        this.classList.add('color-checked');
+            
+                        colorNameChange();   
+                        colorImageChange();
+                        itemImgChange();//goi ham lua chon hinh anh
+                    }
+                })
+            
+                //Item product take --------------------------------- Start
+                takeCartBtn.onclick = function(){
+                    var ItemImgSrc = itemColorCurrent.img[0];
+                    var ItemColor = itemColorCurrent.color_name;
+                    var ItemPrice = itemCurrent.price;
+                    var ItemSize = $('.checklist-size.size_checked').innerHTML;
+                    var ItemBrand = itemCurrent.brand;
+            
+                    myCartProxy.push({
+                        name : ItemName,
+                        brand : ItemBrand,
+                        img : ItemImgSrc,
+                        price : ItemPrice,
+                        size : ItemSize,
+                        color : ItemColor
+            
+                    })   
+                    
+                };    
+                
+                let myCartProxy = new Proxy(myCart, {
+                    set(target, property, value, receiver) {
+                        // Thực hiện hành động mặc định
+                        let result = Reflect.set(target, property, value, receiver);
+                
+                        // Kiểm tra nếu hành động là thêm hoặc thay đổi một phần tử trong mảng
+                        if (property !== 'length') {
+                            onChangeCart();
+                        }
+                
+                        return result;
+                    },
+                    deleteProperty(target, property) {
+                        // Thực hiện hành động mặc định
+                        let result = Reflect.deleteProperty(target, property);
+                
+                        // Gọi hàm khi một phần tử bị xóa
+                        onChangeCart();
+                
+                        return result;
+                    }
+                });
+                
+            //Item product take -------------------------------- Enđ
+            }
+        
+        })
+    }
+    onChangeCart();
 }
-onChangeCart();
-
-
-
-
-
 //-----------------------Take-cart--------------------------------End
 
 
 //--------------------------Thanhchuyenhuonggiaodiensanpham----------]
 
-$$('.sort__item-link').forEach(function(item){
-    item.onclick = function(){
-        const productId = this.dataset.id;
-        window.location.href = `product.html?id=${productId}`;
-    }
-
-})
-
+function productRedirect(){
+    $$('.sort__item-link').forEach(function(item){
+        item.onclick = function(){
+            const productId = this.dataset.id;
+            window.location.href = `product.html?id=${productId}`;
+        }
+    
+    })
+}
 
 // --------------SEARCH-ITEM-BAR-------------START
 
 function seacrhItem(){
     let searchItemInput = $('.header__search-input');
     let searchItemBox = $('.header__search-box');
-    searchItemInput.oninput = function(){
-        if(searchItemInput.value !== ''){
+    let searchItemBtn = $('.header__search-button');
+    let searchItemList = [];
+    // searchItemInput.oninput = function(){
+    //     if(searchItemInput.value !== ''){
+    //         searchItemBox.style.display = 'block';
+    //         itemNameSearch();
+    //         function itemNameSearch(){
+    //             searchItemList = list_item.filter( value =>
+    //                 {
+    //                     return value.name.toLowerCase().includes(searchItemInput.value.toLowerCase())
+    //                 }
+    //             )
+    //             if(searchItemList.length > 0){
+    //                 console.log(searchItemList)
+    //                 searchItemBox.innerHTML = '';
+                    
+    //                 searchItemList.forEach( item =>
+    //                     {
+    //                         let searchInputIndex = item.name.toLowerCase().indexOf(searchItemInput.value.toLowerCase());
+    //                         let beforeMatch = item.name.substring(0, searchInputIndex);
+    //                         let match = item.name.substring(searchInputIndex, searchInputIndex + searchItemInput.value.length);
+    //                         let afterMatch = item.name.substring(searchInputIndex + searchItemInput.value.length);
+
+    //                         searchItemBox.innerHTML+=
+    //                         `
+    //                             <div class="header__search-item-list">
+    //                                 <div class="header__search-item-discription"></div>
+    //                                 <div class="header__search-item-name">
+    //                                     ${beforeMatch}<strong>${match}</strong>${afterMatch}
+    //                                 </div>
+    //                             </div>
+    //                         `
+    //                     }
+    //                 )
+    //             }
+    //             else{
+    //                 searchItemBox.innerHTML = '';
+    //             }
+    //         }
+    //         }
+
+    //     else{
+    //             searchItemBox.style.display = 'none';
+    //         }   
+    // }
+    searchItemInput.oninput = function() {
+        if (searchItemInput.value !== '') {
             searchItemBox.style.display = 'block';
-            let searchItemList = list_item.filter( value =>
+            itemSearch();
+            
+            function itemSearch() {
+                let nameSearchResults = list_item.filter(value =>
+                    value.name.toLowerCase().includes(searchItemInput.value.toLowerCase())
+                );
+                let brandSearchResults = list_item.filter(value =>
+                    value.brand.toLowerCase().includes(searchItemInput.value.toLowerCase())
+                );
+    
+        
+                    
+                if (nameSearchResults.length > 0) {
+                    console.log(nameSearchResults);
+                    searchItemBox.innerHTML = '';
+    
+                    nameSearchResults.forEach( item =>
+                    {
+                        let searchInputIndex = item.name.toLowerCase().indexOf(searchItemInput.value.toLowerCase());
+                        let beforeMatch = item.name.substring(0, searchInputIndex);
+                        let match = item.name.substring(searchInputIndex, searchInputIndex + searchItemInput.value.length);
+                        let afterMatch = item.name.substring(searchInputIndex + searchItemInput.value.length);
+                    
+                        searchItemBox.innerHTML+=
+                        `
+                            <div class="header__search-item-list">
+                                <div class="header__search-item-discription"></div>
+                                <div class="header__search-item-name">
+                                    ${beforeMatch}<strong>${match}</strong>${afterMatch}
+                                </div>
+                            </div>
+                         `
+                    }
+                    )
+                }
+                else if(brandSearchResults.length > 0){
+                    brandSearchResults.forEach( item =>
+                        {
+                            let searchInputIndex = item.brand.toLowerCase().indexOf(searchItemInput.value.toLowerCase());
+                            let beforeMatch = item.brand.substring(0, searchInputIndex);
+                            let match = item.brand.substring(searchInputIndex, searchInputIndex + searchItemInput.value.length);
+                            let afterMatch = item.brand.substring(searchInputIndex + searchItemInput.value.length);
+                        
+                            searchItemBox.innerHTML+=
+                            `
+                                <div class="header__search-item-list">
+                                    <div class="header__search-item-discription">Brand</div>
+                                    <div class="header__search-item-name">
+                                        ${beforeMatch}<strong>${match}</strong>${afterMatch}
+                                    </div>
+                                </div>
+                             `
+                        }
+                        )
+                }
+                else {
+                    searchItemBox.innerHTML = '';
+                }
+            }
+        } else {
+            searchItemBox.style.display = 'none';
+        }
+    };
+    
+    function performSearch(){
+        if (searchItemList.length > 0){
+            sort__item_list.innerHTML = '';
+            searchItemList.forEach(item =>
                 {
-                    return value.name.toLowerCase().includes(searchItemInput.value.toLowerCase())
+                    
+                    sort__item_list.innerHTML +=
+    `<div class="col l-2-4">
+        <div class="sort__item" item-index = "${item.id}">
+            <a class="sort__item-link" data-id="${item.id}" >
+                <div class="sort__item-img">
+                    <img src="${item.color_img[0].img[0]}" alt="">
+                </div>
+                <div class="sort__item-brand">${item.brand}</div>
+                <div class="sort__item-text">${item.name}</div>
+            </a>
+            <div class="sort__item-img_btn sort__item-img_btn-left"><i class="fa-solid fa-angle-left"></i></div>
+            <div class="sort__item-img_btn sort__item-img_btn-right"><i class="fa-solid fa-angle-right"></i></div>
+            <div class="sort__item-content">
+                <div class="sort__item-title">
+                    <div class="sort__item-price">￥${item.price}</div>
+                    <div class="sort__item-takeit">
+                        <button type="button" class="sort__item-favorite sort__item-takecart-disable" onclick="favoritebutton(this)"></button>
+                        <button type="button" class="sort__item-takecart"><i class="fa-solid fa-cart-plus"></i></button>
+                    </div>
+                </div>
+                <div class="sort__item-star">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <div class="sort__item-star-number">
+                        (<p>0</p>)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>`
                 }
             )
-            if(searchItemList.length > 0){
-                searchItemBox.innerHTML = '';
-                
-                searchItemList.forEach( item =>
-                {
-                    let searchInputIndex = item.name.toLowerCase().indexOf(searchItemInput.value.toLowerCase());
-                    console.log(searchInputIndex);
-                    let beforeMatch = item.name.substring(0, searchInputIndex);
-                    let match = item.name.substring(searchInputIndex, searchInputIndex + searchItemInput.value.length);
-                    let afterMatch = item.name.substring(searchInputIndex + searchItemInput.value.length);
-                    
-                    searchItemBox.innerHTML+=`
-                        <div class="header__search-item-list">
-                            <div class="header__search-item-discription"></div>
-                            <div class="header__search-item-name">
-                                ${beforeMatch}<strong>${match}</strong>${afterMatch}
-                            </div>
-                        </div>
-                    `
-                }
-                )
-            }else{
-                searchItemBox.innerHTML = '';
-            }
-            }
-
+        changeImage();
+        takeCart();
+        productRedirect();
+        }
         else{
-                searchItemBox.style.display = 'none';
-            }   
+            $('.content__title-sort').style.display = 'none';
+            sort__item_list.innerHTML = `
+            <div class='search__item-empty'>
+            <img src="../image/item-search-empty.jpg">
+            No results found for "${searchItemInput.value}"
+            </div>`
+            ;
+        }
     }
+    searchItemBtn.onclick = performSearch;
+
+        // Enter key press event
+    searchItemInput.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        performSearch();
+    }
+    });
 }
 
 seacrhItem();

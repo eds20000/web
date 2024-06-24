@@ -370,7 +370,7 @@ $$('.product-item-data-content_addcart').forEach(function(addCartBtn){
         // Lấy thông tin sản phẩm từ phần tử cha của nút "カートに入れる"
         var productName = this.closest('.product-item-data').querySelector('.product-item-data-title_name').dataset.value;
         var productBrand = this.closest('.product-item-data').querySelector('.product-item-data-brand').dataset.value;
-        var productImgSrc = this.closest('.product-item-data').querySelector('.product-item-data-color_header').dataset.value;
+        var productImgSrc = this.closest('.product-item-data-color_item').querySelector('.product-item-data-color_header').dataset.value;
         var productPrice = parseInt(this.closest('.product-item-data').querySelector('.product-item-data-price_index').dataset.value);
         var productSize = this.closest('.product-item-data-content').querySelector('.product-item-data-content_size').dataset.value;
         var productColor = this.closest('.product-item-data-color_item').querySelector('.product-item-data-color_header_title').dataset.value;

@@ -115,7 +115,19 @@ body{
     border-bottom: 1px solid var(--border-color);
 }
 
-
+.search__item-empty{
+    height: 500px;
+    color: var(--black-color);
+    font-size: 2rem;
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    align-items: center;
+}
+.search__item-empty img{
+    width: 300px;
+    color: black;
+}
 /* HEADER SEARCH BAR --END*/
 
 .header__navbar{
