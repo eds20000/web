@@ -761,7 +761,7 @@ function seacrhItem(){
             $('.content__title-sort').style.display = 'none';
             sort__item_list.innerHTML = `
             <div class='search__item-empty'>
-            <img src="../image/item-search-empty.jpg">
+            <img src="./image/item-search-empty.jpg">
             No results found for "${searchItemInput.value}"
             </div>`
             ;
