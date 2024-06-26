@@ -133,7 +133,7 @@ var list_item = [
         category:'ジャケット/アウター',
         color_img:[
             {
-                color_nameEng:'#4CAF50',
+                color_nameEng:'#4F5332',
                 color_name:'アーミーグリーン',
                 color_size:['S','M','L'],
                 img:[
@@ -157,7 +157,7 @@ var list_item = [
                 
             },
             {
-                color_nameEng:'rgb(14, 14, 14)',
+                color_nameEng:'#B55958',
                 color_name:'ワインレッド',
                 color_size:['S','M','L'],
                 img:[
@@ -601,115 +601,50 @@ function seacrhItem(){
     let searchItemBox = $('.header__search-box');
     let searchItemBtn = $('.header__search-button');
     let searchItemList = [];
-    // searchItemInput.oninput = function(){
-    //     if(searchItemInput.value !== ''){
-    //         searchItemBox.style.display = 'block';
-    //         itemNameSearch();
-    //         function itemNameSearch(){
-    //             searchItemList = list_item.filter( value =>
-    //                 {
-    //                     return value.name.toLowerCase().includes(searchItemInput.value.toLowerCase())
-    //                 }
-    //             )
-    //             if(searchItemList.length > 0){
-    //                 console.log(searchItemList)
-    //                 searchItemBox.innerHTML = '';
-                    
-    //                 searchItemList.forEach( item =>
-    //                     {
-    //                         let searchInputIndex = item.name.toLowerCase().indexOf(searchItemInput.value.toLowerCase());
-    //                         let beforeMatch = item.name.substring(0, searchInputIndex);
-    //                         let match = item.name.substring(searchInputIndex, searchInputIndex + searchItemInput.value.length);
-    //                         let afterMatch = item.name.substring(searchInputIndex + searchItemInput.value.length);
-
-    //                         searchItemBox.innerHTML+=
-    //                         `
-    //                             <div class="header__search-item-list">
-    //                                 <div class="header__search-item-discription"></div>
-    //                                 <div class="header__search-item-name">
-    //                                     ${beforeMatch}<strong>${match}</strong>${afterMatch}
-    //                                 </div>
-    //                             </div>
-    //                         `
-    //                     }
-    //                 )
-    //             }
-    //             else{
-    //                 searchItemBox.innerHTML = '';
-    //             }
-    //         }
-    //         }
-
-    //     else{
-    //             searchItemBox.style.display = 'none';
-    //         }   
-    // }
-    searchItemInput.oninput = function() {
-        if (searchItemInput.value !== '') {
+    searchItemInput.oninput = function(){
+        if(searchItemInput.value !== ''){
             searchItemBox.style.display = 'block';
-            itemSearch();
-            
-            function itemSearch() {
-                let nameSearchResults = list_item.filter(value =>
-                    value.name.toLowerCase().includes(searchItemInput.value.toLowerCase())
-                );
-                let brandSearchResults = list_item.filter(value =>
-                    value.brand.toLowerCase().includes(searchItemInput.value.toLowerCase())
-                );
-    
-        
-                    
-                if (nameSearchResults.length > 0) {
-                    console.log(nameSearchResults);
-                    searchItemBox.innerHTML = '';
-    
-                    nameSearchResults.forEach( item =>
+            itemNameSearch();
+            function itemNameSearch(){
+                searchItemList = list_item.filter( value =>
                     {
-                        let searchInputIndex = item.name.toLowerCase().indexOf(searchItemInput.value.toLowerCase());
-                        let beforeMatch = item.name.substring(0, searchInputIndex);
-                        let match = item.name.substring(searchInputIndex, searchInputIndex + searchItemInput.value.length);
-                        let afterMatch = item.name.substring(searchInputIndex + searchItemInput.value.length);
-                    
-                        searchItemBox.innerHTML+=
-                        `
-                            <div class="header__search-item-list">
-                                <div class="header__search-item-discription"></div>
-                                <div class="header__search-item-name">
-                                    ${beforeMatch}<strong>${match}</strong>${afterMatch}
-                                </div>
-                            </div>
-                         `
+                        return value.name.toLowerCase().includes(searchItemInput.value.toLowerCase())
                     }
-                    )
-                }
-                else if(brandSearchResults.length > 0){
-                    brandSearchResults.forEach( item =>
+                )
+                if(searchItemList.length > 0){
+                    console.log(searchItemList)
+                    searchItemBox.innerHTML = '';
+                    
+                    searchItemList.forEach( item =>
                         {
-                            let searchInputIndex = item.brand.toLowerCase().indexOf(searchItemInput.value.toLowerCase());
-                            let beforeMatch = item.brand.substring(0, searchInputIndex);
-                            let match = item.brand.substring(searchInputIndex, searchInputIndex + searchItemInput.value.length);
-                            let afterMatch = item.brand.substring(searchInputIndex + searchItemInput.value.length);
-                        
+                            let searchInputIndex = item.name.toLowerCase().indexOf(searchItemInput.value.toLowerCase());
+                            let beforeMatch = item.name.substring(0, searchInputIndex);
+                            let match = item.name.substring(searchInputIndex, searchInputIndex + searchItemInput.value.length);
+                            let afterMatch = item.name.substring(searchInputIndex + searchItemInput.value.length);
+
                             searchItemBox.innerHTML+=
                             `
                                 <div class="header__search-item-list">
-                                    <div class="header__search-item-discription">Brand</div>
+                                    <div class="header__search-item-discription"></div>
                                     <div class="header__search-item-name">
                                         ${beforeMatch}<strong>${match}</strong>${afterMatch}
                                     </div>
                                 </div>
-                             `
+                            `
                         }
-                        )
+                    )
                 }
-                else {
+                else{
                     searchItemBox.innerHTML = '';
                 }
             }
-        } else {
-            searchItemBox.style.display = 'none';
-        }
-    };
+            }
+
+        else{
+                searchItemBox.style.display = 'none';
+            }   
+    }
+
     
     function performSearch(){
         if (searchItemList.length > 0){
