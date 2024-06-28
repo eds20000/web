@@ -1,9 +1,84 @@
 /* HOME PAGE SLIDE -----------------------------START */
 
-.swiper {
-    width: 80%;
-    height: 500px;
+.header{
+    z-index: 2;
 }
-  
-
+.homepage__slide{
+    margin-top: 30px;
+}
+.swiper{
+    width: 80%;
+    height: 300px;
+    margin: 0 auto;
+}
+.swiper-wrapper{
+    width: 90%;
+}
+.swiper .swiper-slide{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.swiper-slide img{
+    position: absolute;
+    top: 30px;
+    border-radius: 20px;
+    overflow: hidden;
+    width: 100%;
+    height: 80%;
+    border-radius: 20px;
+    box-shadow: 0 0 5px 5px rgba(0,0,0,0.1);
+    
+}
+.custom-button-next, .custom-button-prev{
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    background-color:hsla(0,0%,100%,.6);
+    opacity: 1;
+    font-size: var(--font-size);
+    color: var(--black-color);
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+}
+.custom-button-next:hover, .custom-button-prev:hover {
+    background-color: var(--white-color)
+  }
+.swiper-button-next::after, 
+.swiper-button-prev::after{
+    display: none;
+}
+.swiper-pagination-bullet {
+    background-color: rgba(0, 0, 0, 0.5); 
+    margin: 0 5px; 
+    border-radius: 50%;
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+}
+.swiper-pagination .swiper-pagination-bullet-active {
+    background-color: black;
+    border: 1px solid var(--white-color);
+  }
+.swiper-pagination-bullet:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
 /* HOME PAGE SLIDE -----------------------------END */
+/* CATEGORY -HOMEPAGE-------------------------------------START */
+
+.category-item{
+    border-radius: 50%;
+    background-color: var(--hover-color);
+    overflow: hidden;
+    height: 150px;
+    width: 100px;
+    display:grid ;
+    place-items: center;
+}
+.category-item img{
+    width: 100%;
+    height: auto;
+    
+}
+
+/* CATEGORY -HOMEPAGE-------------------------------------END */

@@ -1,21 +1,19 @@
 var swiper = new Swiper ('.swiper', {
-    // Các Parameters
-    direction: 'vertical',
+    direction: 'horizontal',
     loop: true,
-
-    // Nếu cần pagination
+    autoplay: {
+      delay: 2500
+    },
+    slidesPerView: 2,
+    spaceBetween: 20,
     pagination: {
       el: '.swiper-pagination',
+      clickable: true
     },
 
-    // Nếu cần navigation
+
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
-    },
-
-    // Nếu cần scrollbar
-    scrollbar: {
-      el: '.swiper-scrollbar',
     },
   })

@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="./style/base.css">
     <link rel="stylesheet" href="./style/grid.css">
     <link rel="stylesheet" href="./style/main.css">
-    <link rel="stylesheet" href="./style/home.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="./style/home.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/d72dd2144a.js" crossorigin="anonymous"></script>
     <link
@@ -65,9 +65,9 @@
 
         <!-- Container start -->
         <div class="container">
-            <div class="gird wide">
-                <div class="row homepage__slide">
-                    <div class="swiper">
+            <div class="grid wide">
+                <div class="homepage__slide col l-12">
+                    <div class="swiper swiper-homepage">
                         <div class="swiper-wrapper">
                             <!-- Slides -->
                             <div class="swiper-slide"><img src="./image/homepage/homepage-slide/homepage-slide1.webp" alt=""></div>
@@ -79,14 +79,34 @@
                         <div class="swiper-pagination"></div>
                     
                         <!-- Nếu cần navigation -->
-                        <div class="swiper-button-prev"></div>
-                        <div class="swiper-button-next"></div>
-                    
-                        <!-- Nếu cần scrollbar -->
-                        <div class="swiper-scrollbar"></div>
+                        <div class="swiper-button-prev">
+                            <div class="custom-button-prev">    
+                                <i class="fa-solid fa-angle-left"></i>
+                            </div>
+                        </div>
+                        <div class="swiper-button-next">
+                            <div class="custom-button-next">
+                                <i class="fa-solid fa-angle-right"></i>
+                            </div>
+                        </div>
                     </div>
                     
                 </div>
+                <ul class="row category__list">
+                    <li class="category-item col l-2"><img src="./image/homepage/category-img/top.png" alt=""></li>
+                    <li class="category-item col l-2"><img src="./image/homepage/category-img/jacket.png" alt=""></li>
+                    <li class="category-item col l-2"><img src="./image/homepage/category-img/pant.png" alt=""></li>
+                    <li class="category-item col l-2"><img src="./image/homepage/category-img/skrit.webp" alt=""></li>
+                    <li class="category-item col l-2"><img src="./image/homepage/category-img/dress.webp" alt=""></li>
+                    <li class="category-item col l-2"><img src="./image/homepage/category-img/Accessorieswebp.webp" alt=""></li>
+                    <li class="category-item col l-2"><img src="./image/homepage/category-img/bag.webp" alt=""></li>
+                    <li class="category-item col l-2"><img src="./image/homepage/category-img/shoes.jpg" alt=""></li>
+                    <li class="category-item col l-2"><img src="./image/homepage/category-img/trangsuc.jpg" alt=""></li>
+                    <li class="category-item col l-2"><img src="./image/homepage/category-img/hat.jpg" alt=""></li>
+                    <li class="category-item col l-2"><img src="./image/homepage/category-img/watch.jpg" alt=""></li>
+                    <li class="category-item col l-2"><img src="./image/homepage/category-img/trangsuc.png" alt=""></li>
+                    
+                </li>
             </div>
         </div>
 
