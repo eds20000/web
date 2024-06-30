@@ -7,17 +7,9 @@
     <link rel="stylesheet" href="./style/base.css">
     <link rel="stylesheet" href="./style/grid.css">
     <link rel="stylesheet" href="./style/main.css">
+    <script type ="module" src="./script/script.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="./style/home.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/d72dd2144a.js" crossorigin="anonymous"></script>
-    <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script type ="module" src="./script/script.js" defer></script>
-    <script type ="module" src="./script/home.js" defer></script>
 
     <title>TS-shop</title>
 </head>

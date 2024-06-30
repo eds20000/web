@@ -173,45 +173,91 @@ var list_item = [
 
 export default list_item;
 
-var sort__item_list = $('.sort__item-list')
-if (sort__item_list){
+//ham trich xuat item
+export function exportItem(itemList,column){
     for(let i = 0 ; i < list_item.length ; ++i){
-    sort__item_list.innerHTML +=
-    `<div class="col l-2-4">
-        <div class="sort__item" item-index = "${i}">
-            <a class="sort__item-link" data-id="${list_item[i].id}" >
-                <div class="sort__item-img">
-                    <img src="${list_item[i].color_img[0].img[0]}" alt="">
-                </div>
-                <div class="sort__item-brand">${list_item[i].brand}</div>
-                <div class="sort__item-text">${list_item[i].name}</div>
-            </a>
-            <div class="sort__item-img_btn sort__item-img_btn-left"><i class="fa-solid fa-angle-left"></i></div>
-            <div class="sort__item-img_btn sort__item-img_btn-right"><i class="fa-solid fa-angle-right"></i></div>
-            <div class="sort__item-content">
-                <div class="sort__item-title">
-                    <div class="sort__item-price">￥${list_item[i].price}</div>
-                    <div class="sort__item-takeit">
-                        <button type="button" class="sort__item-favorite sort__item-takecart-disable" onclick="favoritebutton(this)"></button>
-                        <button type="button" class="sort__item-takecart"><i class="fa-solid fa-cart-plus"></i></button>
+        itemList.innerHTML +=
+        `<div class="col ${column}">
+            <div class="sort__item" item-index = "${i}">
+                <a class="sort__item-link" data-id="${list_item[i].id}" >
+                    <div class="sort__item-img">
+                        <img src="${list_item[i].color_img[0].img[0]}" alt="">
                     </div>
-                </div>
-                <div class="sort__item-star">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <div class="sort__item-star-number">
-                        (<p>0</p>)
+                    <div class="sort__item-brand">${list_item[i].brand}</div>
+                    <div class="sort__item-text">${list_item[i].name}</div>
+                </a>
+                <div class="sort__item-img_btn sort__item-img_btn-left"><i class="fa-solid fa-angle-left"></i></div>
+                <div class="sort__item-img_btn sort__item-img_btn-right"><i class="fa-solid fa-angle-right"></i></div>
+                <div class="sort__item-content">
+                    <div class="sort__item-title">
+                        <div class="sort__item-price">￥${list_item[i].price}</div>
+                        <div class="sort__item-takeit">
+                            <button type="button" class="sort__item-favorite sort__item-takecart-disable" onclick="favoritebutton(this)"></button>
+                            <button type="button" class="sort__item-takecart"><i class="fa-solid fa-cart-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="sort__item-star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <div class="sort__item-star-number">
+                            (<p>0</p>)
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>`
+        </div>`
+    }
 }
+export function CreatItemSelectBox(){
+    $('.container').innerHTML += 
+    `<div class="item__select-cart-container">
+        <div class="item__select-cart-box">
+            <div class="select-cart-box-close"><i class="fa-solid fa-xmark"></i></div>
+            <div class="select-cart-box-content">
+                <div class="row">
+                                                <ul class="item-checklist-imglist col l-1">
+                                        
+                                                </ul>
+                                                <div class="item-checklist-img-main col l-5"></div>
+                                                <div class="item-checklist-content col l-6">
+                                                    <div class="item-checklist-name"></div>
+                                                    <div class="item-checklist-brand"></div>
+                                                    <div class="item-checklist-price">￥<span></span></div>
+                                                    <div class="item-checklist-color">
+                                                        <div class="checklist-color-name"><strong>カラー：</strong><span>ブラック</span></div>
+                                                        <ul class="checklist-color-list">
+                                                            
+                                                        </ul>
+                                                    </div>
+                                                    <div class="item-checklist-size">
+                                                        <div class="checklist-size-name">サイズ:</div>
+                                                        <ul class="checklist-size-list">
+                                                        </ul>
+                                                    </div>
+                                                    <div class="item-checklist-btn">
+                                                        <div class="item-checklist-takecart-btn primary-btn">                          
+                                                            買い物かごに追加
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+    `
+    
 }
+var sort__item_list = $('.sort__item-list')
+if (sort__item_list){
+    exportItem(sort__item_list,'l-2-4') 
+}
+CreatItemSelectBox();//ham tao ra muc takcartitembox
 changeImage();
 takeCart();
 productRedirect();
@@ -224,7 +270,7 @@ export function getItemParent(element,parentAdress) {
     }
 }
 
-function changeImage(){
+export function changeImage(){
     $$('.sort__item').forEach(function(item){//thay doi hinh anh bang nut bam o muc item
     var index = 0;
     let itemId = item.getAttribute('item-index');
@@ -251,7 +297,7 @@ function changeImage(){
 // <!---------------Page-bar--------End--> 
 
 //-----------------------Take-cart--------------------------------Start
-function takeCart(){
+export function takeCart(){
     var takeCartBoxBtn = $$('.sort__item-takecart');
     var takeCartBtn = $('.item-checklist-takecart-btn');
     
@@ -584,7 +630,7 @@ function takeCart(){
 
 //--------------------------Thanhchuyenhuonggiaodiensanpham----------]
 
-function productRedirect(){
+export function productRedirect(){
     $$('.sort__item-link').forEach(function(item){
         item.onclick = function(){
             const productId = this.dataset.id;

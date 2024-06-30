@@ -698,7 +698,7 @@ body{
     display: grid;
     place-items: center;
     opacity: 0;
-    transition: all 0.3s linear;
+    transition: all 0.2s linear;
 
 }
 
@@ -709,7 +709,7 @@ body{
     width: 794px;
     min-height: 70%;
     transform: translateY(-110%);
-    transition: all 0.1s ease-out;
+    transition: all 0.5s ease-out;
 }
 
 .select-cart-box-close{

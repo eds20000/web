@@ -2,7 +2,14 @@
  session_start();
  include_once './includes/header.php'
 ?>
-        <!-- Container start -->
+    <link rel="stylesheet" href="./style/home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/d72dd2144a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script type ="module" src="./script/script.js" defer></script>
+    <script type ="module" src="./script/home.js" defer></script>
+<!-- Container start -->
         <div class="container">
             <div class="grid wide">
                 <div class="homepage__slide col l-12">
@@ -107,13 +114,23 @@
                     </li>
                 </ul>
 
-                <div class="row sesstion__recommend">
-                    <div class="row sesstion__recommend-title"></div>
-                    <div class="row sesstion__recommend-list">
-
+                <div class="row section__brand">
+                    <div class="row section_title section__brand-title ">ブランド</div>
+                    <div class="row section__brand-list">
+                        <a href="" class="col l-2 brand-item"><img src="./image/homepage/brand-recomend/shein.webp" alt="" width="500" height="675"></a>
+                        <a href="" class="col l-2 brand-item"><img src="./image/homepage/brand-recomend/romwe.webp" alt=""></a>
+                        <a href="" class="col l-2 brand-item"><img src="./image/homepage/brand-recomend/dazy.webp" alt=""></a>
+                        <a href="" class="col l-2 brand-item"><img src="./image/homepage/brand-recomend/zoztown.jpg" alt=""></a>
+                        <a href="" class="col l-2 brand-item"><img src="./image/homepage/brand-recomend/friful.webp" alt=""></a>
+                        <a href="" class="col l-2 brand-item"><img src="./image/homepage/brand-recomend/manginity.png" alt=""></a>
                     </div>
                 </div>
-            </div>
+
+                <div class="row section__recommend">
+                    <div class="section_title section__recommend-title ">おすすめ</div>
+                    <div class="row section__recommend-list">
+                    </div>
+                </div>
         </div>
 
         <!-- Container end -->
