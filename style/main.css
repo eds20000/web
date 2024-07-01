@@ -16,6 +16,7 @@ body{
     width: 100%;
     background-color: rgba(255, 255, 255, 0.3);
     z-index: 1;
+    transition: transform 0.3s ease;
 }
 .header-only{
     box-shadow: 0px 5px 6px -6px #999999;
@@ -352,7 +353,6 @@ body{
 
 /* Container start */
 .tab{
-    position: fixed;
     top: var(--header-height);
     width: 100%;
 }
@@ -365,9 +365,7 @@ body{
     justify-content: center;
     gap: 50px; ;
     height: 40px;
-    /* border-bottom: 1px solid #767676; */
     padding: 0;
-    background-color:rgba(255, 255, 255, 0.3) ;
     box-shadow: 0px 5px 6px -6px #999999;
 }
 
@@ -709,7 +707,7 @@ body{
     width: 794px;
     min-height: 70%;
     transform: translateY(-110%);
-    transition: all 0.5s ease-out;
+    transition: all 0.2s ease-out;
 }
 
 .select-cart-box-close{

@@ -1,7 +1,7 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
-var swiper = new Swiper ('.swiper', {
+var swiperHomepage = new Swiper ('.swiper-homepage', {
   direction: 'horizontal',
   loop: true,
   autoplay: {
@@ -14,6 +14,18 @@ var swiper = new Swiper ('.swiper', {
     clickable: true
   },
   
+  
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+})
+
+var swiperBrand = new Swiper ('.swiper__brand-list', {
+  direction: 'horizontal',
+  loop: true,
+  slidesPerView: 5,
+  spaceBetween: 20,
   
   navigation: {
     nextEl: '.swiper-button-next',

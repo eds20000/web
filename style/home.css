@@ -19,7 +19,7 @@
     align-items: center;
     justify-content: center;
 }
-.swiper-slide img{
+.swiper-homepage .swiper-slide img{
     position: absolute;
     top: 30px;
     border-radius: 20px;
@@ -111,9 +111,21 @@
     border-bottom: 3px solid var(--primary-color);
 }
 .section__brand-list{
-    /* gap:10px; */
+    background-color: var(--hover-color);
+    padding: 30px 0;
+    width: 100%;
 }
-.col.brand-item img{
-    width: 90%;
-    height: 300px;
+.swiper.swiper__brand-list{
+    margin: 0 10px;
+    padding: 0 40px;
+    width: 100%;
 }
+.swiper__brand-list .swiper-slide a{
+    height: 100%;
+    width: 100%;
+}
+.swiper__brand-list .swiper-slide a img{
+    height: 100%;
+    width: 100%;
+}
+

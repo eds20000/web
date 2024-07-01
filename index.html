@@ -7,18 +7,25 @@
     <link rel="stylesheet" href="./style/base.css">
     <link rel="stylesheet" href="./style/grid.css">
     <link rel="stylesheet" href="./style/main.css">
+    <script type ="module" src="./script/script.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="./style/home.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/d72dd2144a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script type ="module" src="./script/script.js" defer></script>
+    <script type ="module" src="./script/home.js" defer></script>
     <title>TS-shop</title>
 </head>
 <body>
+    <!-- Container start -->
     <div class="app">
         <!-- Header start1-->
         <header class="header">
             <div class="grid wide">
-                <a href="./index.html" class="header__logo"><img src="./image/logo.png" alt="logo" class="logo-img"></a>
+                <a href="http://localhost/web/" class="header__logo"><img src="./image/logo.png" alt="logo" class="logo-img"></a>
                 <div class="header__search">
                     <input type="text" placeholder="何にをお探しですか？" class="header__search-input">
                     <button class="header__search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -55,66 +62,156 @@
                 </ul>
             </div>
         </header>
-        <!-- Header end -->
-
-        <!-- Container start -->
         <div class="container">
             <div class="grid wide">
-                <div class="row">
-                    <ul class="category__list col l-2">
-                        <p class="category_header">カテゴリー</p>
-                        <li class="category_list-item"><a href=""><div class="category_list-item-text">トップス</div><i class="fa-solid fa-chevron-right"></i></a></li>
-                        <li class="category_list-item"><a href=""><div class="category_list-item-text">ジャケット/アウター</div><i class="fa-solid fa-chevron-right"></i></a></li>
-                        <li class="category_list-item"><a href=""><div class="category_list-item-text">パンツ</div><i class="fa-solid fa-chevron-right"></i></a></li>
-                        <li class="category_list-item"><a href=""><div class="category_list-item-text">スカート</div><i class="fa-solid fa-chevron-right"></i></a></li>
-                        <li class="category_list-item"><a href=""><div class="category_list-item-text">ワンピース/ドレス</div><i class="fa-solid fa-chevron-right"></i></a></li>
-                        <li class="category_list-item"><a href=""><div class="category_list-item-text">小物</div><i class="fa-solid fa-chevron-right"></i></a></li>
-                        <li class="category_list-item"><a href=""><div class="category_list-item-text">バッグ</div><i class="fa-solid fa-chevron-right"></i></a></li>
-                        <li class="category_list-item"><a href=""><div class="category_list-item-text">シューズ</div><i class="fa-solid fa-chevron-right"></i></a></li>
-                        <li class="category_list-item"><a href=""><div class="category_list-item-text">ファッション雑貨</div><i class="fa-solid fa-chevron-right"></i></a></li>
-                        <li class="category_list-item"><a href=""><div class="category_list-item-text">帽子</div><i class="fa-solid fa-chevron-right"></i></a></li>
-                        <li class="category_list-item"><a href=""><div class="category_list-item-text">腕時計</div><i class="fa-solid fa-chevron-right"></i></a></li>
-                        <li class="category_list-item"><a href=""><div class="category_list-item-text">アクセサリー</div><i class="fa-solid fa-chevron-right"></i></a></li>
-                        <li class="category_list-item"><a href=""><div class="category_list-item-text">その他</div><i class="fa-solid fa-chevron-right"></i></a></li>
-                    </ul>
-                    <div class="content_body col l-10">
-                        <div class="row">
-                            <div class="content__title">
-                                <div class="content__title-text">すべてのアイテム</div>
-                                <div class="content__title-sort">
-                                    <div class="content__title-sort-text">並び替え：</div> 
-                                    <input type ="input" class="content__title-sort-selected" value="価格が高い順"></input>
-                                    <i class="fa-solid fa-chevron-down"></i> 
-                                    <div class="sort__tab">
-                                    <div class="sort__tab-list sort__tab-ascen selected" >価格が高い順</div>
-                                    <div class="sort__tab-list sort__tab-descen"  >価格が安い順</div>  
-                                </div>
-                                </div>
+                <div class="homepage__slide col l-12">
+                    <div class="swiper swiper-homepage">
+                        <div class="swiper-wrapper">
+                            <!-- Slides -->
+                            <div class="swiper-slide"><img src="./image/homepage/homepage-slide/homepage-slide1.webp" alt=""></div>
+                            <div class="swiper-slide"><img src="./image/homepage/homepage-slide/homepage-slide2.webp" alt=""></div>
+                            <div class="swiper-slide"><img src="./image/homepage/homepage-slide/homepage-slide3.webp" alt=""></div>
+                            <div class="swiper-slide"><img src="./image/homepage/homepage-slide/homepage-slide4.webp" alt=""></div>
+                        </div>
+                        <!-- Nếu cần pagination -->
+                        <div class="swiper-pagination"></div>
+                    
+                        <!-- Nếu cần navigation -->
+                        <div class="swiper-button-prev">
+                            <div class="custom-button-prev">    
+                                <i class="fa-solid fa-angle-left"></i>
                             </div>
                         </div>
-                        <div class="row sort__item-list">
-                        </div>
-                        <!---------------Page-bar--------Start--> 
-                        <div class="row">
-                            <div class="bar-page">
-                                <div class="bar-page_list">
-                                    <a  class="bar-page_list-item page-checked">1</a>
-                                    <a  class="bar-page_list-item">2</a>
-                                    <a  class="bar-page_list-item">3</a>
-                                    <a  class="bar-page_list-item">4</a>
-                                    <a  class="bar-page_list-item">5</a>
-                                    <nav  class="bar-page_list-item page-dotted ">...</nav>
-                                    <a  class="bar-page_list-item">100</a>
-                                    <a  class="bar-page_list-item page-next"><i class="fa-solid fa-angle-right"></i></a>
-                                </div>
+                        <div class="swiper-button-next">
+                            <div class="custom-button-next">
+                                <i class="fa-solid fa-angle-right"></i>
                             </div>
                         </div>
-                        <!---------------Page-bar--------End--> 
+                    </div>
+                    
+                </div>
+                <ul class="row category__list-img">
+                    <li class="category-item col l-2">
+                        <a href="http://">
+                            <img src="./image/homepage/category-img/top.png" alt="">
+                            <div class="category-item-title">トップス</div>
+                        </a>
+                    </li>
+                    <li class="category-item col l-2">
+                        <a href="http://">
+                            <img src="./image/homepage/category-img/jacket.png" alt="">
+                            <div class="category-item-title">ジャケット/アウター</div>
+                        </a>
+                    </li>
+                    <li class="category-item col l-2">
+                        <a href="http://">
+                            <img src="./image/homepage/category-img/pant.png" alt="">
+                            <div class="category-item-title">パンツ</div>
+                        </a>
+                    </li>
+                    <li class="category-item col l-2">
+                        <a href="http://">
+                            <img src="./image/homepage/category-img/skrit.png" alt="">
+                            <div class="category-item-title">スカート</div>
+                        </a>
+                    </li>
+                    <li class="category-item col l-2">
+                        <a href="http://">
+                            <img src="./image/homepage/category-img/dress.png" alt="">
+                            <div class="category-item-title">ワンピース/ドレス</div>
+                        </a>
+          
+                    </li>
+                    <li class="category-item col l-2">
+                        <a href="http://">
+                            <img src="./image/homepage/category-img/Accessories.png" alt="">
+                            <div class="category-item-title">小物</div>
+                        </a>
+                    </li>
+                    <li class="category-item col l-2">
+                        <a href="http://">
+                            <img src="./image/homepage/category-img/bag.png" alt="">
+                            <div class="category-item-title">バッグ</div>
+                        </a>
+                    </li>
+                    <li class="category-item col l-2">
+                        <a href="http://">
+                            <img src="./image/homepage/category-img/shoes.png" alt="">
+                            <div class="category-item-title">シューズ</div>
+                        </a>
+                    </li>
+                    <li class="category-item col l-2">
+                        <a href="http://">
+                            <img src="./image/homepage/category-img/phukien.png" alt="">
+                            <div class="category-item-title">ファッション雑貨</div>
+                        </a>
+                    </li>
+                    <li class="category-item col l-2">
+                        <a href="http://">
+                            <img src="./image/homepage/category-img/hat.jpg" alt="">
+                            <div class="category-item-title">帽子</div>
+                        </a>
+                    </li>
+                    <li class="category-item col l-2">
+                        <a href="http://">
+                            <img src="./image/homepage/category-img/watch.png" alt="">
+                            <div class="category-item-title">腕時計</div>
+                        </a>
+                    </li>
+                    <li class="category-item col l-2">
+                        <a href="http://">
+                            <img src="./image/homepage/category-img/trangsuc.png" alt="">
+                            <div class="category-item-title">アクセサリー</div>  
+                        </a>
+                    </li>
+                </ul>
 
-                    </div>  
+                <div class="row section__brand">
+                    <div class="row section_title section__brand-title ">ブランド</div>
+                    <div class="row section__brand-list">
+                        <div class="swiper swiper__brand-list">
+                            <div class="swiper-wrapper">
+                                <!-- Slides -->
+                                <div class="swiper-slide">
+                                    <a href="http://"><img src="./image/homepage/brand-recomend/shein.webp" alt=""></a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="http://"><img src="./image/homepage/brand-recomend/romwe.webp" alt=""></a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="http://"><img src="./image/homepage/brand-recomend/dazy.webp" alt=""></a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="http://"><img src="./image/homepage/brand-recomend/emeryrose.webp" alt=""></a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="http://"><img src="./image/homepage/brand-recomend/friful.webp" alt=""></a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="http://"><img src="./image/homepage/brand-recomend/manginity.png" alt=""></a>
+                                </div>
+                            </div>
+                        
+                            <!-- Nếu cần navigation -->
+                            <div class="swiper-button-prev">
+                                <div class="custom-button-prev">    
+                                    <i class="fa-solid fa-angle-left"></i>
+                                </div>
+                            </div>
+                            <div class="swiper-button-next">
+                                <div class="custom-button-next">
+                                    <i class="fa-solid fa-angle-right"></i>
+                                </div>
+                            </div>
+                        </div>    
+                    </div>
                 </div>
+
+                <div class="row section__recommend">
+                    <div class="section_title section__recommend-title ">おすすめ</div>
+                    <div class="row section__recommend-list">
+                    </div>
                 </div>
-            </div>
         </div>
 
         <!-- Container end -->
@@ -160,6 +257,5 @@ TS-SHOPはレディースからメンズ・キッズまで、幅広いジャン�
         </div>
         <!-- Footer End -->
     </div>
-<script type ="module" src="./script/script.js"></script>
 </body>
 </html>
