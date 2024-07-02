@@ -35,12 +35,3 @@ var swiperBrand = new Swiper ('.swiper__brand-list', {
 
 // insert item
 
-import list_item from "./script.js"
-import { exportItem,changeImage,takeCart,productRedirect,getItemParent,CreatItemSelectBox } from "./script.js"
-var recommendList = $('.section__recommend-list')
-exportItem(recommendList,'l-2');
-// CreatItemSelectBox();
-changeImage();
-takeCart();
-productRedirect();
-

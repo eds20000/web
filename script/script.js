@@ -1,7 +1,6 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
-
 //HEADER TAB HIDE //
 let lastScrollTop = 0;
 const header = $('.header');
@@ -190,86 +189,68 @@ var list_item = [
         ]
     }
 ]
-
 export default list_item;
 var sort__item_list = $('.sort__item-list')
-sort__item_list.innerHTML=''
-// for(let i = 0 ; i < list_item.length ; ++i){
-//     sort__item_list.innerHTML +=
-//     `<div class="col l-2-4">
-//         <div class="sort__item" item-index = "${i}">
-//             <a class="sort__item-link" data-id="${list_item[i].id}" >
-//                 <div class="sort__item-img">
-//                     <img src="${list_item[i].color_img[0].img[0]}" alt="">
-//                 </div>
-//                 <div class="sort__item-brand">${list_item[i].brand}</div>
-//                 <div class="sort__item-text">${list_item[i].name}</div>
-//             </a>
-//             <div class="sort__item-img_btn sort__item-img_btn-left"><i class="fa-solid fa-angle-left"></i></div>
-//             <div class="sort__item-img_btn sort__item-img_btn-right"><i class="fa-solid fa-angle-right"></i></div>
-//             <div class="sort__item-content">
-//                 <div class="sort__item-title">
-//                     <div class="sort__item-price">￥${list_item[i].price}</div>
-//                     <div class="sort__item-takeit">
-//                         <button type="button" class="sort__item-favorite sort__item-takecart-disable" onclick="favoritebutton(this)"></button>
-//                         <button type="button" class="sort__item-takecart"><i class="fa-solid fa-cart-plus"></i></button>
-//                     </div>
-//                 </div>
-//                 <div class="sort__item-star">
-//                     <i class="fa-solid fa-star"></i>
-//                     <i class="fa-solid fa-star"></i>
-//                     <i class="fa-solid fa-star"></i>
-//                     <i class="fa-solid fa-star"></i>
-//                     <i class="fa-solid fa-star"></i>
-//                     <i class="fa-solid fa-star"></i>
-//                     <div class="sort__item-star-number">
-//                         (<p>0</p>)
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-//     </div>`
-// }
+var recommendList = $('.section__recommend-list')
+seacrhItem();
+if(sort__item_list){
+   exportItem(sort__item_list,'l-2-4');
+   CreatItemSelectBox();//ham tao ra muc takcartitembox
+    changeImage();
+    takeCart();
+    productRedirect();
+}
+if(recommendList){
+    exportItem(recommendList,'l-2');
+    CreatItemSelectBox();//ham tao ra muc takcartitembox
+     changeImage();
+     takeCart();
+     productRedirect();
+}
+
+
 //ham trich xuat item
-// export function exportItem(itemList,column){
-//     for(let i = 0 ; i < list_item.length ; ++i){
-//         itemList.innerHTML +=
-//         `<div class="col ${column}">
-//             <div class="sort__item" item-index = "${i}">
-//                 <a class="sort__item-link" data-id="${list_item[i].id}" >
-//                     <div class="sort__item-img">
-//                         <img src="${list_item[i].color_img[0].img[0]}" alt="">
-//                     </div>
-//                     <div class="sort__item-brand">${list_item[i].brand}</div>
-//                     <div class="sort__item-text">${list_item[i].name}</div>
-//                 </a>
-//                 <div class="sort__item-img_btn sort__item-img_btn-left"><i class="fa-solid fa-angle-left"></i></div>
-//                 <div class="sort__item-img_btn sort__item-img_btn-right"><i class="fa-solid fa-angle-right"></i></div>
-//                 <div class="sort__item-content">
-//                     <div class="sort__item-title">
-//                         <div class="sort__item-price">￥${list_item[i].price}</div>
-//                         <div class="sort__item-takeit">
-//                             <button type="button" class="sort__item-favorite sort__item-takecart-disable" onclick="favoritebutton(this)"></button>
-//                             <button type="button" class="sort__item-takecart"><i class="fa-solid fa-cart-plus"></i></button>
-//                         </div>
-//                     </div>
-//                     <div class="sort__item-star">
-//                         <i class="fa-solid fa-star"></i>
-//                         <i class="fa-solid fa-star"></i>
-//                         <i class="fa-solid fa-star"></i>
-//                         <i class="fa-solid fa-star"></i>
-//                         <i class="fa-solid fa-star"></i>
-//                         <i class="fa-solid fa-star"></i>
-//                         <div class="sort__item-star-number">
-//                             (<p>0</p>)
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>`
-//     }
-// }
-export function CreatItemSelectBox(){
+function exportItem(itemList,column){
+    itemList.innerHTML ='';
+    for(let i = 0 ; i < list_item.length ; ++i){
+        itemList.innerHTML +=
+        `<div class="col ${column}">
+            <div class="sort__item" item-index = "${i}">
+                <a class="sort__item-link" data-id="${list_item[i].id}" >
+                    <div class="sort__item-img">
+                        <img src="${list_item[i].color_img[0].img[0]}" alt="">
+                    </div>
+                    <div class="sort__item-brand">${list_item[i].brand}</div>
+                    <div class="sort__item-text">${list_item[i].name}</div>
+                </a>
+                <div class="sort__item-img_btn sort__item-img_btn-left"><i class="fa-solid fa-angle-left"></i></div>
+                <div class="sort__item-img_btn sort__item-img_btn-right"><i class="fa-solid fa-angle-right"></i></div>
+                <div class="sort__item-content">
+                    <div class="sort__item-title">
+                        <div class="sort__item-price">￥${list_item[i].price}</div>
+                        <div class="sort__item-takeit">
+                            <button type="button" class="sort__item-favorite sort__item-takecart-disable" onclick="favoritebutton(this)"></button>
+                            <button type="button" class="sort__item-takecart"><i class="fa-solid fa-cart-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="sort__item-star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <div class="sort__item-star-number">
+                            (<p>0</p>)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>`
+    }
+}
+
+function CreatItemSelectBox(){
     $('.container').innerHTML += 
     `<div class="item__select-cart-container">
         <div class="item__select-cart-box">
@@ -311,10 +292,6 @@ export function CreatItemSelectBox(){
     
 }
 
-CreatItemSelectBox();//ham tao ra muc takcartitembox
-changeImage();
-takeCart();
-productRedirect();
 export function getItemParent(element,parentAdress) {
     while (element.parentElement) {
         if (element.parentElement.matches(parentAdress)) {
@@ -324,7 +301,7 @@ export function getItemParent(element,parentAdress) {
     }
 }
 
-export function changeImage(){
+function changeImage(){
     $$('.sort__item').forEach(function(item){//thay doi hinh anh bang nut bam o muc item
     var index = 0;
     let itemId = item.getAttribute('item-index');
@@ -351,7 +328,7 @@ export function changeImage(){
 // <!---------------Page-bar--------End--> 
 
 //-----------------------Take-cart--------------------------------Start
-export function takeCart(){
+function takeCart(){
     var takeCartBoxBtn = $$('.sort__item-takecart');
     var takeCartBtn = $('.item-checklist-takecart-btn');
     
@@ -684,7 +661,7 @@ export function takeCart(){
 
 //--------------------------Thanhchuyenhuonggiaodiensanpham----------]
 
-export function productRedirect(){
+function productRedirect(){
     $$('.sort__item-link').forEach(function(item){
         item.onclick = function(){
             const productId = this.dataset.id;
@@ -747,8 +724,7 @@ function seacrhItem(){
 
     
     function performSearch(){
-        console.log(sort__item_list)
-        if (window.location.pathname === '/category.html') {  
+        console.log(sort__item_list) 
             if (searchItemList.length > 0){
                 sort__item_list.innerHTML = '';
                 console.log(searchItemList)
@@ -803,9 +779,6 @@ function seacrhItem(){
                 </div>`
                 ;
             }
-          } else {
-            window.location.href = '/category.html';
-          }
     }
     searchItemBtn.onclick = performSearch;
 
@@ -818,7 +791,4 @@ function seacrhItem(){
 }
 
 seacrhItem();
-sort__item_list.innerHTML = '';
-console.log(sort__item_list)
-
 // --------------SEARCH-ITEM-BAR-------------END

@@ -7,23 +7,22 @@
     <link rel="stylesheet" href="./style/base.css">
     <link rel="stylesheet" href="./style/grid.css">
     <link rel="stylesheet" href="./style/main.css">
+    <link rel="stylesheet" href="./style/product-style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/d72dd2144a.js" crossorigin="anonymous"></script>
-    <title>TS-shop</title>
+    <title>ログイン-TS-shop</title>
 </head>
 <body>
     <div class="app">
         <!-- Header start1-->
-        <header class="header">
+        <header class="header header-only">
             <div class="grid wide">
                 <a href="./index.html" class="header__logo"><img src="./image/logo.png" alt="logo" class="logo-img"></a>
                 <div class="header__search">
                     <input type="text" placeholder="何にをお探しですか？" class="header__search-input">
-                    <button class="header__search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    <div class="header__search-box">
-                    </div>
+                    <button class="header__search-button"><a href="http://"><i class="fa-solid fa-magnifying-glass"></i></a></button>
                 </div>
                 <ul class="header__navbar">
                     <li class="header__navbar-user"><a href="./login.html"><i class="fa-regular fa-user"></i>ログイン</a></li>
@@ -41,125 +40,56 @@
                     <li class="header__navbar-support"><a href=""><i class="fa-solid fa-headset"></i>サポート</a></li>
                 </ul>
             </div>
-            
-            <div class="tab">  
-                <ul class="tab__list">
-                    <li class="tab__list-item "><a href="">おすすめ</a></li>
-                    <li class="tab__list-item"><a href="">新着</a></li>
-                    <li class="tab__list-item"><a href="">マイリスト</a></li>
-                    <li class="tab__list-item"><a href="">ベストセラ</a></li>
-                    <li class="tab__list-item"><a href="">メンズ</a></li>
-                    <li class="tab__list-item"><a href="">レディース</a></li>
-                    <li class="tab__list-item"><a href="">コスメ</a></li>
-                    <li class="tab__list-item tab__list-start"><a href="">すべて</a></li>
-                </ul>
-            </div>
         </header>
         <!-- Header end -->
 
-        <!-- Container start -->
-        <div class="container">
-            <div class="grid wide">
-                <div class="row">
-                    <ul class="category__list col l-2">
-                        <p class="category_header">カテゴリー</p>
-                        <li class="category_list-item"><a href=""><div class="category_list-item-text">トップス</div><i class="fa-solid fa-chevron-right"></i></a></li>
-                        <li class="category_list-item"><a href=""><div class="category_list-item-text">ジャケット/アウター</div><i class="fa-solid fa-chevron-right"></i></a></li>
-                        <li class="category_list-item"><a href=""><div class="category_list-item-text">パンツ</div><i class="fa-solid fa-chevron-right"></i></a></li>
-                        <li class="category_list-item"><a href=""><div class="category_list-item-text">スカート</div><i class="fa-solid fa-chevron-right"></i></a></li>
-                        <li class="category_list-item"><a href=""><div class="category_list-item-text">ワンピース/ドレス</div><i class="fa-solid fa-chevron-right"></i></a></li>
-                        <li class="category_list-item"><a href=""><div class="category_list-item-text">小物</div><i class="fa-solid fa-chevron-right"></i></a></li>
-                        <li class="category_list-item"><a href=""><div class="category_list-item-text">バッグ</div><i class="fa-solid fa-chevron-right"></i></a></li>
-                        <li class="category_list-item"><a href=""><div class="category_list-item-text">シューズ</div><i class="fa-solid fa-chevron-right"></i></a></li>
-                        <li class="category_list-item"><a href=""><div class="category_list-item-text">ファッション雑貨</div><i class="fa-solid fa-chevron-right"></i></a></li>
-                        <li class="category_list-item"><a href=""><div class="category_list-item-text">帽子</div><i class="fa-solid fa-chevron-right"></i></a></li>
-                        <li class="category_list-item"><a href=""><div class="category_list-item-text">腕時計</div><i class="fa-solid fa-chevron-right"></i></a></li>
-                        <li class="category_list-item"><a href=""><div class="category_list-item-text">アクセサリー</div><i class="fa-solid fa-chevron-right"></i></a></li>
-                        <li class="category_list-item"><a href=""><div class="category_list-item-text">その他</div><i class="fa-solid fa-chevron-right"></i></a></li>
-                    </ul>
-                    <div class="content_body col l-10">
-                        <div class="row">
-                            <div class="content__title">
-                                <div class="content__title-text">すべてのアイテム</div>
-                                <div class="content__title-sort">
-                                    <div class="content__title-sort-text">並び替え：</div> 
-                                    <input type ="input" class="content__title-sort-selected" value="価格が高い順"></input>
-                                    <i class="fa-solid fa-chevron-down"></i> 
-                                    <div class="sort__tab">
-                                    <div class="sort__tab-list sort__tab-ascen selected" >価格が高い順</div>
-                                    <div class="sort__tab-list sort__tab-descen"  >価格が安い順</div>  
-                                </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row sort__item-list">
-                        </div>
-                        <!---------------Page-bar--------Start--> 
-                        <div class="row">
-                            <div class="bar-page">
-                                <div class="bar-page_list">
-                                    <a  class="bar-page_list-item page-checked">1</a>
-                                    <a  class="bar-page_list-item">2</a>
-                                    <a  class="bar-page_list-item">3</a>
-                                    <a  class="bar-page_list-item">4</a>
-                                    <a  class="bar-page_list-item">5</a>
-                                    <nav  class="bar-page_list-item page-dotted ">...</nav>
-                                    <a  class="bar-page_list-item">100</a>
-                                    <a  class="bar-page_list-item page-next"><i class="fa-solid fa-angle-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!---------------Page-bar--------End--> 
-
-                    </div>  
-                </div>
-                </div>
-            </div>
+    <div class="container">
+        <div class="grid wide product-item-container">
         </div>
-
-        <!-- Container end -->
-
-        <!-- Footer Start -->
-        <div class="footer">
-            <div class="grid wide">
-                <div class="row">
-                    <div class="col l-3">
-                        <h1 class="shop-infor-title">会社情報</h1>
-                        <div class="shop-infor-list"><a href="">TS-Shopについて</a></div>
-                        <div class="shop-infor-list"><a href="">お問い合わせ</a></div>
-                        <div class="shop-infor-list"><a href="">採用情報</a></div>
-                        <div class="shop-infor-list"><a href="">TS-Shopが取り組む環境活動</a></div>
-                    </div>
-                    <div class="col l-3">
-                        <h1 class="shop-poricy-title">カスタマーサービス</h1>
-                        <div class="shop-poricy-list"><a href="">返品・返金ポリシー</a></div>
-                        <div class="shop-poricy-list"><a href="">配送について</a></div>
-                    </div>
-                    <div class="col l-3">
-                        <h1 class="shop-help-title">へプル</h1>
-                        <div class="shop-help-list"><a href="">サポートセンター＆FAQ</a></div>
-                    </div>
-                    <div class="col l-3">
-                        <h1 class="shop-media-title">TS-SHOPとつながる</h1>
-                        <ul class="row shop-media-list">
-                            <li class="col l-4"><a href="https://instagram.com" class="shop-media-list_insta"><i class="fa-brands fa-instagram"></i></a></li>
-                            <li class="col l-4"><a href="https://facebook.com" class="shop-media-list_fb"><i class="fa-brands fa-facebook"></i></a></li>
-                            <li class="col l-4"><a href="https://twitter.com/" class="shop-media-list_tw"><i class="fa-brands fa-x-twitter"></i></a></li>
-                            <li class="col l-4"><a href="https://tiktok.com" class="shop-media-list_tiktok"><i class="fa-brands fa-tiktok"></i></a></li>
-                            <li class="col l-4"><a href="https://youtube.com" class="shop-media-list_ytb"><i class="fa-brands fa-youtube"></i></a></li>
-                            <li class="col l-4"><a href="https://www.pinterest.jp/" class="shop-media-list_pinterest"><i class="fa-brands fa-pinterest"></i></a></li>
-                            
-                    </div>
-                </div>
-                <div class="row shop-detail">
-                        TS-SHOP（ティィエスショップ）とは<br>
-TS-SHOPはレディースからメンズ・キッズまで、幅広いジャンルのファストファッションアイテムをまとめて購入できるファッション通販サイトです。最新のファストファッションアイテムを取り揃え、様々なお支払い方法にてお買い求めいただけます。お得なセールやイベントも365日毎日開催しておりますので、是非ファッション通販サイトTS-SHOPでのお買い物をお楽しみください！
-                </div>
-            </div>
-            <div class="footer-index">© THANHSON TS-SHOP, ALL RIGHTS RESERVED</div>
-        </div>
-        <!-- Footer End -->
     </div>
-<script type ="module" src="./script/script.js" defer></script>
+
+
+
+<!-- Footer Start -->
+<div class="footer">
+    <div class="grid wide">
+        <div class="row">
+            <div class="col l-3">
+                <h1 class="shop-infor-title">会社情報</h1>
+                <div class="shop-infor-list"><a href="">TS-Shopについて</a></div>
+                <div class="shop-infor-list"><a href="">お問い合わせ</a></div>
+                <div class="shop-infor-list"><a href="">採用情報</a></div>
+                <div class="shop-infor-list"><a href="">TS-Shopが取り組む環境活動</a></div>
+            </div>
+            <div class="col l-3">
+                <h1 class="shop-poricy-title">カスタマーサービス</h1>
+                <div class="shop-poricy-list"><a href="">返品・返金ポリシー</a></div>
+                <div class="shop-poricy-list"><a href="">配送について</a></div>
+            </div>
+            <div class="col l-3">
+                <h1 class="shop-help-title">へプル</h1>
+                <div class="shop-help-list"><a href="">サポートセンター＆FAQ</a></div>
+            </div>
+            <div class="col l-3">
+                <h1 class="shop-media-title">TS-SHOPとつながる</h1>
+                <ul class="row shop-media-list">
+                    <li class="col l-4"><a href="https://instagram.com" class="shop-media-list_insta"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li class="col l-4"><a href="https://facebook.com" class="shop-media-list_fb"><i class="fa-brands fa-facebook"></i></a></li>
+                    <li class="col l-4"><a href="https://twitter.com/" class="shop-media-list_tw"><i class="fa-brands fa-x-twitter"></i></a></li>
+                    <li class="col l-4"><a href="https://tiktok.com" class="shop-media-list_tiktok"><i class="fa-brands fa-tiktok"></i></a></li>
+                    <li class="col l-4"><a href="https://youtube.com" class="shop-media-list_ytb"><i class="fa-brands fa-youtube"></i></a></li>
+                    <li class="col l-4"><a href="https://www.pinterest.jp/" class="shop-media-list_pinterest"><i class="fa-brands fa-pinterest"></i></a></li>
+                    
+            </div>
+        </div>
+        <div class="row shop-detail">
+                TS-SHOP（ティィエスショップ）とは<br>
+SHOPLISTはレディースからメンズ・キッズまで、幅広いジャンルのファストファッションアイテムをまとめて購入できるファッション通販サイトです。最新のファストファッションアイテムを取り揃え、様々なお支払い方法にてお買い求めいただけます。お得なセールやイベントも365日毎日開催しておりますので、是非ファッション通販サイトSHOPLISTでのお買い物をお楽しみください！
+        </div>
+    </div>
+    <div class="footer-index">© THANHSON SHOPLIST, ALL RIGHTS RESERVED</div>
+</div>
+<!-- Footer End -->
+<script type ="module" src="./script/script-product.js"></script>
 </body>
 </html>
