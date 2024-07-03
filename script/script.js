@@ -486,6 +486,7 @@ function takeCart(){
         }
         // Thêm sự kiện click cho các nút tăng và giảm số lượng
     }
+
     if(true){
         takeCartBoxBtn.forEach(function(currentItemBox){
             currentItemBox.onclick = function(a){
@@ -674,10 +675,10 @@ function productRedirect(){
 // --------------SEARCH-ITEM-BAR-------------START
 
 function seacrhItem(){
-    let searchItemInput = $('.header__search-input');
-    let searchItemBox = $('.header__search-box');
-    let searchItemBtn = $('.header__search-button');
-    let searchItemList = [];
+    var searchItemInput = $('.header__search-input');
+    var searchItemBox = $('.header__search-box');
+    var searchItemBtn = $('.header__search-button');
+    var searchItemList = [];
     searchItemInput.oninput = function(){
         if(searchItemInput.value !== ''){
             searchItemBox.style.display = 'block';
@@ -703,9 +704,11 @@ function seacrhItem(){
                             `
                                 <div class="header__search-item-list">
                                     <div class="header__search-item-discription"></div>
-                                    <div class="header__search-item-name">
-                                        ${beforeMatch}<strong>${match}</strong>${afterMatch}
-                                    </div>
+                                    <a href = "./product.html?id=${item.id}">
+                                        <div class="header__search-item-name">
+                                        ${beforeMatch}<strong>${match}</strong>${afterMatch}       
+                                        </div>
+                                    </a>
                                 </div>
                             `
                         }
@@ -724,13 +727,12 @@ function seacrhItem(){
 
     
     function performSearch(){
-        console.log(sort__item_list) 
+        if(window.location.href.endsWith('/category.html')){
             if (searchItemList.length > 0){
-                sort__item_list.innerHTML = '';
-                console.log(searchItemList)
+                $('.sort__item-list').innerHTML = '';
                 searchItemList.forEach(item =>
                     {
-                        sort__item_list.innerHTML +=
+                        $('.sort__item-list').innerHTML +=
         `<div class="col l-2-4">
             <div class="sort__item" item-index = "${item.id}">
                 <a class="sort__item-link" data-id="${item.id}" >
@@ -772,13 +774,17 @@ function seacrhItem(){
             }
             else{
                 $('.content__title-sort').style.display = 'none';
-                sort__item_list.innerHTML = `
+                $('.sort__item-list').innerHTML = `
                 <div class='search__item-empty'>
                 <img src="./image/item-search-empty.jpg">
                 No results found for "${searchItemInput.value}"
                 </div>`
                 ;
             }
+        }
+        else{
+            window.location.assign('./category.html');
+        }
     }
     searchItemBtn.onclick = performSearch;
 
@@ -788,6 +794,7 @@ function seacrhItem(){
         performSearch();
     }
     });
+    console.log(sort__item_list) 
 }
 
 seacrhItem();

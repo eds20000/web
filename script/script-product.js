@@ -286,7 +286,6 @@ productItemContainer.innerHTML =
 // Tạo nội dung hình ảnh và sản phẩm
 CreateImgItem();
 itemProductCreat();
-
 // Hàm chuyển đổi hình ảnh khi nhấn nút "Next" và "Prev"
 function initImageSlider() {
     const btnNext = $('.product-item-btnNext');
@@ -389,5 +388,7 @@ $$('.product-item-data-content_addcart').forEach(function(addCartBtn){
         onChangeCart();
     };
 });
+
+onChangeCart();
 
 
