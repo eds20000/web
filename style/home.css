@@ -1,5 +1,18 @@
 /* HOME PAGE SLIDE -----------------------------START */
-
+.swiper.tab{
+    height: auto;
+    width: 100%;
+    font-size: var(--font-size);
+    padding: 0 125px;
+    box-shadow: 0px 5px 6px -6px #999999;
+}
+.swiper.tab .swiper-slide{
+    padding: 10px 0;
+}
+.swiper.tab .swiper-slide:hover{
+    color: var(--primary-color);
+    border-bottom: 3px solid var(--primary-color);
+}
 .header{
     z-index: 2;
 }

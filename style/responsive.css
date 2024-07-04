@@ -1,0 +1,97 @@
+/* Mobile and Tablet */
+@media (max-width:1023px){
+    .header{
+        background-color: var(--white-color);
+    }
+    .header__navbar-user span,
+    .header__navbar-support span{
+        display: none;
+    }
+    .header__navbar li:hover{
+        transform: scale(1);
+        background-color: inherit;
+        color: inherit;
+    }
+    .grid.wide{
+        width: 100%;
+    }
+    .header__search{
+        display: none;
+    }
+    .header-category-box{
+        display: none;
+    }
+
+}
+
+@media(min-width :740px) and (max-width :1023px){
+
+}
+
+
+/* Mobile */
+@media(max-width :739px){
+    .header__search{
+        display: none;
+    }
+    .header-category-box{
+        display:block;
+        width: 50px;
+        text-align: center;
+    }
+    .header-category-box i{
+        font-size: 1.5rem;
+    }
+    .logo-img{
+        width: 100px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+    }
+    .header__navbar{
+        font-size: 1.2rem;
+        gap:0;
+        
+    }
+    .header .grid.wide{
+        height: 60px;
+        position: relative;
+    }
+    .header__navbar li{
+        padding:7px;
+    }
+    .header__navbar-support{
+        display: none;
+    }
+    .swiper.tab{
+        padding: 0 5px;
+        background-color: var(--white-color);
+    }
+    .swiper.tab .swiper-slide:hover{
+        color: inherit;
+    }
+    .container{
+        padding-top: 60px;
+    }
+    .swiper.swiper-homepage{
+        width: 100%;
+    }
+    .swiper.swiper-homepage .swiper-button-prev,
+    .swiper.swiper-homepage .swiper-button-next{
+        display: none;
+    }
+    .swiper.swiper-homepage .swiper-slide img{
+        border-radius: 0;
+        height: 100%;
+    }
+    .swiper-pagination-bullet {
+        background-color: var(--white-color); 
+        margin: 0 ; 
+        border-radius: 0;
+        width:15px;
+    }
+    .swiper-pagination .swiper-pagination-bullet-active {
+        background-color: var(--white-color);
+      }
+}

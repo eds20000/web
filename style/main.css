@@ -130,7 +130,9 @@ body{
     color: black;
 }
 /* HEADER SEARCH BAR --END*/
-
+.header-category-box{
+    display: none;
+}
 .header__navbar{
     list-style: none;
     position: relative;
@@ -139,8 +141,6 @@ body{
 .header__navbar li{
     padding: 10px;
     border-radius: 40px;
-    display: flex;
-    justify-content: center;
     transition: transform 0.3s ease
 }
 .header__navbar li:hover{
@@ -352,35 +352,6 @@ body{
 /* Header end */
 
 /* Container start */
-.tab{
-    top: var(--header-height);
-    width: 100%;
-}
-
-.tab__list{
-    list-style: none;
-    display: flex;
-    font-size: var(--font-size);
-    align-items: center;
-    justify-content: center;
-    gap: 50px; ;
-    height: 40px;
-    padding: 0;
-    box-shadow: 0px 5px 6px -6px #999999;
-}
-
-
-
-.tab__list li{
-    display: block;
-    padding: 11px;
-}
-
-.tab__list li:hover{
-    color: var(--primary-color);
-    border-bottom: 3px solid var(--primary-color);
-}
-
 .tab__list-start{
     color: var(--primary-color);
     border-bottom: 3px solid var(--primary-color);

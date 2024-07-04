@@ -7,19 +7,21 @@ const header = $('.header');
 const headerHeight = header.clientHeight; // Chiều cao của header
 const scrollThreshold = headerHeight; // Giá trị ngưỡng cuộn
 
-window.addEventListener('scroll', function() {
-  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-  if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
-    // Cuộn xuống và vượt ngưỡng
-    header.style.transform = 'translateY(-100%)';
-  } else {
-    // Cuộn lên hoặc chưa vượt ngưỡng
-    header.style.transform = 'translateY(0)';
-  }
-
-  lastScrollTop = scrollTop;
-});
+if(window.innerWidth > 1023){
+    window.addEventListener('scroll', function() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+      if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
+        // Cuộn xuống và vượt ngưỡng
+        header.style.transform = 'translateY(-100%)';
+      } else {
+        // Cuộn lên hoặc chưa vượt ngưỡng
+        header.style.transform = 'translateY(0)';
+      }
+    
+      lastScrollTop = scrollTop;
+    });
+}
 
 //
 
@@ -726,75 +728,75 @@ function seacrhItem(){
     }
 
     
-    function performSearch(){
-        if(window.location.href.endsWith('/category.html')){
-            if (searchItemList.length > 0){
-                $('.sort__item-list').innerHTML = '';
-                searchItemList.forEach(item =>
-                    {
-                        $('.sort__item-list').innerHTML +=
-        `<div class="col l-2-4">
-            <div class="sort__item" item-index = "${item.id}">
-                <a class="sort__item-link" data-id="${item.id}" >
-                    <div class="sort__item-img">
-                        <img src="${item.color_img[0].img[0]}" alt="">
-                    </div>
-                    <div class="sort__item-brand">${item.brand}</div>
-                    <div class="sort__item-text">${item.name}</div>
-                </a>
-                <div class="sort__item-img_btn sort__item-img_btn-left"><i class="fa-solid fa-angle-left"></i></div>
-                <div class="sort__item-img_btn sort__item-img_btn-right"><i class="fa-solid fa-angle-right"></i></div>
-                <div class="sort__item-content">
-                    <div class="sort__item-title">
-                        <div class="sort__item-price">￥${item.price}</div>
-                        <div class="sort__item-takeit">
-                            <button type="button" class="sort__item-favorite sort__item-takecart-disable" onclick="favoritebutton(this)"></button>
-                            <button type="button" class="sort__item-takecart"><i class="fa-solid fa-cart-plus"></i></button>
-                        </div>
-                    </div>
-                    <div class="sort__item-star">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <div class="sort__item-star-number">
-                            (<p>0</p>)
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>`
-                    }
-                )
-            changeImage();
-            takeCart();
-            productRedirect();
-            }
-            else{
-                $('.content__title-sort').style.display = 'none';
-                $('.sort__item-list').innerHTML = `
-                <div class='search__item-empty'>
-                <img src="./image/item-search-empty.jpg">
-                No results found for "${searchItemInput.value}"
-                </div>`
-                ;
-            }
-        }
-        else{
-            window.location.assign('./category.html');
-        }
-    }
-    searchItemBtn.onclick = performSearch;
+    // function performSearch(){
+    //     if(window.location.href.endsWith('/category.html')){
+    //         if (searchItemList.length > 0){
+    //             $('.sort__item-list').innerHTML = '';
+    //             searchItemList.forEach(item =>
+    //                 {
+    //                     $('.sort__item-list').innerHTML +=
+    //     `<div class="col l-2-4">
+    //         <div class="sort__item" item-index = "${item.id}">
+    //             <a class="sort__item-link" data-id="${item.id}" >
+    //                 <div class="sort__item-img">
+    //                     <img src="${item.color_img[0].img[0]}" alt="">
+    //                 </div>
+    //                 <div class="sort__item-brand">${item.brand}</div>
+    //                 <div class="sort__item-text">${item.name}</div>
+    //             </a>
+    //             <div class="sort__item-img_btn sort__item-img_btn-left"><i class="fa-solid fa-angle-left"></i></div>
+    //             <div class="sort__item-img_btn sort__item-img_btn-right"><i class="fa-solid fa-angle-right"></i></div>
+    //             <div class="sort__item-content">
+    //                 <div class="sort__item-title">
+    //                     <div class="sort__item-price">￥${item.price}</div>
+    //                     <div class="sort__item-takeit">
+    //                         <button type="button" class="sort__item-favorite sort__item-takecart-disable" onclick="favoritebutton(this)"></button>
+    //                         <button type="button" class="sort__item-takecart"><i class="fa-solid fa-cart-plus"></i></button>
+    //                     </div>
+    //                 </div>
+    //                 <div class="sort__item-star">
+    //                     <i class="fa-solid fa-star"></i>
+    //                     <i class="fa-solid fa-star"></i>
+    //                     <i class="fa-solid fa-star"></i>
+    //                     <i class="fa-solid fa-star"></i>
+    //                     <i class="fa-solid fa-star"></i>
+    //                     <i class="fa-solid fa-star"></i>
+    //                     <div class="sort__item-star-number">
+    //                         (<p>0</p>)
+    //                     </div>
+    //                 </div>
+    //             </div>
+    //         </div>
+    //     </div>`
+    //                 }
+    //             )
+    //         changeImage();
+    //         takeCart();
+    //         productRedirect();
+    //         }
+    //         else{
+    //             $('.content__title-sort').style.display = 'none';
+    //             $('.sort__item-list').innerHTML = `
+    //             <div class='search__item-empty'>
+    //             <img src="./image/item-search-empty.jpg">
+    //             No results found for "${searchItemInput.value}"
+    //             </div>`
+    //             ;
+    //         }
+    //     }
+    //     else{
+    //         window.location.assign('./category.html');
+    //         performSearch();
+    //     }
+    // }
+    // searchItemBtn.onclick = performSearch;
 
-        // Enter key press event
-    searchItemInput.addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') {
-        performSearch();
-    }
-    });
-    console.log(sort__item_list) 
+    //     // Enter key press event
+    // searchItemInput.addEventListener('keypress', function (e) {
+    // if (e.key === 'Enter') {
+    //     performSearch();
+    // }
+    // });
 }
 
 seacrhItem();
