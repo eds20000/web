@@ -31,7 +31,7 @@ var swiperHomepage = new Swiper ('.swiper-homepage', {
 var swiperBrand = new Swiper ('.swiper__brand-list', {
   direction: 'horizontal',
   loop: true,
-  slidesPerView: 5,
+  slidesPerView: window.innerWidth <740 ?2:5,
   spaceBetween: 20,
   
   navigation: {
@@ -47,4 +47,20 @@ window.addEventListener('resize', function() {
 });
 
 // insert item
+
+//CATEGORY BOX HIDE 
+var categoryBoxBtn = $('.header-category-box i');
+var categoryBoxBtnClose = $('.category-box-closeBtn')
+var categoryBox = $('.category-box');
+categoryBoxBtn.onclick = function(){
+    categoryBox.classList.toggle('unhide-active')
+    document.body.classList.add('over')
+    $('.over-play').style.display = 'block'
+}
+categoryBoxBtnClose.onclick = function(){
+    categoryBox.classList.remove('unhide-active')
+    document.body.classList.remove('over')
+    $('.over-play').style.display = 'none'
+}
+
 

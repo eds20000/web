@@ -6,6 +6,7 @@ let lastScrollTop = 0;
 const header = $('.header');
 const headerHeight = header.clientHeight; // Chiều cao của header
 const scrollThreshold = headerHeight; // Giá trị ngưỡng cuộn
+const headerSearch = $('.header__search')
 
 if(window.innerWidth > 1023){
     window.addEventListener('scroll', function() {
@@ -21,6 +22,19 @@ if(window.innerWidth > 1023){
     
       lastScrollTop = scrollTop;
     });
+}
+if(window.innerWidth < 740){
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+        if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
+            headerSearch.style.display = 'flex'
+            $('.header__logo').style.display = 'none'
+        }else{
+            headerSearch.style.display = 'none'
+            $('.header__logo').style.display = 'block'
+        }
+      });
 }
 
 //
@@ -216,7 +230,7 @@ function exportItem(itemList,column){
     itemList.innerHTML ='';
     for(let i = 0 ; i < list_item.length ; ++i){
         itemList.innerHTML +=
-        `<div class="col ${column}">
+        `<div class="col ${column} c-4">
             <div class="sort__item" item-index = "${i}">
                 <a class="sort__item-link" data-id="${list_item[i].id}" >
                     <div class="sort__item-img">

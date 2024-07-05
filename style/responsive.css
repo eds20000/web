@@ -31,8 +31,14 @@
 
 /* Mobile */
 @media(max-width :739px){
+    .header{
+        position: fixed;
+    }
     .header__search{
         display: none;
+        position: absolute;
+        left: 42%;
+        translate: -50%;
     }
     .header-category-box{
         display:block;
@@ -50,7 +56,7 @@
         translate: -50% -50%;
     }
     .header__navbar{
-        font-size: 1.2rem;
+        font-size: 1.5rem;
         gap:0;
         
     }
@@ -59,7 +65,7 @@
         position: relative;
     }
     .header__navbar li{
-        padding:7px;
+        /* padding:7px; */
     }
     .header__navbar-support{
         display: none;
@@ -83,7 +89,7 @@
     }
     .swiper.swiper-homepage .swiper-slide img{
         border-radius: 0;
-        height: 100%;
+        height: 90%;
     }
     .swiper-pagination-bullet {
         background-color: var(--white-color); 
@@ -94,4 +100,65 @@
     .swiper-pagination .swiper-pagination-bullet-active {
         background-color: var(--white-color);
       }
+    
+    /* CATEGORY BOX */
+
+    
+    .category_list-item{
+        font-size: var(--font-size);
+    }
+
+
+    .category__list-img{
+        padding-left: 20px;
+    }
+
+    .category-item{
+        padding: 0;
+        margin: 20px 0;
+    }
+    .category-item a {
+        width: 110px;
+        height: 110px;
+    }
+    .category-item-title {
+        bottom: -22px;
+    }
+    .category-box-closeBtn{
+        position: absolute;
+        top:0px;
+        right: -45px;
+        font-size: 2.5rem;
+        padding: 10px 15px;
+        background-color: var(--black-color);
+        color: var(--white-color);
+    }
+    .category-box-closeBtn i{
+        font-size: 2rem;
+    }
+
+    /* swiper brand */
+    .swiper.swiper__brand-list
+    {
+        height: auto;
+    }
+
+    /* Sort Item */
+    .sort__item-img {
+        height: auto;
+    }
+    .sort__item-title{
+        display: block;
+    }
+    .sort__item-takeit{
+        justify-content: space-between;
+    }
+    .section__recommend-list{
+        margin-left: 4px;
+        margin-right: 4px;
+    }
+    .sort__item-img_btn-left,
+    .sort__item-img_btn-right {
+        top: 15%;
+    }
 }
