@@ -87,6 +87,7 @@
     .category-item{
         padding: 0;
         margin: 20px 0;
+        text-align: center;
     }
     .category-item a {
         width: 110px;
