@@ -273,11 +273,11 @@ function CreatItemSelectBox(){
             <div class="select-cart-box-close"><i class="fa-solid fa-xmark"></i></div>
             <div class="select-cart-box-content">
                 <div class="row">
-                                                <ul class="item-checklist-imglist col l-1">
+                                                <ul class="item-checklist-imglist col l-1 c-6">
                                         
                                                 </ul>
-                                                <div class="item-checklist-img-main col l-5"></div>
-                                                <div class="item-checklist-content col l-6">
+                                                <div class="item-checklist-img-main col l-5 c-6"></div>
+                                                <div class="item-checklist-content col l-6 c-12">
                                                     <div class="item-checklist-name"></div>
                                                     <div class="item-checklist-brand"></div>
                                                     <div class="item-checklist-price">￥<span></span></div>

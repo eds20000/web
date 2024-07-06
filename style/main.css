@@ -672,6 +672,8 @@ body{
 }
 
 .item__select-cart-box{
+    top:0;
+    position: absolute;
     padding: 10px;
     margin: 100px;
     background-color: var(--white-color);

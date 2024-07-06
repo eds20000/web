@@ -71,6 +71,9 @@
     .header__navbar-support{
         display: none;
     }
+    .header__navbar-cart-count{
+        font-size: 1rem;
+    }
     
     /* CATEGORY BOX */
 
@@ -138,5 +141,61 @@
     }
     .sort__item-img_btn-right{
         right:3px;
+    }
+    .sort__item-brand{
+        margin-top: 0;
+    }
+    .sort__item-text{
+        margin: 0;
+    }
+    .sort__item-content{
+        margin: 0;
+    }
+    .sort__item-star{
+        font-size: 1rem;
+    }
+    /* Cart select box */
+    .item__select-cart-box{
+        margin: 30px;
+        width: 80%;
+        height: 80%;
+        font-size: 1rem;
+    }
+    .select-cart-box-content{
+        width:100%;
+    }
+    .select-cart-box-content .row{
+        width: 100%;
+        
+    }.item-checklist-name{
+        font-size: 1.5rem;
+        line-height: 1.5rem;
+    }
+    .item-checklist-imglist-item{
+        height: 100%;
+    }
+    .item-checklist-price{
+        margin: 10px 0;
+    }
+    .item-checklist-brand{
+        margin-top: 10px;
+    }
+    .item-checklist-imglist{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+    .item-checklist-color{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .item-checklist-size{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .item-checklist-takecart-btn{
+        margin-top: 0;
     }
 }
