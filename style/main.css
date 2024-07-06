@@ -858,13 +858,6 @@ body.overlay-open_select-cart-box{
     color: white;
 }
 
-@media(max-width :739px){
-    .footer .grid.wide{
-        padding: 10px;
-    }
-    .footer .row{
-    }
-}
 
 
 /* <!-- Footer End --> */
