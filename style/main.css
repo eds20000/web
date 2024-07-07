@@ -26,7 +26,8 @@ body{
     height: var(--header-height);
     display: flex;
     justify-content: space-between;
-    align-items: center;   
+    align-items: center;
+    z-index: 3;   
 }
 
 
@@ -86,7 +87,7 @@ body{
     position: absolute;
     width: 100%;
     top: 40px;
-    z-index: 1;
+    z-index: 10;
     background-color: var(--white-color);
     font-size: var(--font-size);
     box-shadow: var(--box-shadow);

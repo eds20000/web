@@ -208,7 +208,6 @@ var list_item = [
 export default list_item;
 var sort__item_list = $('.sort__item-list')
 var recommendList = $('.section__recommend-list')
-seacrhItem();
 if(sort__item_list){
    exportItem(sort__item_list,'l-2-4');
    CreatItemSelectBox();//ham tao ra muc takcartitembox
@@ -690,12 +689,23 @@ function productRedirect(){
 
 // --------------SEARCH-ITEM-BAR-------------START
 
-function seacrhItem(){
+function searchItemIp(){  
+    const urlParams = new URLSearchParams(window.location.search);
+    const itemSearch = urlParams.get('word');
     var searchItemInput = $('.header__search-input');
     var searchItemBox = $('.header__search-box');
     var searchItemBtn = $('.header__search-button');
     var searchItemList = [];
-    searchItemInput.oninput = function(){
+    if(window.location.pathname === '/category.html'){
+        searchItemInput.value = itemSearch;
+        searchItemList = list_item.filter( value =>
+            {
+                return value.name.toLowerCase().includes(searchItemInput.value.toLowerCase())
+            }
+        )
+        performSearch();
+    }
+    searchItemInput.oninput = function searchInput(){
         if(searchItemInput.value !== ''){
             searchItemBox.style.display = 'block';
             itemNameSearch();
@@ -741,77 +751,70 @@ function seacrhItem(){
             }   
     }
 
-    
-    // function performSearch(){
-    //     if(window.location.href.endsWith('/category.html')){
-    //         if (searchItemList.length > 0){
-    //             $('.sort__item-list').innerHTML = '';
-    //             searchItemList.forEach(item =>
-    //                 {
-    //                     $('.sort__item-list').innerHTML +=
-    //     `<div class="col l-2-4">
-    //         <div class="sort__item" item-index = "${item.id}">
-    //             <a class="sort__item-link" data-id="${item.id}" >
-    //                 <div class="sort__item-img">
-    //                     <img src="${item.color_img[0].img[0]}" alt="">
-    //                 </div>
-    //                 <div class="sort__item-brand">${item.brand}</div>
-    //                 <div class="sort__item-text">${item.name}</div>
-    //             </a>
-    //             <div class="sort__item-img_btn sort__item-img_btn-left"><i class="fa-solid fa-angle-left"></i></div>
-    //             <div class="sort__item-img_btn sort__item-img_btn-right"><i class="fa-solid fa-angle-right"></i></div>
-    //             <div class="sort__item-content">
-    //                 <div class="sort__item-title">
-    //                     <div class="sort__item-price">￥${item.price}</div>
-    //                     <div class="sort__item-takeit">
-    //                         <button type="button" class="sort__item-favorite sort__item-takecart-disable" onclick="favoritebutton(this)"></button>
-    //                         <button type="button" class="sort__item-takecart"><i class="fa-solid fa-cart-plus"></i></button>
-    //                     </div>
-    //                 </div>
-    //                 <div class="sort__item-star">
-    //                     <i class="fa-solid fa-star"></i>
-    //                     <i class="fa-solid fa-star"></i>
-    //                     <i class="fa-solid fa-star"></i>
-    //                     <i class="fa-solid fa-star"></i>
-    //                     <i class="fa-solid fa-star"></i>
-    //                     <i class="fa-solid fa-star"></i>
-    //                     <div class="sort__item-star-number">
-    //                         (<p>0</p>)
-    //                     </div>
-    //                 </div>
-    //             </div>
-    //         </div>
-    //     </div>`
-    //                 }
-    //             )
-    //         changeImage();
-    //         takeCart();
-    //         productRedirect();
-    //         }
-    //         else{
-    //             $('.content__title-sort').style.display = 'none';
-    //             $('.sort__item-list').innerHTML = `
-    //             <div class='search__item-empty'>
-    //             <img src="./image/item-search-empty.jpg">
-    //             No results found for "${searchItemInput.value}"
-    //             </div>`
-    //             ;
-    //         }
-    //     }
-    //     else{
-    //         window.location.assign('./category.html');
-    //         performSearch();
-    //     }
-    // }
-    // searchItemBtn.onclick = performSearch;
+    function performSearch(){
+            if (searchItemList.length > 0){
+                $('.sort__item-list').innerHTML = '';
+                searchItemList.forEach(item =>
+                    {
+                        $('.sort__item-list').innerHTML +=
+        `<div class="col l-2-4 c-4">
+            <div class="sort__item" item-index = "${item.id}">
+                <a class="sort__item-link" data-id="${item.id}" >
+                    <div class="sort__item-img">
+                        <img src="${item.color_img[0].img[0]}" alt="">
+                    </div>
+                    <div class="sort__item-brand">${item.brand}</div>
+                    <div class="sort__item-text">${item.name}</div>
+                </a>
+                <div class="sort__item-img_btn sort__item-img_btn-left"><i class="fa-solid fa-angle-left"></i></div>
+                <div class="sort__item-img_btn sort__item-img_btn-right"><i class="fa-solid fa-angle-right"></i></div>
+                <div class="sort__item-content">
+                    <div class="sort__item-title">
+                        <div class="sort__item-price">￥${item.price}</div>
+                        <div class="sort__item-takeit">
+                            <button type="button" class="sort__item-favorite sort__item-takecart-disable" onclick="favoritebutton(this)"></button>
+                            <button type="button" class="sort__item-takecart"><i class="fa-solid fa-cart-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="sort__item-star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <div class="sort__item-star-number">
+                            (<p>0</p>)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>`
+                    }
+                )
+            changeImage();
+            takeCart();
+            productRedirect();
+            }
+            else{
+                $('.content__title-sort').style.display = 'none';
+                $('.sort__item-list').innerHTML = `
+                <div class='search__item-empty'>
+                <img src="./image/item-search-empty.jpg">
+                No results found for "${searchItemInput.value}"
+                </div>`
+                ;
+            }
+        }   
+    searchItemBtn.onclick = performSearch;
 
-    //     // Enter key press event
-    // searchItemInput.addEventListener('keypress', function (e) {
-    // if (e.key === 'Enter') {
-    //     performSearch();
-    // }
-    // });
+        // Enter key press event
+    searchItemInput.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        performSearch();
+    }
+    });
 }
 
-seacrhItem();
+searchItemIp();
 // --------------SEARCH-ITEM-BAR-------------END

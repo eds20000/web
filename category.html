@@ -8,15 +8,23 @@
     <link rel="stylesheet" href="./style/base.css">
     <link rel="stylesheet" href="./style/grid.css">
     <link rel="stylesheet" href="./style/main.css">
+    <link rel="stylesheet" href="./style/category.css">
     <link rel="stylesheet" href="./style/responsive.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/d72dd2144a.js" crossorigin="anonymous"></script>
+    
+    <!-- Swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
     <title>TS-shop</title>
 </head>
 <body>
     <div class="app">
+        <div class="over-play"></div>
         <!-- Header start1-->
         <header class="header">
             <div class="grid wide">
@@ -24,12 +32,12 @@
                     <i class="fa-solid fa-bars"></i>
                 </div>
                 <a href="./index.html" class="header__logo"><img src="./image/logo.png" alt="logo" class="logo-img"></a>
-                <div class="header__search">
-                    <input type="text" placeholder="何にをお探しですか？" class="header__search-input">
+                <form class="header__search" method="get" action="./category.html">
+                    <input type="text" placeholder="何にをお探しですか？" class="header__search-input" name ="word">
                     <button class="header__search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
                     <div class="header__search-box">
                     </div>
-                </div>
+                </form>
                 <ul class="header__navbar">
                     <li class="header__navbar-user"><a href="./login.html"><i class="fa-regular fa-user"></i><span>ログイン</span></a></li>
                     <li class="header__navbar-like icon-center"><a href=""><i class="fa-regular fa-heart"></i></a></li>
@@ -43,10 +51,44 @@
 
                         </div>
                     </div>
-                    <li class="header__navbar-support"><a href=""><i class="fa-solid fa-headset"></i>サポート</a></li>
+                    <li class="header__navbar-support"><a href=""><i class="fa-solid fa-headset"></i><span>サポート</span></a></li>
                 </ul>
             </div>
+            
+            <div class="swiper tab">  
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide tab__list-start"><a href="">すべて</a></div>
+                    <div class="swiper-slide"><a href="">おすすめ</a></div>
+                    <div class="swiper-slide"><a href="">新着</a></div>
+                    <div class="swiper-slide"><a href="">マイリスト</a></div>
+                    <div class="swiper-slide"><a href="">ベストセラ</a></div>
+                    <div class="swiper-slide"><a href="">メンズ</a></div>
+                    <div class="swiper-slide"><a href="">レディース</a></div>
+                    <div class="swiper-slide"><a href="">コスメ</a></div>
+                </div>
+            </div>
+            
         </header>
+        <div class="category-box">
+            <ul class="category__list">
+                <p class="category_header">カテゴリー</p>
+                <li class="category_list-item"><a href=""><div class="category_list-item-text">トップス</div><i class="fa-solid fa-chevron-right"></i></a></li>
+                <li class="category_list-item"><a href=""><div class="category_list-item-text">ジャケット/アウター</div><i class="fa-solid fa-chevron-right"></i></a></li>
+                <li class="category_list-item"><a href=""><div class="category_list-item-text">パンツ</div><i class="fa-solid fa-chevron-right"></i></a></li>
+                <li class="category_list-item"><a href=""><div class="category_list-item-text">スカート</div><i class="fa-solid fa-chevron-right"></i></a></li>
+                <li class="category_list-item"><a href=""><div class="category_list-item-text">ワンピース/ドレス</div><i class="fa-solid fa-chevron-right"></i></a></li>
+                <li class="category_list-item"><a href=""><div class="category_list-item-text">小物</div><i class="fa-solid fa-chevron-right"></i></a></li>
+                <li class="category_list-item"><a href=""><div class="category_list-item-text">バッグ</div><i class="fa-solid fa-chevron-right"></i></a></li>
+                <li class="category_list-item"><a href=""><div class="category_list-item-text">シューズ</div><i class="fa-solid fa-chevron-right"></i></a></li>
+                <li class="category_list-item"><a href=""><div class="category_list-item-text">ファッション雑貨</div><i class="fa-solid fa-chevron-right"></i></a></li>
+                <li class="category_list-item"><a href=""><div class="category_list-item-text">帽子</div><i class="fa-solid fa-chevron-right"></i></a></li>
+                <li class="category_list-item"><a href=""><div class="category_list-item-text">腕時計</div><i class="fa-solid fa-chevron-right"></i></a></li>
+                <li class="category_list-item"><a href=""><div class="category_list-item-text">アクセサリー</div><i class="fa-solid fa-chevron-right"></i></a></li>
+                <li class="category_list-item"><a href=""><div class="category_list-item-text tab-suport">サポート<i class="fa-solid fa-headset"></i></a></li>    
+            </ul>
+            <div class="category-box-closeBtn"><i class="fa-solid fa-xmark"></i></div>
+        </div>
+        <div class="tab__list-close"></div>
         <!-- Header end -->
 
         <!-- Container start -->
@@ -151,5 +193,30 @@ TS-SHOPはレディースからメンズ・キッズまで、幅広いジャン�
         <!-- Footer End -->
     </div>
 <script type ="module" src="./script/script.js"></script>
+<script>
+    const $ = document.querySelector.bind(document);
+    const $$ = document.querySelectorAll.bind(document);
+    var swiperTab = new Swiper('.tab',{
+        direction:'horizontal',
+        loop:true,
+        slidesPerView:window.innerWidth < 740 ?3:8,
+        spaceBetween: 1,
+    })
+    //CATEGORY BOX HIDE 
+var categoryBoxBtn = $('.header-category-box i');
+var categoryBoxBtnClose = $('.category-box-closeBtn')
+var categoryBox = $('.category-box');
+categoryBoxBtn.onclick = function(){
+    categoryBox.classList.toggle('unhide-active')
+    document.body.classList.add('over')
+    $('.over-play').style.display = 'block'
+}
+categoryBoxBtnClose.onclick = function(){
+    categoryBox.classList.remove('unhide-active')
+    document.body.classList.remove('over')
+    $('.over-play').style.display = 'none'
+}
+
+</script>
 </body>
 </html>

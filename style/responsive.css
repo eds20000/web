@@ -198,4 +198,8 @@
     .item-checklist-takecart-btn{
         margin-top: 0;
     }
+    /* Footer */
+    .footer{
+        padding: 30px 10px 10px;
+    }
 }
