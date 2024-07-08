@@ -229,7 +229,7 @@ function exportItem(itemList,column){
     itemList.innerHTML ='';
     for(let i = 0 ; i < list_item.length ; ++i){
         itemList.innerHTML +=
-        `<div class="col ${column} c-4">
+        `<div class="col ${column} c-4 m-4">
             <div class="sort__item" item-index = "${i}">
                 <a class="sort__item-link" data-id="${list_item[i].id}" >
                     <div class="sort__item-img">
@@ -688,23 +688,25 @@ function productRedirect(){
 }
 
 // --------------SEARCH-ITEM-BAR-------------START
-
-function searchItemIp(){  
+var searchItemInput = $('.header__search-input');
+var searchItemBox = $('.header__search-box');
+var searchItemBtn = $('.header__search-button');
+var searchItemList = [];
+function searchItemIp(){
     const urlParams = new URLSearchParams(window.location.search);
     const itemSearch = urlParams.get('word');
-    var searchItemInput = $('.header__search-input');
-    var searchItemBox = $('.header__search-box');
-    var searchItemBtn = $('.header__search-button');
-    var searchItemList = [];
-    if(window.location.pathname === '/category.html'){
+    
+    if(itemSearch != ''){
         searchItemInput.value = itemSearch;
         searchItemList = list_item.filter( value =>
             {
                 return value.name.toLowerCase().includes(searchItemInput.value.toLowerCase())
             }
         )
-        performSearch();
     }
+    performSearch();
+    
+    console.log(searchItemList)
     searchItemInput.oninput = function searchInput(){
         if(searchItemInput.value !== ''){
             searchItemBox.style.display = 'block';
@@ -757,7 +759,7 @@ function searchItemIp(){
                 searchItemList.forEach(item =>
                     {
                         $('.sort__item-list').innerHTML +=
-        `<div class="col l-2-4 c-4">
+        `<div class="col l-2-4 c-4 m-3">
             <div class="sort__item" item-index = "${item.id}">
                 <a class="sort__item-link" data-id="${item.id}" >
                     <div class="sort__item-img">
@@ -815,6 +817,8 @@ function searchItemIp(){
     }
     });
 }
+console.log(window.location.pathname)
 
 searchItemIp();
+
 // --------------SEARCH-ITEM-BAR-------------END

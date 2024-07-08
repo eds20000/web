@@ -35,15 +35,49 @@
     color: var(--primary-color);
     border-bottom: 3px solid var(--primary-color);
 }
+
+/* RESPONSIVE  */
+
+/* Tablet and Mobile */
+@media (max-width:1023px){
+
+}
+/* Tablet */
+
+@media(min-width :740px) and (max-width :1023px){
+    .container .category__list{
+        display: none;
+    }
+    
+}
+/*  mobile */
 @media (max-width: 739px) {
     .swiper.tab {
         padding: 0 5px;
         background-color: var(--white-color);
     }
-    .container .category__list{
-        display: none;
-    }
     .sort__item-list{
         margin: 30px 5px;
+    }
+    .content__title{
+        padding:0 20px
+    }
+    /* pagination */
+    .bar-page{
+        padding: 0 20px;
+    }
+    .bar-page_list{
+        font-size: 1.5rem;
+    }
+    .bar-page_list-item{
+        padding: 5px 11px;
+    }
+
+    /* SORT tab */
+    .content__title-sort-selected{
+        width: 100px;
+    }
+    .sort__tab{
+        z-index: 2;
     }
 }
