@@ -1,8 +1,10 @@
 .over-play {
-    height: 100%;
-    width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     background-color: rgba(0, 0, 0, 0.6);
-    position: absolute;
+    position: fixed;
     z-index: 8;
     display: none;
 }
@@ -40,13 +42,40 @@
 
 /* Tablet and Mobile */
 @media (max-width:1023px){
-
+    .container .grid.wide{
+        padding: 10px;
+    }
+    .content__body{
+        display: none;
+    }
+    /* Footer */
+    .footer .grid.wide{
+        padding: 10px;
+    }
+    .bar-page{
+        padding: 0 20px;
+    }
 }
 /* Tablet */
 
 @media(min-width :740px) and (max-width :1023px){
+    .container .grid .wide{
+        padding:10px;
+    }
     .container .category__list{
         display: none;
+    }
+    .content__title{
+        padding: 0 20px;
+    }
+    .sort__item-list{
+        margin: 20px 0;
+    }
+    .sort__item{
+        padding: 0;
+    }
+    .content_body{
+        width: 100%;
     }
     
 }
@@ -62,10 +91,13 @@
     .content__title{
         padding:0 20px
     }
-    /* pagination */
-    .bar-page{
-        padding: 0 20px;
+
+    /* Category */
+    .container .category__list{
+        display: none;
     }
+    /* pagination */
+
     .bar-page_list{
         font-size: 1.5rem;
     }

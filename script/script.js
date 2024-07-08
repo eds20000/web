@@ -23,7 +23,7 @@ if(window.innerWidth > 1023){
       lastScrollTop = scrollTop;
     });
 }
-if(window.innerWidth < 740){
+if(window.innerWidth < 1023){
     window.addEventListener('scroll', function() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       
@@ -229,7 +229,7 @@ function exportItem(itemList,column){
     itemList.innerHTML ='';
     for(let i = 0 ; i < list_item.length ; ++i){
         itemList.innerHTML +=
-        `<div class="col ${column} c-4 m-4">
+        `<div class="col ${column} c-4 m-3">
             <div class="sort__item" item-index = "${i}">
                 <a class="sort__item-link" data-id="${list_item[i].id}" >
                     <div class="sort__item-img">
@@ -639,7 +639,7 @@ function takeCart(){
                         color : ItemColor
             
                     })   
-                    
+                    header.style.transform = 'translateY(0)';
                 };    
                 
                 let myCartProxy = new Proxy(myCart, {
@@ -705,8 +705,7 @@ function searchItemIp(){
         )
     }
     performSearch();
-    
-    console.log(searchItemList)
+
     searchItemInput.oninput = function searchInput(){
         if(searchItemInput.value !== ''){
             searchItemBox.style.display = 'block';
@@ -817,7 +816,7 @@ function searchItemIp(){
     }
     });
 }
-console.log(window.location.pathname)
+
 
 searchItemIp();
 

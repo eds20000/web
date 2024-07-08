@@ -31,7 +31,7 @@ var swiperHomepage = new Swiper ('.swiper-homepage', {
 var swiperBrand = new Swiper ('.swiper__brand-list', {
   direction: 'horizontal',
   loop: true,
-  slidesPerView: window.innerWidth <740 ?2:5,
+  slidesPerView: window.innerWidth < 740 ? 2 : window.innerWidth < 1024 ? 3 : 5,
   spaceBetween: 20,
   
   navigation: {
@@ -56,11 +56,13 @@ categoryBoxBtn.onclick = function(){
     categoryBox.classList.toggle('unhide-active')
     document.body.classList.add('over')
     $('.over-play').style.display = 'block'
+    document.body.style.position = 'fixed'
 }
 categoryBoxBtnClose.onclick = function(){
     categoryBox.classList.remove('unhide-active')
     document.body.classList.remove('over')
     $('.over-play').style.display = 'none'
+    document.body.style.position = ''
 }
 
 
