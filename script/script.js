@@ -688,24 +688,22 @@ function productRedirect(){
 }
 
 // --------------SEARCH-ITEM-BAR-------------START
-var searchItemInput = $('.header__search-input');
-var searchItemBox = $('.header__search-box');
-var searchItemBtn = $('.header__search-button');
-var searchItemList = [];
-function searchItemIp(){
+function searchItemIp(){  
     const urlParams = new URLSearchParams(window.location.search);
     const itemSearch = urlParams.get('word');
-    
-    if(itemSearch != ''){
+    var searchItemInput = $('.header__search-input');
+    var searchItemBox = $('.header__search-box');
+    var searchItemBtn = $('.header__search-button');
+    var searchItemList = [];
+    if(window.location.pathname === '/category.html' && itemSearch.trim() != ""){
         searchItemInput.value = itemSearch;
         searchItemList = list_item.filter( value =>
             {
                 return value.name.toLowerCase().includes(searchItemInput.value.toLowerCase())
             }
         )
+        performSearch();
     }
-    performSearch();
-
     searchItemInput.oninput = function searchInput(){
         if(searchItemInput.value !== ''){
             searchItemBox.style.display = 'block';
@@ -717,7 +715,6 @@ function searchItemIp(){
                     }
                 )
                 if(searchItemList.length > 0){
-                    console.log(searchItemList)
                     searchItemBox.innerHTML = '';
                     
                     searchItemList.forEach( item =>
@@ -753,12 +750,12 @@ function searchItemIp(){
     }
 
     function performSearch(){
-            if (searchItemList.length > 0){
+        if (searchItemList.length > 0 ){
                 $('.sort__item-list').innerHTML = '';
                 searchItemList.forEach(item =>
                     {
                         $('.sort__item-list').innerHTML +=
-        `<div class="col l-2-4 c-4 m-3">
+        `<div class="col l-2-4 c-4">
             <div class="sort__item" item-index = "${item.id}">
                 <a class="sort__item-link" data-id="${item.id}" >
                     <div class="sort__item-img">
@@ -797,7 +794,7 @@ function searchItemIp(){
             takeCart();
             productRedirect();
             }
-            else{
+        else{
                 $('.content__title-sort').style.display = 'none';
                 $('.sort__item-list').innerHTML = `
                 <div class='search__item-empty'>
@@ -807,7 +804,6 @@ function searchItemIp(){
                 ;
             }
         }   
-    searchItemBtn.onclick = performSearch;
 
         // Enter key press event
     searchItemInput.addEventListener('keypress', function (e) {
@@ -815,27 +811,22 @@ function searchItemIp(){
         performSearch();
     }
     });
-}
-
-
-if(window.location.pathname ==='/category.html'){
-
-    searchItemIp();
+    performSearch();
 }
 
 // --------------SEARCH-ITEM-BAR-------------END
 
 
 // TAKE CART BOX Responsive
-$('.header__navbar-cart').addEventListener('mouseenter', function() {
-    $(' .header__navbar-cart-box-container').style.display = 'block'; // Đổi màu nền thành màu đỏ
-});
+// $('.header__navbar-cart').addEventListener('mouseenter', function() {
+//     $(' .header__navbar-cart-box-container').style.display = 'block'; 
+// });
 
-// Gán sự kiện mouseleave để thay đổi màu nền khi di chuột ra
-$('.header__navbar-cart').addEventListener('mouseleave', function() {
-    $(' .header__navbar-cart-box-container').style.display = 'none'; // Đổi màu nền thành màu đỏ
+// // Gán sự kiện mouseleave để thay đổi màu nền khi di chuột ra
+// $('.header__navbar-cart').addEventListener('mouseleave', function() {
+//     $(' .header__navbar-cart-box-container').style.display = 'none'; 
 
-});
+// });
 function TakeCartBoxHide(){
     let takeCartBtn = $('.header__navbar-cart');
     let takeCartBoxClosebtn = $('.header__navbar-cart-box-closeBtn');
@@ -857,3 +848,5 @@ function TakeCartBoxHide(){
 if(window.innerWidth < 1024){
     TakeCartBoxHide()
 }
+
+searchItemIp();

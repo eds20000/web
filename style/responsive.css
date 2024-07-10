@@ -36,7 +36,9 @@
 
      /* CATEGORY BOX */
 
-    
+     .header__navbar-cart-count{
+        right: 0;
+     }
      .category_list-item{
         font-size: var(--font-size);
     }
