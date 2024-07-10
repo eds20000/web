@@ -428,13 +428,13 @@ function takeCart(){
                 const key = `${a.name}-${a.brand}-${a.color}-${a.size}-${a.img}-${a.price}`;
                 cartList.innerHTML +=
                 `<div class="row header__navbar-cart-item" data-key="${key}">
-                    <div class="col l-3 header__navbar-cart-item_img">
+                    <div class="col l-3 c-3 header__navbar-cart-item_img">
                         <a href="http://" class="item-link">
                             <img src="${a.img}" alt="">
                         </a> 
                     </div>
             
-                    <div class="col l-9 header__navbar-cart-item_content">
+                    <div class="col l-9 c-9 header__navbar-cart-item_content">
                         <a href="" class="item-link">
                             <div class="header__navbar-cart-item_title">
                                 ${a.name}
@@ -818,6 +818,42 @@ function searchItemIp(){
 }
 
 
-searchItemIp();
+if(window.location.pathname ==='/category.html'){
+
+    searchItemIp();
+}
 
 // --------------SEARCH-ITEM-BAR-------------END
+
+
+// TAKE CART BOX Responsive
+$('.header__navbar-cart').addEventListener('mouseenter', function() {
+    $(' .header__navbar-cart-box-container').style.display = 'block'; // Đổi màu nền thành màu đỏ
+});
+
+// Gán sự kiện mouseleave để thay đổi màu nền khi di chuột ra
+$('.header__navbar-cart').addEventListener('mouseleave', function() {
+    $(' .header__navbar-cart-box-container').style.display = 'none'; // Đổi màu nền thành màu đỏ
+
+});
+function TakeCartBoxHide(){
+    let takeCartBtn = $('.header__navbar-cart');
+    let takeCartBoxClosebtn = $('.header__navbar-cart-box-closeBtn');
+    takeCartBtn.onclick = function(){
+        $(' .header__navbar-cart-box-container').classList.add('cart-box-hide');
+        document.body.classList.add('over')
+        $('.header').style.zIndex = '10';
+        $('.over-play').style.display = 'block'
+        document.body.style.position = 'fixed'
+    }
+    takeCartBoxClosebtn.onclick = function(){
+        $(' .header__navbar-cart-box-container').classList.remove('cart-box-hide');
+        document.body.classList.remove('over')
+        $('.over-play').style.display = 'none'
+        document.body.style.position = ''
+        $('.header').style.zIndex = '2';
+    }
+}
+if(window.innerWidth < 1024){
+    TakeCartBoxHide()
+}

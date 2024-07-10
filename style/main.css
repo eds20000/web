@@ -155,10 +155,10 @@ body{
 }
 .navbar-cart{
     position: relative;
-    z-index: 100;
+    z-index: 5;
 }
 
-.navbar-cart:hover .header__navbar-cart-box{
+.navbar-cart:hover .header__navbar-cart-box-container{
     display: block;
 }
 
@@ -186,11 +186,11 @@ body{
     /* display: none; */
 }
 
-.header__navbar-cart-box{
+.header__navbar-cart-box-container{
     position: absolute;
     right: -300%;
     top:calc(var(--header-height) - 40px);
-    z-index: 100;
+    z-index: 10;
     width: 400px;
     height: auto;
     background-color: var(--hover-color);
@@ -198,6 +198,9 @@ body{
     box-shadow: 0 5px 5px 3px rgba(0,0,0,0.1);
     display: none;
     overflow-y: auto;
+}
+.header__navbar-cart-box-closeBtn{
+    display: none;
 }
 
 .header__navbar-cart-box-empty{

@@ -120,6 +120,37 @@
     .item-checklist-takecart-btn{
         margin-top: 0;
     }
+
+    /* Take cart box */
+    .header__navbar-cart-box-container{
+        display: block;
+        top:0;
+        right:0;
+        width: 100%;
+        padding: 10px;
+        background-color: var(--white-color);
+        padding-top: 50px;
+        box-shadow: none;
+        
+    }
+    .header__navbar-cart-box-closeBtn{
+        display: block;
+    }
+    .header__navbar-cart-box-closeBtn i{
+        color: var(--black-color);
+        font-size: 2rem;
+        z-index: 10;
+        position: absolute;
+        top:20px;
+        right: 20px;
+    }
+    .header__navbar-cart-box-container{
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+    }
+    .header__navbar-cart-box-container.cart-box-hide{
+        transform: translateX(0);
+    }
 }
     
 
