@@ -110,10 +110,6 @@ body.over{
     margin-top: 30px;
     gap: 0;
 }
-.category__list{
-    padding-left: 0;
-    padding: 20px;
-}
 .category-item{
     padding:30px;
     position: relative;
@@ -123,8 +119,9 @@ body.over{
     background-color: var(--hover-color);
     width: 130px;
     height: 130px;
-    display:grid ;
-    place-items: center;
+    display:flex ;
+    justify-content: center;
+    align-items: center;
     font-size: var(--font-size);
     font-weight: 600;
     overflow: hidden;

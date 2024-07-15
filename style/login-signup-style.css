@@ -444,3 +444,49 @@ body.overlay-open_privacy
 /*  */
 
 /* --------------Form End------------------*/
+
+/* Responsive */
+/* Tablet and Mobile */
+@media(max-width:1023px){
+    .header .grid.wide {
+        justify-content: center;
+    }
+    .container{
+        padding-left: 20px;
+        padding-right:20px;
+    }
+
+}
+/* Mobile */
+@media (max-width:739px){
+    .container{
+        padding-top: var(--header-height);
+    }
+    .login-container-main{
+        border-right: none;
+    }
+    .login-container-main{
+        margin-bottom: 40px;
+    }
+    .form-group{
+        padding: 20px 0;
+        margin:0 10px;
+        height: auto;
+    }
+    .form-group .col.l-4.c-12{
+        margin-bottom: 10px;
+    }
+    .signup-container-main .col.l-4 label {
+        font-size: var(--font-size);
+    }
+    .signup-born-year_content{
+        display: flex;
+        align-items: center;
+    }
+    .signup-born-year_input .signup-born-year_content select {
+        width: 66px;
+    }
+    .signup-agreement-box{
+        padding:10px 0;
+    }
+}

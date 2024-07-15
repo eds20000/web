@@ -68,13 +68,13 @@ var onChangeCart = function(){
             const key = `${a.name}-${a.brand}-${a.color}-${a.size}-${a.img}-${a.price}`;
             cartList.innerHTML +=
             `<div class="row header__navbar-cart-item" data-key="${key}">
-                <div class="col l-3 header__navbar-cart-item_img">
+                <div class="col l-3 c-3 m-3 header__navbar-cart-item_img">
                     <a href="http://" class="item-link">
                         <img src="${a.img}" alt="">
                     </a> 
                 </div>
         
-                <div class="col l-9 header__navbar-cart-item_content">
+                <div class="col l-9 c-9 m-9 header__navbar-cart-item_content">
                     <a href="" class="item-link">
                         <div class="header__navbar-cart-item_title">
                             ${a.name}
@@ -254,7 +254,7 @@ productItemContainer.innerHTML =
         </div>
     </div>
     <div class="row">
-        <div class="col l-5">
+        <div class="col l-5 m-5 c-12">
             <div class="product-item-image">
                 <div class="product-item-image-main">
                     <img src="${productItem.color_img[0].img[0]}" alt="">
@@ -264,7 +264,7 @@ productItemContainer.innerHTML =
                 <ul class="product-item-image_list"></ul>
             </div>
         </div>
-        <div class="col l-7">
+        <div class="col l-7 m-7 c-12">
             <div class="product-item-data">
                 <div class="product-item-data-title">
                     <div class="product-item-data-title_name" data-value = "${productItem.name}">${productItem.name}</div>

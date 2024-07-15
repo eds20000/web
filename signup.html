@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/d72dd2144a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./style/responsive.css">
     <title>ログイン-TS-shop</title>
 </head>
 <body>
@@ -33,10 +34,10 @@
                             <div class="signup-container-main">
 
                                 <div class="form-group row">
-                                    <div class="col l-4">
+                                    <div class="col l-4 c-4">
                                         <label for="signup-sex-radio" class="signup-sex-label">性別</label>
                                     </div>
-                                    <div class="col l-8 ">
+                                    <div class="col l-8 c-8">
                                         <div class="signup-sex-content">
                                             <div class="signup-form">
                                                 <input type="radio" name="signup-sex-radio" id="male" value="male">
@@ -52,11 +53,11 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <div class="col l-4">
+                                    <div class="col l-4 c-12">
                                         <label for="signup-born-year" class="signup-born-year">生年月日</label>
                                         <span class="required_label">必須</span>
                                     </div>
-                                    <div class="col l-8">
+                                    <div class="col l-8 c-12">
                                         <div class="signup-born-year_input">
                                             <div class="signup-born-year_content">
                                                 <select id="signup-born-year" name="year" class="signup-born-year-select">
@@ -87,33 +88,33 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <div class="col l-4">
+                                    <div class="col l-4 c-12">
                                         <label for="signup-id" class="form-label">ユーザー名</label>
                                         <span class="required_label">必須</span>
                                     </div>
-                                    <div class="col l-8">
+                                    <div class="col l-8 c-12">
                                         <input type="text" id="signup-id" class="signup-input signup-input-id" name="signup-id">
                                         <span class="form-message"></span>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <div class="col l-4">
+                                    <div class="col l-4 c-12">
                                         <label for="signup-email" class="form-label">メールアドレス</label>
                                         <span class="required_label">必須</span>
                                     </div>
-                                    <div class="col l-8">
+                                    <div class="col l-8 c-12">
                                         <input type="text" id="signup-email" class="signup-input signup-input-id" name="signup-email">
                                         <span class="form-message"></span>
                                     </div>
                                 </div>
                                 
                                 <div class="form-group row">
-                                    <div class="col l-4">
+                                    <div class="col l-4 c-12">
                                         <label for="signup-password" class="form-label">パスワード</label>
                                         <span class="required_label">必須</span>
                                     </div>
-                                    <div class="col l-8 signup-password-input">
+                                    <div class="col l-8 c-12 signup-password-input">
                                         <input id ="signup-password" type="password" class="signup-input signup-input-pass" name="signup-password">
                                         <span class="pass-hide hidden">表示</span>
                                         <span class="form-message"></span>
@@ -122,11 +123,11 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <div class="col l-4">
+                                    <div class="col l-4 c-12">
                                         <label for="signup-password_confi" class="signup-password">パスワード(確認用)</label>
                                         <span class="required_label">必須</span>
                                     </div>
-                                    <div class="col l-8 signup-password-input">
+                                    <div class="col l-8 c-12 signup-password-input">
                                         <input id ="signup-password_confi" type="password" class="signup-input signup-input-pass" name="signup-password-confi">
                                         <span class="pass-hide hidden">表示</span>
                                         <span class="form-message"></span>

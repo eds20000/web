@@ -48,21 +48,5 @@ window.addEventListener('resize', function() {
 
 // insert item
 
-//CATEGORY BOX HIDE 
-var categoryBoxBtn = $('.header-category-box i');
-var categoryBoxBtnClose = $('.category-box-closeBtn')
-var categoryBox = $('.category-box');
-categoryBoxBtn.onclick = function(){
-    categoryBox.classList.toggle('unhide-active')
-    document.body.classList.add('over')
-    $('.over-play').style.display = 'block'
-    document.body.style.position = 'fixed'
-}
-categoryBoxBtnClose.onclick = function(){
-    categoryBox.classList.remove('unhide-active')
-    document.body.classList.remove('over')
-    $('.over-play').style.display = 'none'
-    document.body.style.position = ''
-}
 
 

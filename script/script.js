@@ -428,13 +428,13 @@ function takeCart(){
                 const key = `${a.name}-${a.brand}-${a.color}-${a.size}-${a.img}-${a.price}`;
                 cartList.innerHTML +=
                 `<div class="row header__navbar-cart-item" data-key="${key}">
-                    <div class="col l-3 c-3 header__navbar-cart-item_img">
+                    <div class="col l-3 c-3 m-3 header__navbar-cart-item_img">
                         <a href="http://" class="item-link">
                             <img src="${a.img}" alt="">
                         </a> 
                     </div>
             
-                    <div class="col l-9 c-9 header__navbar-cart-item_content">
+                    <div class="col l-9 c-9 m-9 header__navbar-cart-item_content">
                         <a href="" class="item-link">
                             <div class="header__navbar-cart-item_title">
                                 ${a.name}
@@ -755,7 +755,7 @@ function searchItemIp(){
                 searchItemList.forEach(item =>
                     {
                         $('.sort__item-list').innerHTML +=
-        `<div class="col l-2-4 c-4">
+        `<div class="col l-2-4 c-4 m-3">
             <div class="sort__item" item-index = "${item.id}">
                 <a class="sort__item-link" data-id="${item.id}" >
                     <div class="sort__item-img">
@@ -811,24 +811,17 @@ function searchItemIp(){
         performSearch();
     }
     });
-    performSearch();
+    if($('.sort__item-list')){
+        
+        performSearch();
+    }
 }
 
 // --------------SEARCH-ITEM-BAR-------------END
 
 
-// TAKE CART BOX Responsive
-// $('.header__navbar-cart').addEventListener('mouseenter', function() {
-//     $(' .header__navbar-cart-box-container').style.display = 'block'; 
-// });
-
-// // Gán sự kiện mouseleave để thay đổi màu nền khi di chuột ra
-// $('.header__navbar-cart').addEventListener('mouseleave', function() {
-//     $(' .header__navbar-cart-box-container').style.display = 'none'; 
-
-// });
 function TakeCartBoxHide(){
-    let takeCartBtn = $('.header__navbar-cart');
+    let takeCartBtn = $('.navbar-cart');
     let takeCartBoxClosebtn = $('.header__navbar-cart-box-closeBtn');
     takeCartBtn.onclick = function(){
         $(' .header__navbar-cart-box-container').classList.add('cart-box-hide');
@@ -848,5 +841,33 @@ function TakeCartBoxHide(){
 if(window.innerWidth < 1024){
     TakeCartBoxHide()
 }
+else{
+    $('.header__navbar-cart').addEventListener('mouseenter', function() {
+        $(' .header__navbar-cart-box-container').style.display = 'block'; 
+    });
+    
+    // Gán sự kiện mouseleave để thay đổi màu nền khi di chuột ra
+    $('.header__navbar-cart').addEventListener('mouseleave', function() {
+        $(' .header__navbar-cart-box-container').style.display = 'none'; 
+    
+    });
+}
 
 searchItemIp();
+// TAKE CART BOX Responsive
+//CATEGORY BOX HIDE 
+var categoryBoxBtn = $('.header-category-box i');
+var categoryBoxBtnClose = $('.category-box-closeBtn')
+var categoryBox = $('.category-box');
+categoryBoxBtn.onclick = function(){
+    categoryBox.classList.toggle('unhide-active')
+    document.body.classList.add('over')
+    $('.over-play').style.display = 'block'
+    document.body.style.position = 'fixed'
+}
+categoryBoxBtnClose.onclick = function(){
+    categoryBox.classList.remove('unhide-active')
+    document.body.classList.remove('over')
+    $('.over-play').style.display = 'none'
+    document.body.style.position = ''
+}

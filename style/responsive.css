@@ -33,6 +33,7 @@
     .header-category-box i{
         font-size: 1.5rem;
     }
+  
 
      /* CATEGORY BOX */
 
@@ -133,10 +134,13 @@
         background-color: var(--white-color);
         padding-top: 50px;
         box-shadow: none;
+        transform: translateX(100%);
+        transition: transform 0.2s ease;
         
     }
     .header__navbar-cart-box-closeBtn{
         display: block;
+        height: auto;
     }
     .header__navbar-cart-box-closeBtn i{
         color: var(--black-color);
@@ -146,16 +150,27 @@
         top:20px;
         right: 20px;
     }
-    .header__navbar-cart-box-container{
-        transform: translateX(100%);
-        transition: transform 0.3s ease;
-    }
     .header__navbar-cart-box-container.cart-box-hide{
         transform: translateX(0);
+    }
+    .header__navbar-cart-item_img img{
+        height: 100%;
+    }
+    .header__navbar li {
+        margin-right: 0px;
+        margin-left: 10px;
+        padding: 0;
+    }
+    .header__navbar{
+        margin-right: 10px;
+    }
+    .navbar-cart{
+        margin-left: 5px ;
     }
 }
     
 
+/* Tablet */
 @media(min-width :740px) and (max-width :1023px){
     .checklist-color-name,
     .checklist-size-name{
@@ -167,6 +182,10 @@
     }
     .bar-page{
         padding: 0 20px;
+    }
+    .header__navbar-cart-box {
+        width: 80%;
+        margin: 0 auto;
     }
 }
 
@@ -192,16 +211,11 @@
     }
     .header__navbar{
         font-size: 1.5rem;
-        gap:0;
-        padding: 0 10px;
-        
+        gap:0;      
     }
     .header .grid.wide{
         height: 60px;
         position: relative;
-    }
-    .header__navbar li{
-        padding:7px;
     }
     
     .header__navbar-cart-count{
