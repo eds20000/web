@@ -695,7 +695,7 @@ function searchItemIp(){
     var searchItemBox = $('.header__search-box');
     var searchItemBtn = $('.header__search-button');
     var searchItemList = [];
-    if(window.location.pathname === '/category.html' && itemSearch.trim() != ""){
+    if(window.location.pathname === '/web/category.html' && itemSearch.trim() != ""){
         searchItemInput.value = itemSearch;
         searchItemList = list_item.filter( value =>
             {
@@ -703,6 +703,12 @@ function searchItemIp(){
             }
         )
         performSearch();
+    }
+    else{
+
+        if($('.sort__item-list')){  
+            performSearch();
+        }
     }
     searchItemInput.oninput = function searchInput(){
         if(searchItemInput.value !== ''){
@@ -807,14 +813,12 @@ function searchItemIp(){
 
         // Enter key press event
     searchItemInput.addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') {
-        performSearch();
-    }
-    });
-    if($('.sort__item-list')){
-        
-        performSearch();
-    }
+        if (e.key === 'Enter') {
+            performSearch();
+            }
+        }
+    );
+    
 }
 
 // --------------SEARCH-ITEM-BAR-------------END
