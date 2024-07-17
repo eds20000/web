@@ -23,7 +23,7 @@ if(window.innerWidth > 1023){
       lastScrollTop = scrollTop;
     });
 }
-if(window.innerWidth < 1023){
+if(window.innerWidth < 1023 ){
     window.addEventListener('scroll', function() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       
@@ -695,7 +695,14 @@ function searchItemIp(){
     var searchItemBox = $('.header__search-box');
     var searchItemBtn = $('.header__search-button');
     var searchItemList = [];
-    if(window.location.pathname === '/web/category.html' && itemSearch.trim() != ""){
+    let path = window.location.pathname;
+
+// Tách chuỗi path bằng dấu "/"
+    let parts = path.split('/');
+
+// Lấy phần tử cuối cùng trong mảng parts
+    let lastSegment = parts[parts.length - 1];
+    if(lastSegment === 'category.html' && itemSearch.trim() != ""){
         searchItemInput.value = itemSearch;
         searchItemList = list_item.filter( value =>
             {

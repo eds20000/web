@@ -38,6 +38,9 @@
     border-bottom: 3px solid var(--primary-color);
 }
 
+.content_body{
+    min-height: 900px;
+}
 /* RESPONSIVE  */
 
 /* Tablet and Mobile */
@@ -54,6 +57,12 @@
     }
     .bar-page{
         padding: 0 20px;
+    }
+    .header__logo{
+        display: none;
+    }
+    .header__search{
+        display: flex;
     }
 }
 /* Tablet */
