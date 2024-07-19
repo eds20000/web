@@ -10,6 +10,19 @@ body{
     font-family: miui, system-ui, -apple-system, BlinkMacSystemFont, \.SFNSText-Regular, Helvetica, Arial, sans-serif;
     height: 200px;
 }
+body.over{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+}
+.over-play{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6) ;
+    position: absolute;
+    z-index: 8;
+    display: none;
+}
 /* Header */
 .header{
     position: fixed ;
@@ -193,7 +206,7 @@ body{
 .header__navbar-cart-box-container{
     position: absolute;
     right: 100px;
-    top:var(--header-height);
+    top:calc(var(--header-height));
     z-index: 11;
     width: 400px;
     height: auto;
@@ -202,6 +215,16 @@ body{
     box-shadow: 0 5px 5px 3px rgba(0,0,0,0.1);
     display: none;
     overflow-y: auto;
+}
+.header__navbar-cart::after{
+    content: "";
+    display: block;
+    width: 180%;
+    background-color: rgba(0, 0, 0, 0);
+    height: 42px;
+    position: absolute;
+    top: 32px;
+    left: -10px;
 }
 .header__navbar-cart-box-closeBtn{
     display: none;
@@ -370,6 +393,20 @@ body{
 }
 .category__list{
     padding: 20px;
+}
+.category-box{
+    background-color: var(--white-color);
+    z-index: 11;
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 85%;
+    transform: translateX(-150%);
+    transition: transform .3s ease;
+}
+
+.category-box.unhide-active{
+    transform: translateX(0);
 }
 
 .category__list p{

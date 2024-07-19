@@ -1,16 +1,3 @@
-body.over{
-    width: 100%;
-    height: 100%;
-    position: fixed;
-}
-.over-play{
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.6) ;
-    position: absolute;
-    z-index: 8;
-    display: none;
-}
 
 /* HOME PAGE SLIDE -----------------------------START */
 .swiper.tab{

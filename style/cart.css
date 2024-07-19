@@ -38,7 +38,9 @@
 ul{
     padding:0px;
 }
-
+.cart__list-item-name{
+    font-weight: 600;
+}
 .cart__list-item-title li{
     margin-bottom: 20px;
 }
@@ -328,3 +330,58 @@ input[type="radio"]{
     width: 50%;
 }
 /* Payment Success Layout------------------------------------------>END */
+
+/* Responsive */
+/* Mobile and Tablet */
+@media (max-width:1023px){
+    .cart-heading-pay,
+    .cart-heading-paysucess{
+        display: none;
+    }
+    .cart-heading .cart-heading-list:nth-child(2){
+        display: none;
+    }
+    .cart-heading {
+        margin-bottom: 0;
+    }
+
+}
+/* Tablet */
+
+@media(min-width :740px) and (max-width :1023px){
+
+}
+
+/* Mobile */
+@media(max-width :739px){
+    .cart-content{
+        gap:20px;
+    }
+    .cart__list-item{
+        display: flex;
+    }
+    .cart__list-item-check{
+        display: flex;
+        gap: 30px;
+    }
+    .cart-total-box{
+        margin-left: 0;
+    }
+    .cart-detail {
+        padding: 15px 0;
+    }
+    .input-group label{
+        font-size: 1.5rem;
+    }
+    .address-form, .payment-form {
+        padding: 20px;
+        margin: 0 10px;
+    }
+    #cart__pay-form .row, #payment-form .row {
+        padding: 10px 0 10px;
+    }
+    .zip-code-checkBtn{
+        font-size: 1.2rem;
+        padding: 5px;
+    }
+}

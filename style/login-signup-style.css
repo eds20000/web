@@ -252,6 +252,9 @@ body{
         }
     }
 }
+.signup-container-main .login-form-button-box{
+    padding: 0 35px;
+}
 
 .form-group{
     align-items: center;

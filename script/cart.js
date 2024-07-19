@@ -28,6 +28,7 @@ if(itemPricePay){
 var payBtn = $('.cart-total-account');
 if(payBtn){
     payBtn.onclick = function(){
+        
         $('.container').innerHTML = 
         `
         <div class="grid wide">
@@ -41,21 +42,21 @@ if(payBtn){
                         </div>
                     </div>
                     <form action="post" id ="cart__pay-form" class="row cart-content">
-                        <div class="col l-8">
+                        <div class="col l-8 c-12">
                             <div class="cart__pay-form">
                                     <div class="address-form">
                                          <div class="row">
                                         <div class="cart__pay-form-title">届け先</div>
                                     </div>
                                     <div class="input-group row">
-                                        <div class="col l-4">
+                                        <div class="col l-4 m-4 c-12">
                                             <label for="adress-name" class="address-id">
                                                 名前
                                                 <span class="required_label">必須</span>
                                             </label>
                                         </div>
                                         
-                                        <div class="col l-8">
+                                        <div class="col l-8 m-8 c-12">
                                             <input type="text" class="pay-form-input pay-form-input_name" name="adress-name" id="adress-name">
                                             <span class="form-message"></span>
                                         </div>
@@ -63,23 +64,23 @@ if(payBtn){
     
                                     </div>
                                     <div class="input-group row">
-                                        <div class="col l-4">
+                                        <div class="col l-4 m-4 c-12">
                                             <label for="adress-phone" class="address-phone">電話番号
                                                 <span class="required_label">必須</span>
                                             </label>
                                         </div>
-                                        <div class="col l-8">
+                                        <div class="col l-8 m-8 c-12">
                                             <input type="text" class="pay-form-input pay-form-input_phone" name="adress-phone" id="adress-phone">                                  
                                             <span class="form-message"></span>
                                         </div>
                                     </div>
                                     <div class="input-group row">
-                                        <div class="col l-4">
+                                        <div class="col l-4 m-4 c-12">
                                             <label for="adress-zipcode" class="address-zip-code">郵便番号
                                                 <span class="required_label">必須</span>
                                             </label>
                                         </div>
-                                        <div class="col l-8">
+                                        <div class="col l-8 m-8 c-12">
                                             <div class="input_zip-code-box">
                                                 <input type="text" class="pay-form-input pay-form-input_zip-code" name="adress-zip-code" id="adress-zip-code" >
                                                 <div class="zip-code-checkBtn primary-btn" onclick = "AjaxZip3.zip2addr('adress-zip-code','','adress-prefecture','adress-city');">住所を自動入力</div>
@@ -89,44 +90,44 @@ if(payBtn){
                                         
                                     </div>
                                     <div class="input-group row">
-                                        <div class="col l-4">
+                                        <div class="col l-4 m-4 c-12">
                                             <label for="adress-prefecture" class="address-prefecture">都道府県
                                                 <span class="required_label">必須</span>
                                             </label>
                                         </div>
-                                        <div class="col l-8">
+                                        <div class="col l-8 m-8 c-12">
                                             <input type="text" class="pay-form-input pay-form-input_prefecture" name="adress-prefecture" id="adress-prefecture">
                                             <span class="form-message"></span>
                                         </div>
                                         
                                     </div>
                                     <div class="input-group row">
-                                        <div class="col l-4">
+                                        <div class="col l-4 m-4 c-12">
                                             <label for="adress-city" class="address-city">市区町村
                                                 <span class="required_label">必須</span>
                                             </label>
                                         </div>
-                                        <div class="col l-8">
+                                        <div class="col l-8 m-8 c-12">
                                             <input type="text" class="pay-form-input pay-form-input_city" name="adress-city" id="adress-city">
                                             <span class="form-message"></span>
                                         </div>
                                     </div>
                                     <div class="input-group row">
-                                        <div class="col l-4">
+                                        <div class="col l-4 m-4 c-12">
                                             <label for="adress-add" class="address-add">町名・丁番地等
                                                 <span class="required_label">必須</span>
                                             </label>
                                         </div>
-                                        <div class="col l-8">
+                                        <div class="col l-8 m-8 c-12">
                                             <input type="text" class="pay-form-input pay-form-input_add" name="adress-add" id="adress-add">
                                             <span class="form-message"></span>
                                         </div>
                                     </div>
                                     <div class="input-group row">
-                                        <div class="col l-4">
+                                        <div class="col l-4 m-4 c-12">
                                             <label for="adress-building" class="address-building">マンション名・号室等</label>
                                         </div>
-                                        <div class="col l-8">
+                                        <div class="col l-8 m-8 c-12">
                                             <input type="text" class="pay-form-input pay-form-input_building" name="adress-building" id="adress-building">
                                             <span class="form-message"></span>
                                         </div>
@@ -170,7 +171,7 @@ if(payBtn){
                             </div>
     
                         </div>
-                        <div class="col l-4">
+                        <div class="col l-4 c-12">
                             <div class="cart-total-box">
                                 <div class="cart-total-title">
                                     商品合計
@@ -190,6 +191,8 @@ if(payBtn){
                     </form>
                 </div>
         `
+        $('.cart-heading-cartshow').style.display = 'none'
+        $('.cart-heading-pay').style.display = 'block'
         let paymentCloseBtn = $('.close-formBtn')
         paymentCloseBtn.onclick = function(){
             let paymentForm = $('#payment-form')
@@ -263,6 +266,10 @@ if(payBtn){
                 </div>
             </div>
                 `
+                $('.cart-heading-cartshow').style.display = 'none'
+                $('.cart-heading-pay').style.display = 'none'
+                $('.cart-heading .cart-heading-list:nth-child(1)').style.display = 'none'
+                $('.cart-heading-paysucess').style.display = 'block'
             }
         });
 

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./style/base.css">
     <link rel="stylesheet" href="./style/grid.css">
     <link rel="stylesheet" href="./style/main.css">
+    <link rel="stylesheet" href="./style/responsive.css">
     <link rel="stylesheet" href="./style/cart.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,68 +17,62 @@
 </head>
 <body>
     <div class="app">
+        <div class="over-play"></div>
         <!-- Header start1-->
         <header class="header">
             <div class="grid wide">
-                <a href="./index.html" class="header__logo"><img src="./image/logo.png" alt="logo" class="logo-img"></a>
-                <div class="header__search">
-                    <input type="text" placeholder="何にをお探しですか？" class="header__search-input">
-                    <button class="header__search-button"><a href="http://"><i class="fa-solid fa-magnifying-glass"></i></a></button>
+                <div class="header-category-box">
+                    <i class="fa-solid fa-bars"></i>
                 </div>
+                <a href="./index.html" class="header__logo"><img src="./image/logo.png" alt="logo" class="logo-img"></a>
+                <form class="header__search" method="get" action="./category.html">
+                    <input type="text" placeholder="何にをお探しですか？" class="header__search-input" name ="word">
+                    <button class="header__search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <div class="header__search-box">
+                    </div>
+                </form>
                 <ul class="header__navbar">
-                    <li class="header__navbar-user"><a href="./login.html"><i class="fa-regular fa-user"></i>ログイン</a></li>
+                    <li class="header__navbar-user"><a href="./login.html"><i class="fa-regular fa-user"></i><span>ログイン</span></a></li>
                     <li class="header__navbar-like icon-center"><a href=""><i class="fa-regular fa-heart"></i></a></li>
                     <div class="navbar-cart">
                         <li class="header__navbar-cart icon-center">
-                            <a href=""><i class="fa-solid fa-cart-shopping"></i>
-                            </a>
+                            <i class="fa-solid fa-cart-shopping"></i>
                         </li>
-                        <div class="header__navbar-cart-count">1</div>
-                        <div class="header__navbar-cart-box">
-                            <div class=" header__navbar-cart-list">
-                                <div class="row header__navbar-cart-item">
-                                    <div class="col l-3 header__navbar-cart-item_img">
-                                        <a href="http://" class="item-link">
-                                            <img src="./image/item-image/item1-img1.jpg" alt="">
-                                        </a> 
-                                    </div>
-    
-                                    <div class="col l-9 header__navbar-cart-item_content">
-                                        <a href="" class="item-link">
-                                            <div class="header__navbar-cart-item_title">
-                                                Manfinity EMRG メンズシャツ バギー クルーネック 半袖 グラフィックティー 夏用
-                                            </div>
-                                        </a>
-                                        <div class="header__navbar-cart-item_info">
-                                            <div class="header__navbar-cart-item_info-box">
-                                                <div class="header__navbar-cart-item_info-color"><b>カラー：</b>ブラック</div>
-                                                <div class="header__navbar-cart-item_info-size"><b>サイズ：</b>L</div>
-                                            </div>
-                                            <div class="header__navbar-cart-item_info-quantity-box">
-                                                <div class="header__navbar-cart-item_info-quantity-down">-</div>
-                                                <div class="header__navbar-cart-item_info-quantity-num">1</div>
-                                                <div class="header__navbar-cart-item_info-quantity-up">+</div>
-                                            </div>
-                                        </div>
-                                        <div class="header__navbar-cart-item_info-footer">
-                                            <div class="header__navbar-cart-item_info-price">￥1023</div>
-                                            <div class="header__navbar-cart-item_btn-remove"><i class="fa-regular fa-trash-can"></i></div>
-                                        </div>
-                                    </div>
-                        
-                                </div>
-                            </div>
-                            <div class="header__navbar-cart-checkox">
-                                <div class="header__navbar-cart-total">合計：<div class="header__navbar-cart-total-index">￥1023</div></div>
-                                <div class="header__navbar-cart-check-btn">買い物かごを見る(1)</div>
-                            </div>
-                        </div>
+                        <div class="header__navbar-cart-count"></div>
                     </div>
-                    <li class="header__navbar-support"><a href=""><i class="fa-solid fa-headset"></i>サポート</a></li>
+                    <li class="header__navbar-support"><a href=""><i class="fa-solid fa-headset"></i><span>サポート</span></a></li>
                 </ul>
+                <div class="header__navbar-cart-box-container">
+                    <div class="header__navbar-cart-box">
+                    </div>
+                    <div class="row header__navbar-cart-box-closeBtn">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                </div>
             </div>
             
         </header>
+        
+        <div class="category-box">
+            <ul class="category__list">
+                <p class="category_header">カテゴリー</p>
+                <li class="category_list-item"><a href=""><div class="category_list-item-text">トップス</div><i class="fa-solid fa-chevron-right"></i></a></li>
+                <li class="category_list-item"><a href=""><div class="category_list-item-text">ジャケット/アウター</div><i class="fa-solid fa-chevron-right"></i></a></li>
+                <li class="category_list-item"><a href=""><div class="category_list-item-text">パンツ</div><i class="fa-solid fa-chevron-right"></i></a></li>
+                <li class="category_list-item"><a href=""><div class="category_list-item-text">スカート</div><i class="fa-solid fa-chevron-right"></i></a></li>
+                <li class="category_list-item"><a href=""><div class="category_list-item-text">ワンピース/ドレス</div><i class="fa-solid fa-chevron-right"></i></a></li>
+                <li class="category_list-item"><a href=""><div class="category_list-item-text">小物</div><i class="fa-solid fa-chevron-right"></i></a></li>
+                <li class="category_list-item"><a href=""><div class="category_list-item-text">バッグ</div><i class="fa-solid fa-chevron-right"></i></a></li>
+                <li class="category_list-item"><a href=""><div class="category_list-item-text">シューズ</div><i class="fa-solid fa-chevron-right"></i></a></li>
+                <li class="category_list-item"><a href=""><div class="category_list-item-text">ファッション雑貨</div><i class="fa-solid fa-chevron-right"></i></a></li>
+                <li class="category_list-item"><a href=""><div class="category_list-item-text">帽子</div><i class="fa-solid fa-chevron-right"></i></a></li>
+                <li class="category_list-item"><a href=""><div class="category_list-item-text">腕時計</div><i class="fa-solid fa-chevron-right"></i></a></li>
+                <li class="category_list-item"><a href=""><div class="category_list-item-text">アクセサリー</div><i class="fa-solid fa-chevron-right"></i></a></li>
+                <li class="category_list-item"><a href=""><div class="category_list-item-text tab-suport">サポート<i class="fa-solid fa-headset"></i></a></li>    
+            </ul>
+            <div class="category-box-closeBtn"><i class="fa-solid fa-xmark"></i></div>
+        </div>
+        <div class="tab__list-close"></div>
         <!-- Header end -->
 
         <!-- Container start -->
@@ -95,43 +90,47 @@
             
                 </div>
                 <div class="row cart-content">
-                    <div class="col l-8">
+                    <div class="col l-8 c-12">
                         <div class="cart__list-box">
                             <div class="cart__list-item">
                                 <div class="cart__list-item-img">
                                     <a href="./product.html"><img src="./image/item-image/item1-img1.jpg" alt=""></a>
                                 </div>
-                                <ul class="cart__list-item-title">
-                                    <li class="cart__list-item-name">Manfinity EMRG メンズシャツ バギー クルーネック 半袖 グラフィックティー 夏用</li>
-                                    <li class="cart__list-item-category">Tシャツ</li>
-                                    <li class="cart__list-item-color">カラー：ブラック</li>
-                                    <li class="cart__list-item-size">サイズ：L</li>
-                                </ul>
-                                <div class="cart__list-item-price">
-                                    ￥ <span>1023</span> 
-                                </div>
-                                <div class="cart__list-item-quantily">
-                                    <select class="cart__list-item-count" name="item-quantily">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                            
-                                    </select>
-                                </div>
-                                <div class="cart__list-item-delete-btn">
-                                    <span>削除</span>
+                                <div class="cart__list-content">
+                                    <ul class="cart__list-item-title">
+                                        <li class="cart__list-item-name">Manfinity EMRG メンズシャツ バギー クルーネック 半袖 グラフィックティー 夏用</li>
+                                        <li class="cart__list-item-category">Tシャツ</li>
+                                        <li class="cart__list-item-color">カラー：ブラック</li>
+                                        <li class="cart__list-item-size">サイズ：L</li>
+                                    </ul>
+                                    <div class="cart__list-item-check">
+                                        <div class="cart__list-item-price">
+                                            ￥ <span>1023</span> 
+                                        </div>
+                                        <div class="cart__list-item-quantily">
+                                            <select class="cart__list-item-count" name="item-quantily">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                    
+                                            </select>
+                                        </div>
+                                        <div class="cart__list-item-delete-btn">
+                                            <span>削除</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col l-4">
+                    <div class="col l-4 c-12">
                         <div class="cart-total-box">
                             <div class="cart-total-title">
                                 商品合計
@@ -205,5 +204,6 @@
 <script src="./script/validation.js"></script>        
 <script src="./script/cart.js"></script>
 <script src="https://ajaxzip3.github.io/ajaxzip3.js"></script>
+<script type = "module" src="./script/script.js"></script>
 </body>
 </html>

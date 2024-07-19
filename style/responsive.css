@@ -34,7 +34,10 @@
         font-size: 1.5rem;
     }
   
-
+    /* container */
+    .container{
+        padding-top: var(--header-height);
+    }
      /* CATEGORY BOX */
 
      .header__navbar-cart-count{
@@ -61,7 +64,9 @@
     }
     .category-item-title {
         bottom: -22px;
+        font-size: 1.2rem;
     }
+    
     .category-box-closeBtn{
         position: absolute;
         top:0px;
@@ -220,6 +225,8 @@
     
     .header__navbar-cart-count{
         font-size: 1rem;
+        padding: 0px 5px;
+        top:-12px;
     }
     
    

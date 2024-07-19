@@ -222,6 +222,9 @@ if(recommendList){
      takeCart();
      productRedirect();
 }
+if($('.header__navbar-cart-box-container')){
+    takeCart();
+}
 
 
 //ham trich xuat item
@@ -859,6 +862,15 @@ else{
     
     // Gán sự kiện mouseleave để thay đổi màu nền khi di chuột ra
     $('.header__navbar-cart').addEventListener('mouseleave', function() {
+        $(' .header__navbar-cart-box-container').style.display = 'none'; 
+    
+    });
+    $('.header__navbar-cart-box-container').addEventListener('mouseenter', function() {
+        $(' .header__navbar-cart-box-container').style.display = 'block'; 
+    });
+    
+    // Gán sự kiện mouseleave để thay đổi màu nền khi di chuột ra
+    $('.header__navbar-cart-box-container').addEventListener('mouseleave', function() {
         $(' .header__navbar-cart-box-container').style.display = 'none'; 
     
     });
