@@ -126,7 +126,9 @@
 
 /* recommend item */
 .section__recommend,
-.section__brand{
+.section__brand,
+.section__new
+{
     display: flex;
     justify-content: center;
     
@@ -205,5 +207,10 @@
     .swiper.swiper__brand-list
     {
         height: auto;
+    }
+
+    .section__new-list{
+        margin-left: 4px;
+        margin-right: 4px
     }
 }
