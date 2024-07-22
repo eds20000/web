@@ -24,23 +24,6 @@ TotalPay.innerHTML = TotalPrice;
 
 function TakeCart(){
     $('.container').innerHTML=`<div class="grid wide">
-                <div class="row">
-                    <div class="cart-heading">
-                        <div class="cart-heading-list cart-heading-cartshow cart-active">
-                            ショッピングカート
-                        </div>
-                        <div class="cart-heading-list cart-heading-pay">
-                            お届け先･発送方法･お支払い方法
-                        </div>
-                        <div class="cart-heading-list cart-heading-pay-check">
-                            お届け先･発送方法･お支払い方法確認
-                        </div>
-                        <div class="cart-heading-list cart-heading-paysucess">
-                            注文完了
-                        </div>                  
-                    </div>
-            
-                </div>
                 <div class="row cart-content">
                     <div class="col l-8 m-8 c-12">
                         <div class="cart__list-box">
@@ -112,8 +95,7 @@ function TakeCart(){
             if($('.cart-total-account')){
                 $('.cart-total-account').onclick = TakeCartInfor;
             }
-            
-}
+        }
 
 function TakeCartInfor(){  
     $('.container').innerHTML = 

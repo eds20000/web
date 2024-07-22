@@ -449,4 +449,30 @@ input[type="radio"]{
         width: 100%;
         margin: 0 20px;
     }
+    .cart__list-content{
+        display: block;
+    }
+    .cart-heading{
+        display: block;
+    }
+    .cart-heading-list{
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    .cart-heading-list::after{
+        top: 102%;
+        left: 50%;
+        right: 50%;
+        translate: -50%;
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-top: 18px solid var(--hover-color);
+        border-bottom: 18px solid transparent;
+    }
+    .cart-heading-list.cart-active::after{
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-top: 18px solid var(--primary-color-hover);
+        border-bottom: 18px solid transparent;
+    }
 }
