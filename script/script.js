@@ -222,13 +222,13 @@ if(recommendList){
      takeCart();
      productRedirect();
 }
-if($('.section__new-list')){
-    exportItem($('.section__new-list'),'l-2');
-    CreatItemSelectBox();//ham tao ra muc takcartitembox
-     changeImage();
-     takeCart();
-     productRedirect();
-}
+// if($('.section__new-list')){
+//     exportItem($('.section__new-list'),'l-2');
+//     CreatItemSelectBox();//ham tao ra muc takcartitembox
+//      changeImage();
+//      takeCart();
+//      productRedirect();
+// }
 
 if($('.header__navbar-cart-box-container')){
     takeCart();
