@@ -205,8 +205,8 @@ body.over{
 
 .header__navbar-cart-box-container{
     position: absolute;
-    right: 100px;
-    top:calc(var(--header-height));
+    right: 0;
+    top:calc(var(--header-height) - 40px);
     z-index: 11;
     width: 400px;
     height: auto;
